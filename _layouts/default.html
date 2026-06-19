@@ -18,12 +18,484 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="{{ '/assets/css/style.css' | relative_url }}"
-    />
 
     {% seo %}
+
+    <style>
+      :root {
+        --gold: #c9a84c;
+        --gold-dim: #a8873a;
+        --gold-faint: rgba(201, 168, 76, 0.08);
+        --gold-border: rgba(201, 168, 76, 0.25);
+        --bg: #0e0c0a;
+        --card: #141210;
+        --card2: #1a1714;
+        --border: rgba(255, 255, 255, 0.07);
+        --border2: rgba(255, 255, 255, 0.04);
+        --t1: #f0ebe3;
+        --t2: #9a9088;
+        --t3: #5c554e;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--t1);
+        font-family: "Inter", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ─── CURSOR CANVAS ─── */
+      #star-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 99999;
+      }
+
+      /* ─── NAV ─── */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        border-bottom: 1px solid var(--border2);
+        background: rgba(14, 12, 10, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 15px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--t1);
+        text-decoration: none;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+      .nav-link {
+        color: var(--t2);
+        font-size: 13px;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .nav-link:hover {
+        color: var(--t1);
+      }
+
+      .btn-hire {
+        background: var(--gold);
+        color: #0e0c0a;
+        padding: 8px 18px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.15s;
+      }
+      .btn-hire:hover {
+        background: #d4b05a;
+      }
+
+      .btn-primary {
+        background: var(--gold);
+        color: #0e0c0a;
+        padding: 13px 26px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.15s;
+      }
+      .btn-primary:hover {
+        background: #d4b05a;
+      }
+
+      .btn-ghost {
+        color: var(--t2);
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 14px;
+        text-decoration: none;
+        border: 1px solid var(--border);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition:
+          border-color 0.15s,
+          color 0.15s;
+      }
+      .btn-ghost:hover {
+        border-color: var(--gold-border);
+        color: var(--t1);
+      }
+
+      .btn-wa {
+        background: rgba(37, 211, 102, 0.1);
+        color: #4ade80;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 14px;
+        text-decoration: none;
+        border: 1px solid rgba(37, 211, 102, 0.2);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.15s;
+      }
+      .btn-wa:hover {
+        background: rgba(37, 211, 102, 0.18);
+      }
+
+      /* ─── CARD WITH ANIMATED BORDER SWEEP ─── */
+      .card {
+        background: var(--card);
+        border-radius: 16px;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+        /* Static border via outline so pseudo can override */
+        outline: 1px solid var(--border);
+        outline-offset: -1px;
+      }
+
+      /* The conic-gradient sweep border */
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        border-radius: 18px;
+        background: conic-gradient(
+          from 0deg,
+          transparent 0deg,
+          transparent 240deg,
+          rgba(201, 168, 76, 0.9) 270deg,
+          rgba(255, 220, 120, 1) 290deg,
+          rgba(201, 168, 76, 0.9) 310deg,
+          transparent 340deg,
+          transparent 360deg
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+        animation: none;
+      }
+
+      /* Inner mask to cut card shape out of glow border */
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        border-radius: 15px;
+        background: var(--card);
+        z-index: 1;
+      }
+
+      /* Hover: reveal the conic border and spin it */
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(201, 168, 76, 0.12);
+        outline-color: transparent;
+      }
+      .card:hover::before {
+        opacity: 1;
+        animation: sweep-border 2s linear infinite;
+      }
+
+      @keyframes sweep-border {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Content must be above the pseudo layers */
+      .card > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Featured card baseline glow */
+      .card.featured {
+        outline-color: rgba(201, 168, 76, 0.2);
+      }
+      .card.featured::before {
+        opacity: 0.3;
+        animation: sweep-border 4s linear infinite;
+      }
+      .card.featured:hover::before {
+        opacity: 1;
+        animation: sweep-border 1.6s linear infinite;
+      }
+
+      /* ─── TAGS & PILLS ─── */
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        font-size: 10px;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 999px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .tag-military {
+        background: rgba(239, 68, 68, 0.08);
+        color: #fca5a5;
+        border: 1px solid rgba(239, 68, 68, 0.18);
+      }
+      .tag-edtech {
+        background: rgba(52, 211, 153, 0.08);
+        color: #6ee7b7;
+        border: 1px solid rgba(52, 211, 153, 0.18);
+      }
+      .tag-ai {
+        background: rgba(168, 85, 247, 0.08);
+        color: #d8b4fe;
+        border: 1px solid rgba(168, 85, 247, 0.18);
+      }
+      .tag-sport {
+        background: rgba(251, 191, 36, 0.08);
+        color: #fde68a;
+        border: 1px solid rgba(251, 191, 36, 0.18);
+      }
+      .tag-game {
+        background: rgba(59, 130, 246, 0.08);
+        color: #93c5fd;
+        border: 1px solid rgba(59, 130, 246, 0.18);
+      }
+      .tag-meta {
+        background: rgba(20, 184, 166, 0.08);
+        color: #5eead4;
+        border: 1px solid rgba(20, 184, 166, 0.18);
+      }
+      .tag-detective {
+        background: rgba(201, 168, 76, 0.08);
+        color: #fcd34d;
+        border: 1px solid rgba(201, 168, 76, 0.18);
+      }
+      .tag-sim {
+        background: rgba(249, 115, 22, 0.08);
+        color: #fdba74;
+        border: 1px solid rgba(249, 115, 22, 0.18);
+      }
+
+      .pill {
+        font-size: 11px;
+        font-family: "JetBrains Mono", monospace;
+        padding: 2px 9px;
+        border-radius: 6px;
+        background: #1e1b17;
+        color: var(--t2);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      /* ─── STAT CARDS ─── */
+      .stat-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px 24px;
+        text-align: center;
+        transition:
+          border-color 0.25s,
+          transform 0.25s;
+      }
+      .stat-card:hover {
+        border-color: var(--gold-border);
+        transform: translateY(-2px);
+      }
+
+      /* ─── SECTION LABELS ─── */
+      .section-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 10px;
+      }
+      .section-title {
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--t1);
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+
+      /* ─── PACKAGE ITEMS ─── */
+      .pkg {
+        background: var(--card2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 14px 16px;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .pkg:hover {
+        border-color: var(--gold-border);
+        transform: translateY(-1px);
+      }
+
+      .dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--gold);
+        flex-shrink: 0;
+        margin-top: 7px;
+      }
+
+      /* ─── FIVERR BAR ─── */
+      .fiverr-bar {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--card2);
+        padding: 12px 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        transition: border-color 0.2s;
+        max-width: 360px;
+      }
+      .fiverr-bar:hover {
+        border-color: var(--gold-border);
+      }
+
+      /* ─── AVATAR ─── */
+      .avatar-wrap {
+        border-radius: 50%;
+        border: 2px solid var(--gold-border);
+        padding: 4px;
+      }
+      .avatar-wrap img {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* ─── VIDEO PLACEHOLDERS ─── */
+      .video-placeholder {
+        background: var(--card2);
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: border-color 0.2s;
+        position: relative;
+        z-index: 2;
+        width: 120px;
+        min-height: 110px;
+      }
+      .video-placeholder:hover {
+        border-color: var(--gold-border);
+      }
+
+      .project-card-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 16px;
+        height: 100%;
+      }
+
+      /* ─── GOLD FEATURED TAG ─── */
+      .tag-featured {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding: 3px 10px;
+        border-radius: 999px;
+        background: var(--gold-faint);
+        color: var(--gold);
+        border: 1px solid var(--gold-border);
+        text-transform: uppercase;
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .hero-flex {
+          flex-direction: column-reverse !important;
+          align-items: center !important;
+        }
+        .hero-photo {
+          width: 160px !important;
+          height: 160px !important;
+        }
+        .video-placeholder {
+          width: 100%;
+          min-height: 80px;
+          margin-top: 12px;
+        }
+        .project-card-inner {
+          flex-direction: column !important;
+        }
+        .contact-cta {
+          padding: 36px 24px !important;
+        }
+        .contact-cta h2 {
+          font-size: 24px !important;
+        }
+      }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .card::before {
+          animation: none !important;
+        }
+        .card:hover::before {
+          animation: none !important;
+          opacity: 0.6;
+        }
+        * {
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
   </head>
   <body>
     {% include nav.html %}
