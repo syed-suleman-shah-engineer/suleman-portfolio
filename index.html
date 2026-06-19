@@ -9,46 +9,74 @@
     </title>
     <meta
       name="description"
-      content="Syed Suleman Shah — Unity developer with 7+ years building military simulations, interactive training systems, EdTech VR, Meta Quest apps and real-time multiplayer games. Founder of WitShells Studio, Pakistan."
+      content="Syed Suleman Shah — Unity developer with 7+ years building military simulations, interactive training systems, EdTech VR, Meta Quest apps and real-time multiplayer games. CTO of WitShells Studio, Pakistan."
     />
     <meta
       name="keywords"
-      content="Unity developer Pakistan, VR developer for hire, Meta Quest developer, military simulation developer, EdTech VR developer, XR developer freelance, Unity game developer, interactive simulation, WitShells Studio, Syed Suleman Shah"
+      content="Unity developer Pakistan, VR developer for hire, Meta Quest developer, military simulation developer, EdTech VR developer, XR developer freelance, Unity game developer, interactive simulation, WitShells Studio, Syed Suleman Shah, Unity 3D Pakistan, game development Pakistan"
     />
     <meta name="author" content="Syed Suleman Shah" />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0e0c0a" />
     <link rel="canonical" href="https://suleman.witshells.com/" />
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://suleman.witshells.com/" />
     <meta
       property="og:title"
-      content="Syed Suleman Shah | Unity Developer and Simulation Specialist"
+      content="Syed Suleman Shah | Unity Developer & Simulation Specialist"
     />
     <meta
       property="og:description"
-      content="7+ years building simulations, military training apps, EdTech VR and multiplayer games. Founder of WitShells Studio."
+      content="7+ years building simulations, military training apps, EdTech VR and multiplayer games. CTO of WitShells Studio, Pakistan."
     />
     <meta
       property="og:image"
       content="https://suleman.witshells.com/images/suleman.png"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="WitShells Studio" />
+    <meta property="og:locale" content="en_PK" />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Syed Suleman Shah | Unity Developer and Simulation Specialist"
+      content="Syed Suleman Shah | Unity Developer & Simulation Specialist"
     />
     <meta
       name="twitter:description"
-      content="7+ years building simulations, military training, EdTech VR and multiplayer games."
+      content="7+ years building simulations, military training, EdTech VR and multiplayer games. CTO of WitShells Studio."
     />
+    <meta
+      name="twitter:image"
+      content="https://suleman.witshells.com/images/suleman.png"
+    />
+
+    <!-- Structured Data: Person -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Syed Suleman Shah",
-        "jobTitle": "Unity Developer and Founder",
-        "worksFor": { "@type": "Organization", "name": "WitShells Studio" },
+        "jobTitle": "Unity Developer and CTO",
+        "description": "Unity developer with 7+ years specializing in military simulations, VR education, Meta Quest apps, and multiplayer games.",
         "url": "https://suleman.witshells.com",
+        "image": "https://suleman.witshells.com/images/suleman.png",
+        "email": "contact@witshells.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Moro",
+          "addressRegion": "Sindh",
+          "addressCountry": "PK"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "WitShells Studio",
+          "url": "https://witshells.com"
+        },
         "sameAs": [
           "https://www.linkedin.com/in/syed-suleman-shah/",
           "https://www.fiverr.com/s/DB46vDV"
@@ -61,24 +89,80 @@
           "EdTech VR",
           "SignalR",
           "ASP.NET Core",
-          "Android",
-          "Game Development"
+          "Android Development",
+          "Game Development",
+          "WebRTC",
+          "ARCore",
+          "Blender"
         ]
       }
     </script>
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "WitShells Studio",
+        "url": "https://witshells.com",
+        "logo": "https://suleman.witshells.com/images/suleman.png",
+        "founder": {
+          "@type": "Person",
+          "name": "Syed Suleman Shah"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Moro",
+          "addressRegion": "Sindh",
+          "addressCountry": "PK"
+        },
+        "sameAs": ["https://www.linkedin.com/in/syed-suleman-shah/"]
+      }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://suleman.witshells.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Projects",
+            "item": "https://suleman.witshells.com/#projects"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Blog",
+            "item": "https://suleman.witshells.com/blog/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
       :root {
         --gold: #c9a84c;
         --gold-dim: #a8873a;
         --gold-faint: rgba(201, 168, 76, 0.08);
-        --gold-border: rgba(201, 168, 76, 0.2);
+        --gold-border: rgba(201, 168, 76, 0.25);
         --bg: #0e0c0a;
         --card: #141210;
         --card2: #1a1714;
@@ -88,6 +172,7 @@
         --t2: #9a9088;
         --t3: #5c554e;
       }
+
       html {
         scroll-behavior: smooth;
       }
@@ -102,6 +187,19 @@
         font-family: "Inter", system-ui, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
+
+      /* ─── CURSOR CANVAS ─── */
+      #star-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 99999;
+      }
+
+      /* ─── NAV ─── */
       .nav {
         position: fixed;
         top: 0;
@@ -109,8 +207,9 @@
         right: 0;
         z-index: 50;
         border-bottom: 1px solid var(--border2);
-        background: rgba(14, 12, 10, 0.9);
-        backdrop-filter: blur(14px);
+        background: rgba(14, 12, 10, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
       }
       .nav-inner {
         max-width: 1100px;
@@ -141,6 +240,7 @@
       .nav-link:hover {
         color: var(--t1);
       }
+
       .btn-hire {
         background: var(--gold);
         color: #0e0c0a;
@@ -154,6 +254,7 @@
       .btn-hire:hover {
         background: #d4b05a;
       }
+
       .btn-primary {
         background: var(--gold);
         color: #0e0c0a;
@@ -170,6 +271,7 @@
       .btn-primary:hover {
         background: #d4b05a;
       }
+
       .btn-ghost {
         color: var(--t2);
         padding: 12px 20px;
@@ -189,6 +291,7 @@
         border-color: var(--gold-border);
         color: var(--t1);
       }
+
       .btn-wa {
         background: rgba(37, 211, 102, 0.1);
         color: #4ade80;
@@ -206,35 +309,96 @@
       .btn-wa:hover {
         background: rgba(37, 211, 102, 0.18);
       }
+
+      /* ─── CARD WITH ANIMATED BORDER SWEEP ─── */
       .card {
         background: var(--card);
-        border: 1px solid var(--border);
         border-radius: 16px;
-        transition:
-          border-color 0.2s,
-          transform 0.2s;
         position: relative;
         overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+        /* Static border via outline so pseudo can override */
+        outline: 1px solid var(--border);
+        outline-offset: -1px;
       }
+
+      /* The conic-gradient sweep border */
       .card::before {
         content: "";
         position: absolute;
-        inset: 0;
-        border-radius: 16px;
-        background: linear-gradient(
-          135deg,
-          var(--gold-faint) 0%,
-          transparent 55%
+        inset: -2px;
+        border-radius: 18px;
+        background: conic-gradient(
+          from 0deg,
+          transparent 0deg,
+          transparent 240deg,
+          rgba(201, 168, 76, 0.9) 270deg,
+          rgba(255, 220, 120, 1) 290deg,
+          rgba(201, 168, 76, 0.9) 310deg,
+          transparent 340deg,
+          transparent 360deg
         );
-        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+        animation: none;
       }
+
+      /* Inner mask to cut card shape out of glow border */
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        border-radius: 15px;
+        background: var(--card);
+        z-index: 1;
+      }
+
+      /* Hover: reveal the conic border and spin it */
       .card:hover {
-        border-color: var(--gold-border);
-        transform: translateY(-2px);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(201, 168, 76, 0.12);
+        outline-color: transparent;
       }
+      .card:hover::before {
+        opacity: 1;
+        animation: sweep-border 2s linear infinite;
+      }
+
+      @keyframes sweep-border {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Content must be above the pseudo layers */
+      .card > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Featured card baseline glow */
       .card.featured {
-        border-color: rgba(201, 168, 76, 0.25);
+        outline-color: rgba(201, 168, 76, 0.2);
       }
+      .card.featured::before {
+        opacity: 0.3;
+        animation: sweep-border 4s linear infinite;
+      }
+      .card.featured:hover::before {
+        opacity: 1;
+        animation: sweep-border 1.6s linear infinite;
+      }
+
+      /* ─── TAGS & PILLS ─── */
       .tag {
         display: inline-flex;
         align-items: center;
@@ -285,6 +449,7 @@
         color: #fdba74;
         border: 1px solid rgba(249, 115, 22, 0.18);
       }
+
       .pill {
         font-size: 11px;
         font-family: "JetBrains Mono", monospace;
@@ -294,13 +459,24 @@
         color: var(--t2);
         border: 1px solid rgba(255, 255, 255, 0.06);
       }
+
+      /* ─── STAT CARDS ─── */
       .stat-card {
         background: var(--card);
         border: 1px solid var(--border);
         border-radius: 12px;
         padding: 20px 24px;
         text-align: center;
+        transition:
+          border-color 0.25s,
+          transform 0.25s;
       }
+      .stat-card:hover {
+        border-color: var(--gold-border);
+        transform: translateY(-2px);
+      }
+
+      /* ─── SECTION LABELS ─── */
       .section-label {
         font-size: 10px;
         font-weight: 700;
@@ -316,16 +492,22 @@
         letter-spacing: -0.02em;
         line-height: 1.15;
       }
+
+      /* ─── PACKAGE ITEMS ─── */
       .pkg {
         background: var(--card2);
         border: 1px solid var(--border);
         border-radius: 10px;
         padding: 14px 16px;
-        transition: border-color 0.2s;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
       }
       .pkg:hover {
         border-color: var(--gold-border);
+        transform: translateY(-1px);
       }
+
       .dot {
         width: 5px;
         height: 5px;
@@ -334,6 +516,8 @@
         flex-shrink: 0;
         margin-top: 7px;
       }
+
+      /* ─── FIVERR BAR ─── */
       .fiverr-bar {
         border: 1px solid var(--border);
         border-radius: 10px;
@@ -349,6 +533,8 @@
       .fiverr-bar:hover {
         border-color: var(--gold-border);
       }
+
+      /* ─── AVATAR ─── */
       .avatar-wrap {
         border-radius: 50%;
         border: 2px solid var(--gold-border);
@@ -361,6 +547,49 @@
         object-fit: cover;
         display: block;
       }
+
+      /* ─── VIDEO PLACEHOLDERS ─── */
+      .video-placeholder {
+        background: var(--card2);
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: border-color 0.2s;
+        position: relative;
+        z-index: 2;
+        width: 120px;
+        min-height: 110px;
+      }
+      .video-placeholder:hover {
+        border-color: var(--gold-border);
+      }
+
+      .project-card-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 16px;
+        height: 100%;
+      }
+
+      /* ─── GOLD FEATURED TAG ─── */
+      .tag-featured {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        padding: 3px 10px;
+        border-radius: 999px;
+        background: var(--gold-faint);
+        color: var(--gold);
+        border: 1px solid var(--gold-border);
+        text-transform: uppercase;
+      }
+
+      /* ─── RESPONSIVE ─── */
       @media (max-width: 768px) {
         .nav-links {
           display: none;
@@ -373,13 +602,47 @@
           width: 160px !important;
           height: 160px !important;
         }
+        .video-placeholder {
+          width: 100%;
+          min-height: 80px;
+          margin-top: 12px;
+        }
+        .project-card-inner {
+          flex-direction: column !important;
+        }
+        .contact-cta {
+          padding: 36px 24px !important;
+        }
+        .contact-cta h2 {
+          font-size: 24px !important;
+        }
+      }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .card::before {
+          animation: none !important;
+        }
+        .card:hover::before {
+          animation: none !important;
+          opacity: 0.6;
+        }
+        * {
+          transition-duration: 0.01ms !important;
+        }
       }
     </style>
   </head>
+
   <body>
-    <nav class="nav">
+    <canvas id="star-canvas" aria-hidden="true"></canvas>
+
+    <!-- ═══════════ NAV ═══════════ -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="nav-inner">
-        <a href="#" class="nav-logo">Syed Suleman Shah</a>
+        <a href="#" class="nav-logo" aria-label="Syed Suleman Shah — Home"
+          >Syed Suleman Shah</a
+        >
         <div class="nav-links">
           <a href="#projects" class="nav-link">Projects</a>
           <a href="#packages" class="nav-link">Packages</a>
@@ -389,23 +652,24 @@
         <a
           href="https://wa.me/923093023289"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           class="btn-hire"
+          aria-label="Contact Syed Suleman Shah on WhatsApp"
           >Let's Talk</a
         >
       </div>
     </nav>
 
-    <!-- HERO -->
-    <section style="padding: 130px 24px 80px">
+    <!-- ═══════════ HERO ═══════════ -->
+    <header role="banner" style="padding: 130px 24px 80px">
       <div style="max-width: 1100px; margin: 0 auto">
         <div
           class="hero-flex"
           style="display: flex; align-items: center; gap: 60px"
         >
           <div style="flex: 1">
-            <p class="section-label" style="margin-bottom: 16px">
-              Unity Developer · Simulation Specialist · Founder
+            <p class="section-label">
+              Unity Developer · Simulation Specialist · CTO
             </p>
             <h1
               style="
@@ -430,7 +694,7 @@
                 margin-bottom: 32px;
               "
             >
-              Syed Suleman Shah — founder of
+              Syed Suleman Shah — CTO of
               <strong style="color: var(--t1); font-weight: 600"
                 >WitShells Studio</strong
               >. 7+ years shipping Unity projects across military simulations,
@@ -449,14 +713,16 @@
               <a
                 href="https://wa.me/923093023289"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 class="btn-primary"
+                aria-label="WhatsApp Syed Suleman Shah"
               >
                 <svg
                   width="15"
                   height="15"
                   viewBox="0 0 24 24"
                   fill="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
@@ -475,6 +741,7 @@
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
+                  aria-hidden="true"
                 >
                   <rect x="2" y="3" width="20" height="14" rx="2" />
                   <path d="m8 21 4-4 4 4M12 17V21" />
@@ -485,10 +752,17 @@
             <a
               href="https://www.fiverr.com/s/DB46vDV"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               class="fiverr-bar"
+              aria-label="Syed Suleman Shah on Fiverr"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1dbf73">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="#1dbf73"
+                aria-hidden="true"
+              >
                 <path
                   d="M23.004 15.588a.995.995 0 100-1.99.995.995 0 000 1.99zm-.996-3.705h-1.009c-.232-3.4-2.876-6.154-6.243-6.576V4.3h-1.008v.994c-3.382.416-6.036 3.18-6.249 6.589H7.5v1.008h.999c.217 3.408 2.867 6.172 6.249 6.587v.993h1.008v-.999c3.37-.42 6.014-3.186 6.243-6.581h1.009v-1.008zM12 18.48c-3.578 0-6.48-2.902-6.48-6.48S8.422 5.52 12 5.52s6.48 2.902 6.48 6.48-2.902 6.48-6.48 6.48zm-.504-5.784v1.512h1.008v-1.512H12zm0-5.28v3.24h1.008V7.416H12z"
                 />
@@ -509,6 +783,7 @@
                 stroke="currentColor"
                 stroke-width="2"
                 style="margin-left: auto; color: var(--t3)"
+                aria-hidden="true"
               >
                 <path
                   d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"
@@ -524,8 +799,8 @@
               ><span class="pill">Meta Quest</span
               ><span class="pill">Android</span><span class="pill">ARCore</span
               ><span class="pill">ASP.NET Core</span
-              ><span class="pill">Multiplayer</span><span class="pill">WebRTC</span
-              ><span class="pill">Blender</span
+              ><span class="pill">Multiplayer</span
+              ><span class="pill">WebRTC</span><span class="pill">Blender</span
               ><span class="pill">VR Training</span>
             </div>
           </div>
@@ -544,7 +819,10 @@
             >
               <img
                 src="images/suleman.png"
-                alt="Syed Suleman Shah, Unity Developer and Founder of WitShells Studio Pakistan"
+                alt="Syed Suleman Shah, Unity Developer and CTO of WitShells Studio, Moro Sindh Pakistan"
+                width="210"
+                height="210"
+                loading="eager"
               />
             </div>
             <div style="text-align: center">
@@ -565,10 +843,10 @@
           </div>
         </div>
       </div>
-    </section>
+    </header>
 
-    <!-- STATS -->
-    <section style="padding: 0 24px 80px">
+    <!-- ═══════════ STATS ═══════════ -->
+    <section aria-label="Career statistics" style="padding: 0 24px 80px">
       <div
         style="
           max-width: 1100px;
@@ -641,8 +919,12 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" style="padding: 0 24px 100px">
+    <!-- ═══════════ PROJECTS ═══════════ -->
+    <section
+      id="projects"
+      aria-label="Selected projects"
+      style="padding: 0 24px 100px"
+    >
       <div style="max-width: 1100px; margin: 0 auto">
         <div style="margin-bottom: 40px">
           <p class="section-label">Selected Work</p>
@@ -660,597 +942,768 @@
           </p>
         </div>
 
-        <!-- SANDBOX FEATURED -->
-        <div class="card featured" style="padding: 32px; margin-bottom: 20px">
-          <div
-            style="
-              display: flex;
-              flex-wrap: wrap;
-              align-items: flex-start;
-              gap: 32px;
-            "
-          >
-            <div style="flex: 1; min-width: 280px">
-              <div
-                style="
-                  display: flex;
-                  flex-wrap: wrap;
-                  gap: 8px;
-                  margin-bottom: 14px;
-                "
-              >
-                <span class="tag tag-sim">Simulation</span>
-                <span class="tag tag-military">Defense</span>
-                <span class="pill">Desktop</span>
-                <span class="pill">Android Tablet</span>
-                <span class="pill">Xbox Controllers</span>
-                <span
-                  style="
-                    font-size: 10px;
-                    font-weight: 700;
-                    letter-spacing: 0.06em;
-                    padding: 3px 10px;
-                    border-radius: 999px;
-                    background: var(--gold-faint);
-                    color: var(--gold);
-                    border: 1px solid var(--gold-border);
-                    text-transform: uppercase;
-                  "
-                  >★ Featured</span
-                >
-              </div>
-              <h3
-                style="
-                  font-size: 22px;
-                  font-weight: 700;
-                  color: var(--t1);
-                  margin-bottom: 10px;
-                "
-              >
-                SANDBOX — Military Tactical Simulation System
-              </h3>
-              <p
-                style="
-                  font-size: 14px;
-                  color: var(--t2);
-                  line-height: 1.8;
-                  margin-bottom: 18px;
-                "
-              >
-                A multi-platform tactical simulation for a Pakistani defense
-                client. Real-time scenario control on desktop, field view on
-                Android tablets, physical input via Xbox sensor controllers.
-                Covers mission briefing, terrain navigation, unit coordination
-                and live event tracking — delivered under strict operational
-                requirements.
-              </p>
-              <div
-                style="
-                  display: flex;
-                  flex-wrap: wrap;
-                  gap: 8px;
-                  margin-bottom: 20px;
-                "
-              >
-                <span class="pill">Unity 3D</span
-                ><span class="pill">Real-time Networking</span
-                ><span class="pill">Multi-platform</span
-                ><span class="pill">Sensor Integration</span>
-              </div>
-              <a
-                href="blog/sandbox-military-tactical-simulation.html"
-                class="btn-primary"
-                style="font-size: 13px; padding: 10px 20px"
-                >Read Case Study &rarr;</a
-              >
-            </div>
-            <div
-              style="
-                width: 220px;
-                background: var(--card2);
-                border-radius: 12px;
-                border: 1px solid var(--border);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 140px;
-                flex-shrink: 0;
-              "
-            >
-              <div style="text-align: center; color: var(--gold)">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  style="margin: 0 auto 8px"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <polygon points="10 8 16 12 10 16 10 8" />
-                </svg>
-                <p style="font-size: 11px; color: var(--t3)">
-                  Showcase video available
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- GRID -->
         <div
           style="
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
             gap: 16px;
+            align-items: stretch;
           "
         >
-          <div class="card" style="padding: 24px">
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 12px;
-              "
-            >
-              <span class="tag tag-edtech">EdTech VR</span
-              ><span class="pill">Meta Quest</span>
+          <!-- SANDBOX FEATURED -->
+          <article class="card featured" style="padding: 24px">
+            <div class="project-card-inner">
+              <div style="flex: 1; min-width: 200px">
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    margin-bottom: 14px;
+                  "
+                >
+                  <span class="tag tag-sim">Simulation</span>
+                  <span class="tag tag-military">Defense</span>
+                  <span class="pill">Desktop</span>
+                  <span class="pill">Android Tablet</span>
+                  <span class="pill">Xbox Controllers</span>
+                  <span class="tag-featured">★ Featured</span>
+                </div>
+                <h3
+                  style="
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: var(--t1);
+                    margin-bottom: 8px;
+                  "
+                >
+                  SANDBOX — Military Tactical Simulation System
+                </h3>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: var(--t2);
+                    line-height: 1.75;
+                    margin-bottom: 14px;
+                  "
+                >
+                  A multi-platform tactical simulation for a Pakistani defense
+                  client. Real-time scenario control on desktop, field view on
+                  Android tablets, physical input via Xbox sensor controllers.
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    margin-bottom: 14px;
+                  "
+                >
+                  <span class="pill">Unity 3D</span
+                  ><span class="pill">Real-time Networking</span
+                  ><span class="pill">Multi-platform</span
+                  ><span class="pill">Sensor Integration</span>
+                </div>
+                <a
+                  href="blog/sandbox-military-tactical-simulation.html"
+                  class="btn-primary"
+                  style="font-size: 13px; padding: 10px 20px"
+                  >Read Case Study →</a
+                >
+              </div>
+              <div class="video-placeholder" aria-label="Project video preview">
+                <div style="text-align: center; color: var(--gold)">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    style="margin: 0 auto 6px"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="10 8 16 12 10 16 10 8" />
+                  </svg>
+                  <p style="font-size: 10px; color: var(--t3)">
+                    YouTube overview
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3
-              style="
-                font-size: 17px;
-                font-weight: 600;
-                color: var(--t1);
-                margin-bottom: 8px;
-              "
-            >
-              Climate Change VR Experience
-            </h3>
-            <p
-              style="
-                font-size: 13px;
-                color: var(--t2);
-                line-height: 1.75;
-                margin-bottom: 14px;
-              "
-            >
-              Immersive VR module for Kuwait University — students explore
-              climate science through interactive environments. Second project
-              with Dr. Huda, the most polished academic VR I've shipped.
-              Delivered 2026.
-            </p>
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 14px;
-              "
-            >
-              <span class="pill">Unity 3D</span
-              ><span class="pill">Kuwait University</span>
-            </div>
-            <a
-              href="blog/climate-change-vr-kuwait-university.html"
-              style="
-                font-size: 13px;
-                color: var(--gold);
-                font-weight: 500;
-                text-decoration: none;
-              "
-              >Read Case Study &rarr;</a
-            >
-          </div>
+          </article>
 
-          <div class="card" style="padding: 24px">
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 12px;
-              "
-            >
-              <span class="tag tag-edtech">EdTech VR</span
-              ><span class="pill">Meta Quest</span>
+          <!-- CLIMATE CHANGE VR -->
+          <article class="card" style="padding: 24px">
+            <div class="project-card-inner">
+              <div style="flex: 1; min-width: 200px">
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <span class="tag tag-edtech">EdTech VR</span
+                  ><span class="pill">Meta Quest</span>
+                </div>
+                <h3
+                  style="
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: var(--t1);
+                    margin-bottom: 8px;
+                  "
+                >
+                  Climate Change VR Experience
+                </h3>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: var(--t2);
+                    line-height: 1.75;
+                    margin-bottom: 14px;
+                  "
+                >
+                  Immersive VR module for Kuwait University — students explore
+                  climate science through interactive environments. Second
+                  project with Dr. Huda, the most polished academic VR I've
+                  shipped.
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 14px;
+                  "
+                >
+                  <span class="pill">Unity 3D</span
+                  ><span class="pill">Kuwait University</span>
+                </div>
+                <a
+                  href="blog/climate-change-vr-kuwait-university.html"
+                  style="
+                    font-size: 13px;
+                    color: var(--gold);
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Read Case Study →</a
+                >
+              </div>
+              <div class="video-placeholder" aria-label="Project video preview">
+                <div style="text-align: center; color: var(--gold)">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    style="margin: 0 auto 6px"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="10 8 16 12 10 16 10 8" />
+                  </svg>
+                  <p style="font-size: 10px; color: var(--t3)">
+                    YouTube overview
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3
-              style="
-                font-size: 17px;
-                font-weight: 600;
-                color: var(--t1);
-                margin-bottom: 8px;
-              "
-            >
-              Egypt History — Educational VR Module
-            </h3>
-            <p
-              style="
-                font-size: 13px;
-                color: var(--t2);
-                line-height: 1.75;
-                margin-bottom: 14px;
-              "
-            >
-              VR history experience for Kuwait University — students explore
-              ancient Egypt through narrated, interactive environments. First of
-              two successful engagements with Dr. Huda, Assistant Professor.
-            </p>
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 14px;
-              "
-            >
-              <span class="pill">Unity 3D</span
-              ><span class="pill">Academic Client</span>
-            </div>
-            <a
-              href="blog/egypt-history-vr-kuwait-university.html"
-              style="
-                font-size: 13px;
-                color: var(--gold);
-                font-weight: 500;
-                text-decoration: none;
-              "
-              >Read Case Study &rarr;</a
-            >
-          </div>
+          </article>
 
-          <div class="card" style="padding: 24px">
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 12px;
-              "
-            >
-              <span class="tag tag-ai">AI + VR</span
-              ><span class="pill">Meta Quest</span>
+          <!-- EGYPT HISTORY VR -->
+          <article class="card" style="padding: 24px">
+            <div class="project-card-inner">
+              <div style="flex: 1; min-width: 200px">
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <span class="tag tag-edtech">EdTech VR</span
+                  ><span class="pill">Meta Quest</span>
+                </div>
+                <h3
+                  style="
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: var(--t1);
+                    margin-bottom: 8px;
+                  "
+                >
+                  Egypt History — Educational VR Module
+                </h3>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: var(--t2);
+                    line-height: 1.75;
+                    margin-bottom: 14px;
+                  "
+                >
+                  VR history experience for Kuwait University — students explore
+                  ancient Egypt through narrated, interactive environments.
+                  First of two successful engagements with Dr. Huda.
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 14px;
+                  "
+                >
+                  <span class="pill">Unity 3D</span
+                  ><span class="pill">Academic Client</span>
+                </div>
+                <a
+                  href="blog/egypt-history-vr-kuwait-university.html"
+                  style="
+                    font-size: 13px;
+                    color: var(--gold);
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Read Case Study →</a
+                >
+              </div>
+              <div class="video-placeholder" aria-label="Project video preview">
+                <div style="text-align: center; color: var(--gold)">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    style="margin: 0 auto 6px"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="10 8 16 12 10 16 10 8" />
+                  </svg>
+                  <p style="font-size: 10px; color: var(--t3)">
+                    YouTube overview
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3
-              style="
-                font-size: 17px;
-                font-weight: 600;
-                color: var(--t1);
-                margin-bottom: 8px;
-              "
-            >
-              VR Rehearsal — AI Speech Training
-            </h3>
-            <p
-              style="
-                font-size: 13px;
-                color: var(--t2);
-                line-height: 1.75;
-                margin-bottom: 14px;
-              "
-            >
-              Practice public speaking in front of a virtual audience. AI
-              analysis tracks pace, filler words, and confidence markers, then
-              generates improvement reports — all inside VR in real time.
-            </p>
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 14px;
-              "
-            >
-              <span class="pill">AI Analysis</span
-              ><span class="pill">Virtual Audience</span>
-            </div>
-            <a
-              href="blog/vr-rehearsal-ai-speech-training.html"
-              style="
-                font-size: 13px;
-                color: var(--gold);
-                font-weight: 500;
-                text-decoration: none;
-              "
-              >Read Case Study &rarr;</a
-            >
-          </div>
+          </article>
 
-          <div class="card" style="padding: 24px">
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 12px;
-              "
-            >
-              <span class="tag tag-sport">Sports Tech</span
-              ><span class="pill">Desktop</span
-              ><span class="pill">Camera Sensors</span>
+          <!-- VR REHEARSAL AI -->
+          <article class="card" style="padding: 24px">
+            <div class="project-card-inner">
+              <div style="flex: 1; min-width: 200px">
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <span class="tag tag-ai">AI + VR</span
+                  ><span class="pill">Meta Quest</span>
+                </div>
+                <h3
+                  style="
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: var(--t1);
+                    margin-bottom: 8px;
+                  "
+                >
+                  VR Rehearsal — AI Speech Training
+                </h3>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: var(--t2);
+                    line-height: 1.75;
+                    margin-bottom: 14px;
+                  "
+                >
+                  Practice public speaking in front of a virtual audience. AI
+                  analysis tracks pace, filler words, and confidence markers,
+                  then generates improvement reports — all inside VR in real
+                  time.
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 14px;
+                  "
+                >
+                  <span class="pill">AI Analysis</span
+                  ><span class="pill">Virtual Audience</span>
+                </div>
+                <a
+                  href="blog/vr-rehearsal-ai-speech-training.html"
+                  style="
+                    font-size: 13px;
+                    color: var(--gold);
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Read Case Study →</a
+                >
+              </div>
+              <div class="video-placeholder" aria-label="Project video preview">
+                <div style="text-align: center; color: var(--gold)">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    style="margin: 0 auto 6px"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="10 8 16 12 10 16 10 8" />
+                  </svg>
+                  <p style="font-size: 10px; color: var(--t3)">
+                    YouTube overview
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3
-              style="
-                font-size: 17px;
-                font-weight: 600;
-                color: var(--t1);
-                margin-bottom: 8px;
-              "
-            >
-              Shuffleboard Simulator — Sensor-Based Arcade
-            </h3>
-            <p
-              style="
-                font-size: 13px;
-                color: var(--t2);
-                line-height: 1.75;
-                margin-bottom: 14px;
-              "
-            >
-              Camera sensors track physical puck movement in real time. Unity
-              simulation mirrors gameplay — scores, turns, multiplayer
-              networking — with an arcade feel. Enterprise subcontract, full
-              team collaboration.
-            </p>
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 14px;
-              "
-            >
-              <span class="pill">SignalR</span
-              ><span class="pill">Real-Time</span>
-            </div>
-            <a
-              href="blog/shuffleboard-simulator-sensor-unity.html"
-              style="
-                font-size: 13px;
-                color: var(--gold);
-                font-weight: 500;
-                text-decoration: none;
-              "
-              >Read Case Study &rarr;</a
-            >
-          </div>
+          </article>
 
-          <div class="card" style="padding: 24px">
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 12px;
-              "
-            >
-              <span class="tag tag-meta">Metaverse</span
-              ><span class="pill">Saudi Arabia</span>
+          <!-- SHUFFLEBOARD -->
+          <article class="card" style="padding: 24px">
+            <div class="project-card-inner">
+              <div style="flex: 1; min-width: 200px">
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <span class="tag tag-sport">Sports Tech</span
+                  ><span class="pill">Desktop</span
+                  ><span class="pill">Camera Sensors</span>
+                </div>
+                <h3
+                  style="
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: var(--t1);
+                    margin-bottom: 8px;
+                  "
+                >
+                  Shuffleboard Simulator — Sensor-Based Arcade
+                </h3>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: var(--t2);
+                    line-height: 1.75;
+                    margin-bottom: 14px;
+                  "
+                >
+                  Camera sensors track physical puck movement in real time.
+                  Unity simulation mirrors gameplay — scores, turns, multiplayer
+                  networking — with an arcade feel. Enterprise subcontract.
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 14px;
+                  "
+                >
+                  <span class="pill">SignalR</span
+                  ><span class="pill">Real-Time</span>
+                </div>
+                <a
+                  href="blog/shuffleboard-simulator-sensor-unity.html"
+                  style="
+                    font-size: 13px;
+                    color: var(--gold);
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Read Case Study →</a
+                >
+              </div>
+              <div class="video-placeholder" aria-label="Project video preview">
+                <div style="text-align: center; color: var(--gold)">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    style="margin: 0 auto 6px"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="10 8 16 12 10 16 10 8" />
+                  </svg>
+                  <p style="font-size: 10px; color: var(--t3)">
+                    YouTube overview
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3
-              style="
-                font-size: 17px;
-                font-weight: 600;
-                color: var(--t1);
-                margin-bottom: 8px;
-              "
-            >
-              Sportopia — Saudi Metaverse Module
-            </h3>
-            <p
-              style="
-                font-size: 13px;
-                color: var(--t2);
-                line-height: 1.75;
-                margin-bottom: 14px;
-              "
-            >
-              Subcontracted module from a large Saudi metaverse project. 4
-              interactive scenes, full UI/UX integration, dialog system, and a
-              playable mini soccer game — delivered within a structured team
-              pipeline.
-            </p>
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 14px;
-              "
-            >
-              <span class="pill">Dialog System</span
-              ><span class="pill">Mini Game</span>
-            </div>
-            <a
-              href="blog/sportopia-saudi-metaverse-module.html"
-              style="
-                font-size: 13px;
-                color: var(--gold);
-                font-weight: 500;
-                text-decoration: none;
-              "
-              >Read Case Study &rarr;</a
-            >
-          </div>
+          </article>
 
-          <div class="card" style="padding: 24px">
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 12px;
-              "
-            >
-              <span class="tag tag-detective">Detective VR</span
-              ><span class="pill">Meta Quest</span>
+          <!-- SPORTOPIA -->
+          <article class="card" style="padding: 24px">
+            <div class="project-card-inner">
+              <div style="flex: 1; min-width: 200px">
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <span class="tag tag-meta">Metaverse</span
+                  ><span class="pill">Saudi Arabia</span>
+                </div>
+                <h3
+                  style="
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: var(--t1);
+                    margin-bottom: 8px;
+                  "
+                >
+                  Sportopia — Saudi Metaverse Module
+                </h3>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: var(--t2);
+                    line-height: 1.75;
+                    margin-bottom: 14px;
+                  "
+                >
+                  Subcontracted module from a large Saudi metaverse project. 4
+                  interactive scenes, full UI/UX integration, dialog system, and
+                  a playable mini soccer game — delivered within a structured
+                  team pipeline.
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 14px;
+                  "
+                >
+                  <span class="pill">Dialog System</span
+                  ><span class="pill">Mini Game</span>
+                </div>
+                <a
+                  href="blog/sportopia-saudi-metaverse-module.html"
+                  style="
+                    font-size: 13px;
+                    color: var(--gold);
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Read Case Study →</a
+                >
+              </div>
+              <div class="video-placeholder" aria-label="Project video preview">
+                <div style="text-align: center; color: var(--gold)">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    style="margin: 0 auto 6px"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="10 8 16 12 10 16 10 8" />
+                  </svg>
+                  <p style="font-size: 10px; color: var(--t3)">
+                    YouTube overview
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3
-              style="
-                font-size: 17px;
-                font-weight: 600;
-                color: var(--t1);
-                margin-bottom: 8px;
-              "
-            >
-              I'm Sure Lock — Detective VR Game
-            </h3>
-            <p
-              style="
-                font-size: 13px;
-                color: var(--t2);
-                line-height: 1.75;
-                margin-bottom: 14px;
-              "
-            >
-              First-person detective VR game with investigation mechanics,
-              environmental storytelling, and puzzle solving. Shows consumer VR
-              product thinking alongside enterprise simulation work.
-            </p>
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 14px;
-              "
-            >
-              <span class="pill">Unity 3D</span
-              ><span class="pill">Puzzle Design</span>
-            </div>
-            <a
-              href="blog/im-sure-lock-detective-vr-game.html"
-              style="
-                font-size: 13px;
-                color: var(--gold);
-                font-weight: 500;
-                text-decoration: none;
-              "
-              >Read Case Study &rarr;</a
-            >
-          </div>
+          </article>
 
-          <div class="card" style="padding: 24px">
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 12px;
-              "
-            >
-              <span class="tag tag-game">Game Jam</span
-              ><span class="pill">WebGL</span><span class="pill">Android</span>
+          <!-- I'M SURE LOCK -->
+          <article class="card" style="padding: 24px">
+            <div class="project-card-inner">
+              <div style="flex: 1; min-width: 200px">
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <span class="tag tag-detective">Detective VR</span
+                  ><span class="pill">Meta Quest</span>
+                </div>
+                <h3
+                  style="
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: var(--t1);
+                    margin-bottom: 8px;
+                  "
+                >
+                  I'm Sure Lock — Detective VR Game
+                </h3>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: var(--t2);
+                    line-height: 1.75;
+                    margin-bottom: 14px;
+                  "
+                >
+                  First-person detective VR game with investigation mechanics,
+                  environmental storytelling, and puzzle solving. Shows consumer
+                  VR product thinking alongside enterprise simulation work.
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 14px;
+                  "
+                >
+                  <span class="pill">Unity 3D</span
+                  ><span class="pill">Puzzle Design</span>
+                </div>
+                <a
+                  href="blog/im-sure-lock-detective-vr-game.html"
+                  style="
+                    font-size: 13px;
+                    color: var(--gold);
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Read Case Study →</a
+                >
+              </div>
+              <div class="video-placeholder" aria-label="Project video preview">
+                <div style="text-align: center; color: var(--gold)">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    style="margin: 0 auto 6px"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="10 8 16 12 10 16 10 8" />
+                  </svg>
+                  <p style="font-size: 10px; color: var(--t3)">
+                    YouTube overview
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3
-              style="
-                font-size: 17px;
-                font-weight: 600;
-                color: var(--t1);
-                margin-bottom: 8px;
-              "
-            >
-              Marduga — Multiplayer Vehicle Combat
-            </h3>
-            <p
-              style="
-                font-size: 13px;
-                color: var(--t2);
-                line-height: 1.75;
-                margin-bottom: 14px;
-              "
-            >
-              Built in 20 days for the Wavedash game jam (YC-backed gaming
-              platform). Multiplayer vehicle combat — shipped live on Play Store
-              and Wavedash. Solo dev, full delivery, under pressure.
-            </p>
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 14px;
-              "
-            >
-              <span class="pill">20-Day Build</span
-              ><span class="pill">Wavedash</span>
-            </div>
-            <a
-              href="blog/marduga-game-jam-wavedash.html"
-              style="
-                font-size: 13px;
-                color: var(--gold);
-                font-weight: 500;
-                text-decoration: none;
-              "
-              >Read Case Study &rarr;</a
-            >
-          </div>
+          </article>
 
-          <div class="card" style="padding: 24px">
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 12px;
-              "
-            >
-              <span class="tag tag-detective">Early Work</span
-              ><span class="pill">Meta Quest</span>
+          <!-- MARDUGA -->
+          <article class="card" style="padding: 24px">
+            <div class="project-card-inner">
+              <div style="flex: 1; min-width: 200px">
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <span class="tag tag-game">Game Jam</span
+                  ><span class="pill">WebGL</span
+                  ><span class="pill">Android</span>
+                </div>
+                <h3
+                  style="
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: var(--t1);
+                    margin-bottom: 8px;
+                  "
+                >
+                  Marduga — Multiplayer Vehicle Combat
+                </h3>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: var(--t2);
+                    line-height: 1.75;
+                    margin-bottom: 14px;
+                  "
+                >
+                  Built in 20 days for the Wavedash game jam (YC-backed gaming
+                  platform). Multiplayer vehicle combat — shipped live on Play
+                  Store and Wavedash. Solo dev, full delivery, under pressure.
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 14px;
+                  "
+                >
+                  <span class="pill">20-Day Build</span
+                  ><span class="pill">Wavedash</span>
+                </div>
+                <a
+                  href="blog/marduga-game-jam-wavedash.html"
+                  style="
+                    font-size: 13px;
+                    color: var(--gold);
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Read Case Study →</a
+                >
+              </div>
+              <div class="video-placeholder" aria-label="Project video preview">
+                <div style="text-align: center; color: var(--gold)">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    style="margin: 0 auto 6px"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="10 8 16 12 10 16 10 8" />
+                  </svg>
+                  <p style="font-size: 10px; color: var(--t3)">
+                    YouTube overview
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3
-              style="
-                font-size: 17px;
-                font-weight: 600;
-                color: var(--t1);
-                margin-bottom: 8px;
-              "
-            >
-              Escape Room — Collaborative VR
-            </h3>
-            <p
-              style="
-                font-size: 13px;
-                color: var(--t2);
-                line-height: 1.75;
-                margin-bottom: 14px;
-              "
-            >
-              One of my earliest VR client projects. Partnered with 3D artist
-              Fahad — designed and built a full escape room VR experience. Where
-              the journey into XR seriously began.
-            </p>
-            <div
-              style="
-                display: flex;
-                flex-wrap: wrap;
-                gap: 7px;
-                margin-bottom: 14px;
-              "
-            >
-              <span class="pill">Unity 3D</span
-              ><span class="pill">Team Project</span>
+          </article>
+
+          <!-- ESCAPE ROOM -->
+          <article class="card" style="padding: 24px">
+            <div class="project-card-inner">
+              <div style="flex: 1; min-width: 200px">
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <span class="tag tag-detective">Early Work</span
+                  ><span class="pill">Meta Quest</span>
+                </div>
+                <h3
+                  style="
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: var(--t1);
+                    margin-bottom: 8px;
+                  "
+                >
+                  Escape Room — Collaborative VR
+                </h3>
+                <p
+                  style="
+                    font-size: 13px;
+                    color: var(--t2);
+                    line-height: 1.75;
+                    margin-bottom: 14px;
+                  "
+                >
+                  One of my earliest VR client projects. Partnered with 3D
+                  artist Fahad — designed and built a full escape room VR
+                  experience. Where the journey into XR seriously began.
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 7px;
+                    margin-bottom: 14px;
+                  "
+                >
+                  <span class="pill">Unity 3D</span
+                  ><span class="pill">Team Project</span>
+                </div>
+                <a
+                  href="blog/escape-room-vr-early-project.html"
+                  style="
+                    font-size: 13px;
+                    color: var(--gold);
+                    font-weight: 500;
+                    text-decoration: none;
+                  "
+                  >Read more →</a
+                >
+              </div>
+              <div class="video-placeholder" aria-label="Project video preview">
+                <div style="text-align: center; color: var(--gold)">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    style="margin: 0 auto 6px"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="10 8 16 12 10 16 10 8" />
+                  </svg>
+                  <p style="font-size: 10px; color: var(--t3)">
+                    YouTube overview
+                  </p>
+                </div>
+              </div>
             </div>
-            <a
-              href="blog/escape-room-vr-early-project.html"
-              style="
-                font-size: 13px;
-                color: var(--gold);
-                font-weight: 500;
-                text-decoration: none;
-              "
-              >Read more &rarr;</a
-            >
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- PACKAGES -->
-    <section id="packages" style="padding: 0 24px 100px">
+    <!-- ═══════════ PACKAGES ═══════════ -->
+    <section
+      id="packages"
+      aria-label="Technical packages and tools"
+      style="padding: 0 24px 100px"
+    >
       <div style="max-width: 1100px; margin: 0 auto">
         <div style="margin-bottom: 36px">
           <p class="section-label">Technical Arsenal</p>
@@ -1414,8 +1867,8 @@
       </div>
     </section>
 
-    <!-- TEACHING -->
-    <section style="padding: 0 24px 100px">
+    <!-- ═══════════ TEACHING ═══════════ -->
+    <section aria-label="Teaching and education" style="padding: 0 24px 100px">
       <div style="max-width: 1100px; margin: 0 auto">
         <div
           style="
@@ -1556,8 +2009,8 @@
       </div>
     </section>
 
-    <!-- BLOG -->
-    <section id="blog" style="padding: 0 24px 100px">
+    <!-- ═══════════ BLOG ═══════════ -->
+    <section id="blog" aria-label="Blog articles" style="padding: 0 24px 100px">
       <div style="max-width: 1100px; margin: 0 auto">
         <div
           style="
@@ -1577,7 +2030,7 @@
             href="blog/"
             class="btn-ghost"
             style="font-size: 13px; padding: 8px 16px"
-            >All Articles &rarr;</a
+            >All Articles →</a
           >
         </div>
         <div
@@ -1621,7 +2074,7 @@
                   font-weight: 600;
                 "
               >
-                Read &rarr;
+                Read →
               </p>
             </div>
           </a>
@@ -1658,7 +2111,7 @@
                   font-weight: 600;
                 "
               >
-                Read &rarr;
+                Read →
               </p>
             </div>
           </a>
@@ -1696,7 +2149,7 @@
                   font-weight: 600;
                 "
               >
-                Read &rarr;
+                Read →
               </p>
             </div>
           </a>
@@ -1704,10 +2157,11 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" style="padding: 0 24px 120px">
+    <!-- ═══════════ CONTACT ═══════════ -->
+    <section id="contact" aria-label="Contact" style="padding: 0 24px 120px">
       <div style="max-width: 1100px; margin: 0 auto">
         <div
+          class="contact-cta"
           style="
             background: var(--card);
             border: 1px solid var(--gold-border);
@@ -1750,7 +2204,7 @@
             <a
               href="https://wa.me/923093023289"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               class="btn-wa"
             >
               <svg
@@ -1758,6 +2212,7 @@
                 height="16"
                 viewBox="0 0 24 24"
                 fill="currentColor"
+                aria-hidden="true"
               >
                 <path
                   d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
@@ -1771,7 +2226,7 @@
             <a
               href="https://www.linkedin.com/in/syed-suleman-shah/"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               class="btn-ghost"
             >
               <svg
@@ -1781,6 +2236,7 @@
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path
                   d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"
@@ -1793,7 +2249,7 @@
             <a
               href="https://www.fiverr.com/s/DB46vDV"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               class="btn-ghost"
             >
               <svg
@@ -1803,6 +2259,7 @@
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <path
                   d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z"
@@ -1813,7 +2270,7 @@
             <a
               href="https://witshells.com"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               class="btn-ghost"
             >
               <svg
@@ -1823,6 +2280,7 @@
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+                aria-hidden="true"
               >
                 <circle cx="12" cy="12" r="10" />
                 <line x1="2" y1="12" x2="22" y2="12" />
@@ -1837,8 +2295,11 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer style="border-top: 1px solid var(--border2); padding: 28px 24px">
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer
+      role="contentinfo"
+      style="border-top: 1px solid var(--border2); padding: 28px 24px"
+    >
       <div
         style="
           max-width: 1100px;
@@ -1851,10 +2312,12 @@
         "
       >
         <p style="font-size: 12px; color: var(--t3)">
-          2026 Syed Suleman Shah &middot; WitShells Studio (SMC-Pvt) Ltd
-          &middot; Moro, Sindh, Pakistan
+          <span itemscope itemtype="https://schema.org/Organization">
+            <span itemprop="name">WitShells Studio (SMC-Pvt) Ltd</span>
+          </span>
+          · 2026 Syed Suleman Shah · Moro, Sindh, Pakistan
         </p>
-        <div style="display: flex; gap: 20px">
+        <nav aria-label="Footer navigation" style="display: flex; gap: 20px">
           <a
             href="#projects"
             style="font-size: 12px; color: var(--t3); text-decoration: none"
@@ -1868,25 +2331,226 @@
           <a
             href="https://www.fiverr.com/s/DB46vDV"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             style="font-size: 12px; color: var(--t3); text-decoration: none"
             >Fiverr</a
           >
           <a
             href="https://www.linkedin.com/in/syed-suleman-shah/"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             style="font-size: 12px; color: var(--t3); text-decoration: none"
             >LinkedIn</a
           >
           <a
             href="https://witshells.com"
             target="_blank"
+            rel="noopener noreferrer"
             style="font-size: 12px; color: var(--t3); text-decoration: none"
             >Studio</a
           >
-        </div>
+        </nav>
       </div>
     </footer>
+
+    <!-- ═══════════ STAR TRAIL CURSOR ═══════════ -->
+    <script>
+      (function () {
+        const canvas = document.getElementById("star-canvas");
+        const ctx = canvas.getContext("2d");
+
+        // ── Config ──────────────────────────────────────────
+        const GOLD = "#c9a84c";
+        const GOLD_GLOW = "rgba(201, 168, 76, 0.75)";
+        const WHITE_GLOW = "rgba(255, 240, 180, 0.9)";
+        const TRAIL_MAX = 40; // max star particles in trail
+        const STAR_OUTER = 7; // lead-star outer radius
+        const STAR_INNER = 2.8; // lead-star inner radius
+        const TRAIL_LIFE = 45; // frames a trail particle lives
+        const SPAWN_EVERY = 2; // spawn one particle every N frames
+        const MIN_DIST = 2; // min pixel movement before spawning
+
+        let mouseX = -200,
+          mouseY = -200;
+        let trail = [];
+        let frame = 0;
+        let isDesktop = false;
+
+        // ── Helpers ──────────────────────────────────────────
+        function detectDesktop() {
+          return (
+            window.matchMedia("(pointer: fine)").matches &&
+            window.matchMedia("(hover: hover)").matches &&
+            !("ontouchstart" in window) &&
+            navigator.maxTouchPoints === 0
+          );
+        }
+
+        function resize() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+
+        function drawStar(cx, cy, outer, inner, pts, rot, alpha, glow) {
+          if (alpha < 0.01 || outer < 0.4) return;
+          ctx.save();
+          ctx.globalAlpha = alpha;
+          ctx.fillStyle = GOLD;
+          ctx.shadowColor = glow || GOLD_GLOW;
+          ctx.shadowBlur = outer * 2.2;
+          ctx.beginPath();
+          for (let i = 0; i < pts * 2; i++) {
+            const r = i % 2 === 0 ? outer : inner;
+            const a = (i * Math.PI) / pts + rot;
+            const px = cx + Math.cos(a) * r;
+            const py = cy + Math.sin(a) * r;
+            i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+          }
+          ctx.closePath();
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // ── Main loop ────────────────────────────────────────
+        function tick() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          if (!isDesktop) {
+            requestAnimationFrame(tick);
+            return;
+          }
+
+          frame++;
+
+          // Spawn a new trail particle?
+          if (mouseX > -100 && frame % SPAWN_EVERY === 0) {
+            const last = trail[trail.length - 1];
+            const dx = last ? mouseX - last.x : 999;
+            const dy = last ? mouseY - last.y : 999;
+            if (!last || Math.hypot(dx, dy) > MIN_DIST) {
+              trail.push({
+                x: mouseX + (Math.random() - 0.5) * 3,
+                y: mouseY + (Math.random() - 0.5) * 3,
+                life: TRAIL_LIFE,
+                rot: Math.random() * Math.PI * 2,
+                size: STAR_OUTER * (0.3 + Math.random() * 0.55),
+                pts: Math.random() < 0.3 ? 6 : 5, // occasional 6-point star
+              });
+            }
+          }
+
+          // Age & cull
+          for (let i = trail.length - 1; i >= 0; i--) {
+            trail[i].life--;
+            if (trail[i].life <= 0) trail.splice(i, 1);
+          }
+          while (trail.length > TRAIL_MAX) trail.shift();
+
+          // Draw trail
+          for (let i = 0; i < trail.length; i++) {
+            const t = trail[i];
+            const ratio = t.life / TRAIL_LIFE; // 1 → 0 as it fades
+            const alpha = ratio * ratio * 0.75; // quadratic fade = softer
+            const size = t.size * (0.2 + ratio * 0.8);
+            const rot = t.rot + frame * 0.025 + i * 0.12;
+            drawStar(t.x, t.y, size, size * 0.4, t.pts, rot, alpha);
+          }
+
+          // Draw lead star at cursor
+          if (mouseX > -100) {
+            const pulse = 1 + Math.sin(frame * 0.13) * 0.15;
+            const outerMain = STAR_OUTER * pulse;
+            const rot = frame * 0.045;
+
+            // outer glow ring
+            drawStar(
+              mouseX,
+              mouseY,
+              outerMain * 1.6,
+              outerMain * 0.3,
+              5,
+              rot,
+              0.18,
+              WHITE_GLOW,
+            );
+            // main star
+            drawStar(
+              mouseX,
+              mouseY,
+              outerMain,
+              STAR_INNER * pulse,
+              5,
+              rot,
+              0.98,
+              WHITE_GLOW,
+            );
+            // inner bright core
+            drawStar(
+              mouseX,
+              mouseY,
+              outerMain * 0.38,
+              STAR_INNER * 0.4 * pulse,
+              5,
+              rot + 0.3,
+              1,
+              WHITE_GLOW,
+            );
+          }
+
+          requestAnimationFrame(tick);
+        }
+
+        // ── Init ─────────────────────────────────────────────
+        function init() {
+          isDesktop = detectDesktop();
+          resize();
+          canvas.style.display = isDesktop ? "block" : "none";
+
+          if (isDesktop) {
+            window.addEventListener(
+              "mousemove",
+              (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+              },
+              { passive: true },
+            );
+            document.addEventListener("mouseleave", () => {
+              mouseX = -200;
+              mouseY = -200;
+            });
+            window.addEventListener("resize", resize);
+          }
+
+          // Handle orientation / mode changes
+          window.addEventListener("resize", () => {
+            const was = isDesktop;
+            isDesktop = detectDesktop();
+            resize();
+            canvas.style.display = isDesktop ? "block" : "none";
+            if (isDesktop && !was) {
+              window.addEventListener(
+                "mousemove",
+                (e) => {
+                  mouseX = e.clientX;
+                  mouseY = e.clientY;
+                },
+                { passive: true },
+              );
+              document.addEventListener("mouseleave", () => {
+                mouseX = -200;
+                mouseY = -200;
+              });
+            }
+          });
+
+          requestAnimationFrame(tick);
+        }
+
+        document.readyState === "loading"
+          ? document.addEventListener("DOMContentLoaded", init)
+          : init();
+      })();
+    </script>
   </body>
 </html>
