@@ -3,21 +3,53 @@ layout: default
 ---
 
 <article style="max-width: 720px; margin: 0 auto; padding: 60px 24px 120px">
-  <!-- Back link -->
-  <a
-    href="/blog/"
+  <!-- Top bar: Back link + Theme toggle -->
+  <div
     style="
-      font-size: 13px;
-      color: var(--gold);
-      text-decoration: none;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: space-between;
       margin-bottom: 32px;
     "
   >
-    ← All Articles
-  </a>
+    <a
+      href="/blog/"
+      style="
+        font-size: 13px;
+        color: var(--gold);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      "
+    >
+      ← All Articles
+    </a>
+
+    <!-- THEME TOGGLE -->
+    <button
+      id="themeToggle"
+      style="
+        background: var(--card2);
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+        color: var(--t2);
+        transition: all 0.25s ease;
+        flex-shrink: 0;
+      "
+      aria-label="Toggle theme"
+      title="Toggle dark / light mode"
+    >
+      <span id="themeIcon">🌙</span>
+    </button>
+  </div>
 
   <!-- Tags row -->
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px">
@@ -91,12 +123,14 @@ layout: default
       target="_blank"
       class="btn-primary"
       style="font-size: 13px; padding: 10px 22px"
-      >WhatsApp Me →</a
     >
+      WhatsApp Me →
+    </a>
   </div>
 </article>
 
 <style>
+  /* ─── ROOT: DARK THEME (default) ─── */
   :root {
     --gold: #c9a84c;
     --gold-dim: #a8873a;
@@ -110,8 +144,29 @@ layout: default
     --t1: #f0ebe3;
     --t2: #9a9088;
     --t3: #5c554e;
+    --toggle-bg: var(--card2);
+    --toggle-border: var(--border);
   }
 
+  /* ─── LIGHT THEME ─── */
+  body.light-mode {
+    --bg: #f6f4f0;
+    --card: #edeae4;
+    --card2: #e3dfd7;
+    --border: rgba(0, 0, 0, 0.08);
+    --border2: rgba(0, 0, 0, 0.04);
+    --t1: #1a1714;
+    --t2: #4a443e;
+    --t3: #7a726a;
+    --gold: #b8953a;
+    --gold-dim: #9e7d30;
+    --gold-faint: rgba(184, 149, 58, 0.1);
+    --gold-border: rgba(184, 149, 58, 0.3);
+    --toggle-bg: #e3dfd7;
+    --toggle-border: rgba(0, 0, 0, 0.1);
+  }
+
+  /* ─── BODY & SMOOTH TRANSITIONS ─── */
   html {
     scroll-behavior: smooth;
   }
@@ -125,6 +180,40 @@ layout: default
     color: var(--t1);
     font-family: "Inter", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
+    transition:
+      background 0.3s ease,
+      color 0.3s ease;
+  }
+
+  /* All theme-aware elements get smooth transitions */
+  .card,
+  .card::after,
+  .stat-card,
+  .pkg,
+  .fiverr-bar,
+  .video-placeholder,
+  .post-body code,
+  .post-body pre,
+  .post-body blockquote,
+  .post-body img,
+  .post-body hr,
+  .btn-primary,
+  .btn-ghost,
+  .btn-wa,
+  .tag,
+  .pill,
+  .nav,
+  .nav-link,
+  .nav-logo,
+  .btn-hire,
+  #themeToggle,
+  #themeIcon {
+    transition:
+      background 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      opacity 0.3s ease;
   }
 
   /* ─── CURSOR CANVAS ─── */
@@ -146,9 +235,12 @@ layout: default
     right: 0;
     z-index: 50;
     border-bottom: 1px solid var(--border2);
-    background: rgba(14, 12, 10, 0.92);
+    background: var(--bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease;
   }
   .nav-inner {
     max-width: 1100px;
@@ -260,13 +352,12 @@ layout: default
     flex-direction: column;
     transition:
       transform 0.25s ease,
-      box-shadow 0.25s ease;
-    /* Static border via outline so pseudo can override */
+      box-shadow 0.25s ease,
+      background 0.3s ease;
     outline: 1px solid var(--border);
     outline-offset: -1px;
   }
 
-  /* The conic-gradient sweep border */
   .card::before {
     content: "";
     position: absolute;
@@ -288,7 +379,6 @@ layout: default
     animation: none;
   }
 
-  /* Inner mask to cut card shape out of glow border */
   .card::after {
     content: "";
     position: absolute;
@@ -296,9 +386,9 @@ layout: default
     border-radius: 15px;
     background: var(--card);
     z-index: 1;
+    transition: background 0.3s ease;
   }
 
-  /* Hover: reveal the conic border and spin it */
   .card:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 40px rgba(201, 168, 76, 0.12);
@@ -318,13 +408,11 @@ layout: default
     }
   }
 
-  /* Content must be above the pseudo layers */
   .card > * {
     position: relative;
     z-index: 2;
   }
 
-  /* Featured card baseline glow */
   .card.featured {
     outline-color: rgba(201, 168, 76, 0.2);
   }
@@ -394,9 +482,13 @@ layout: default
     font-family: "JetBrains Mono", monospace;
     padding: 2px 9px;
     border-radius: 6px;
-    background: #1e1b17;
+    background: var(--card2);
     color: var(--t2);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    transition:
+      background 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
   }
 
   /* ─── STAT CARDS ─── */
@@ -408,7 +500,8 @@ layout: default
     text-align: center;
     transition:
       border-color 0.25s,
-      transform 0.25s;
+      transform 0.25s,
+      background 0.3s ease;
   }
   .stat-card:hover {
     border-color: var(--gold-border);
@@ -440,7 +533,8 @@ layout: default
     padding: 14px 16px;
     transition:
       border-color 0.2s,
-      transform 0.2s;
+      transform 0.2s,
+      background 0.3s ease;
   }
   .pkg:hover {
     border-color: var(--gold-border);
@@ -466,7 +560,9 @@ layout: default
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    transition: border-color 0.2s;
+    transition:
+      border-color 0.2s,
+      background 0.3s ease;
     max-width: 360px;
   }
   .fiverr-bar:hover {
@@ -497,7 +593,9 @@ layout: default
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: border-color 0.2s;
+    transition:
+      border-color 0.2s,
+      background 0.3s ease;
     position: relative;
     z-index: 2;
     width: 120px;
@@ -557,7 +655,7 @@ layout: default
     }
   }
 
-  /* Respect reduced motion */
+  /* ─── REDUCED MOTION ─── */
   @media (prefers-reduced-motion: reduce) {
     .card::before {
       animation: none !important;
@@ -570,25 +668,29 @@ layout: default
       transition-duration: 0.01ms !important;
     }
   }
-  /* Markdown body styling — matches your dark theme */
+
+  /* ─── MARKDOWN BODY ─── */
   .post-body h2 {
     font-size: 22px;
     font-weight: 700;
     color: var(--t1);
     letter-spacing: -0.02em;
     margin: 40px 0 14px;
+    transition: color 0.3s ease;
   }
   .post-body h3 {
     font-size: 17px;
     font-weight: 600;
     color: var(--t1);
     margin: 28px 0 10px;
+    transition: color 0.3s ease;
   }
   .post-body p {
     font-size: 15px;
     color: var(--t2);
     line-height: 1.85;
     margin-bottom: 18px;
+    transition: color 0.3s ease;
   }
   .post-body ul,
   .post-body ol {
@@ -600,10 +702,12 @@ layout: default
     color: var(--t2);
     line-height: 1.8;
     margin-bottom: 6px;
+    transition: color 0.3s ease;
   }
   .post-body strong {
     color: var(--t1);
     font-weight: 600;
+    transition: color 0.3s ease;
   }
   .post-body a {
     color: var(--gold);
@@ -620,6 +724,10 @@ layout: default
     border-radius: 5px;
     border: 1px solid var(--border);
     color: var(--t1);
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease;
   }
   .post-body pre {
     background: var(--card2);
@@ -628,6 +736,9 @@ layout: default
     padding: 20px;
     overflow-x: auto;
     margin-bottom: 22px;
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease;
   }
   .post-body pre code {
     background: none;
@@ -641,16 +752,122 @@ layout: default
     margin: 24px 0;
     color: var(--t2);
     font-style: italic;
+    transition:
+      color 0.3s ease,
+      border-color 0.3s ease;
   }
   .post-body img {
     width: 100%;
     border-radius: 12px;
     border: 1px solid var(--border);
     margin: 20px 0;
+    transition: border-color 0.3s ease;
   }
   .post-body hr {
     border: none;
     border-top: 1px solid var(--border);
     margin: 36px 0;
+    transition: border-color 0.3s ease;
+  }
+
+  /* ─── THEME TOGGLE BUTTON EXTRA STYLES ─── */
+  #themeToggle {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--t2);
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+  }
+  #themeToggle:hover {
+    border-color: var(--gold-border);
+    transform: rotate(12deg) scale(1.05);
+  }
+  #themeToggle:active {
+    transform: scale(0.92);
+  }
+  #themeIcon {
+    transition:
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.3s ease;
+    display: inline-block;
+    line-height: 1;
+  }
+  #themeToggle:hover #themeIcon {
+    transform: rotate(30deg) scale(1.1);
+  }
+  body.light-mode #themeToggle {
+    border-color: rgba(0, 0, 0, 0.12);
+  }
+  body.light-mode #themeToggle:hover {
+    border-color: var(--gold-border);
   }
 </style>
+
+<script>
+  (function () {
+    "use strict";
+
+    const toggleBtn = document.getElementById("themeToggle");
+    const icon = document.getElementById("themeIcon");
+    const body = document.body;
+
+    // ─── Get stored preference ───
+    const stored = localStorage.getItem("blog-theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+
+    // ─── Set initial theme ───
+    let isDark = true;
+    if (stored === "light") {
+      isDark = false;
+    } else if (stored === "dark") {
+      isDark = true;
+    } else {
+      // No stored preference → follow system
+      isDark = prefersDark;
+    }
+
+    applyTheme(isDark);
+
+    // ─── Toggle on click ───
+    toggleBtn.addEventListener("click", function () {
+      isDark = !isDark;
+      applyTheme(isDark);
+      localStorage.setItem("blog-theme", isDark ? "dark" : "light");
+    });
+
+    // ─── Apply theme ───
+    function applyTheme(dark) {
+      if (dark) {
+        body.classList.remove("light-mode");
+        icon.textContent = "🌙";
+        toggleBtn.setAttribute("aria-label", "Switch to light mode");
+        toggleBtn.title = "Switch to light mode";
+      } else {
+        body.classList.add("light-mode");
+        icon.textContent = "☀️";
+        toggleBtn.setAttribute("aria-label", "Switch to dark mode");
+        toggleBtn.title = "Switch to dark mode";
+      }
+    }
+
+    // ─── Listen for system changes if no stored pref ───
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", function (e) {
+      // Only auto-switch if user hasn't explicitly set a preference
+      if (!localStorage.getItem("blog-theme")) {
+        isDark = e.matches;
+        applyTheme(isDark);
+      }
+    });
+  })();
+</script>
