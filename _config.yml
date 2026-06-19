@@ -6,7 +6,7 @@ baseurl: "/blog"
 # Build
 markdown: kramdown
 highlighter: rouge
-permalink: /blog/:slug/
+permalink: /:slug/
 # permalink: pretty
 
 # theme: minima
