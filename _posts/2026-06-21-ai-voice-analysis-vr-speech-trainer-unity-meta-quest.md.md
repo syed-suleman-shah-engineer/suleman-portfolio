@@ -90,7 +90,7 @@ It worked. Different from what I'd imagined — but it worked.
 ## What VR Engager Actually Does
 
 <!-- INSERT SCREENSHOT: User standing in panoramic virtual auditorium, presentation slides visible, AI feedback panel active -->
-![User standing in panoramic virtual auditorium](different-versions.png)
+![User standing in panoramic virtual auditorium](/images/different-versions.png)
 
 
 Once it was built, here's the full experience:
@@ -111,7 +111,7 @@ All of it. Inside the headset. In real time.
 
 <!-- INSERT SCREENSHOT: Panoramic environment — different versions of audience images applied to sphere -->
 
-![Panoramic environment — different versions of audience](inside-vr-presentation-reharsal.png)
+![Panoramic environment — different versions of audience](/images/inside-vr-presentation-reharsal.png)
 
 The app itself was done in the first two months.
 
