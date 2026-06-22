@@ -5,6 +5,9 @@ tags: [Unity 3D, API Integration, C#, Game Development, Open Source, ASP.NET Cor
 date: 2026-06-21
 ---
 
+![api-integration-thumbnail](/images/api-integration-thumbnail.png)
+
+
 <!-- INSERT HERO SCREENSHOT: Unity Editor showing ApiConfig ScriptableObject inspector with production/testing/local environment settings -->
 ![apiconfig-settings-inspector](/images/apiconfig-settings-inspector.png)
 
