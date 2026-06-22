@@ -1,13 +1,14 @@
 ---
-title: "I Got Tired of Writing the Same API Code in Every Unity Project — So I Built a Package"
-description: "How six projects of pain led me to build WitClientApi — a reusable Unity package that turns Swagger JSON into working API integration in minutes, with dynamic and typed models, JWT auth, auto token refresh, and zero boilerplate."
-tags: [Unity, API Integration, C#, Game Development, Open Source, ASP.NET Core, JWT, WitShells Studio, Unity Package, Developer Tools]
+title: "Unity 3D API Client – Auto-Generate REST Calls from Swagger (Zero Boilerplate)"
+description: "WitClientApi is the missing Unity 3D API client. Drop your Swagger JSON, configure once, and get a full HTTP client with JWT auth, auto token refresh, typed models, and zero boilerplate — all inside Unity 3D."
+tags: [Unity 3D, API Integration, C#, Game Development, Open Source, ASP.NET Core, JWT, WitShells Studio, Unity 3D Package, Developer Tools]
 date: 2026-06-21
 ---
 
 <!-- INSERT HERO SCREENSHOT: Unity Editor showing ApiConfig ScriptableObject inspector with production/testing/local environment settings -->
+![apiconfig-settings-inspector](/images/apiconfig-settings-inspector.png)
 
-*Every Unity project needs API integration. Most Unity developers write it from scratch every single time. I got tired of that.*
+*Every Unity 3D project needs API integration. Most Unity developers write it from scratch every single time. I got tired of that.*
 
 ---
 
@@ -17,7 +18,7 @@ After the VR Speech Trainer project — where I integrated Smule's audio analysi
 
 Not about VR. Not about AI.
 
-About API integration in Unity.
+About API integration in Unity 3D.
 
 Every project I took on after that needed it. REST calls. Auth headers. JSON parsing. Error handling. Token storage. Refresh logic. The same plumbing, written from scratch, every single time — with slightly different bugs each time I wrote it.
 
@@ -33,7 +34,7 @@ It isn't. It's a smell. And it was telling me something.
 
 I was looking at a Swagger JSON file — the kind your backend auto-generates that lists every endpoint, every method, every parameter — and I thought:
 
-*This file already knows everything. The endpoint paths. The HTTP methods. The request and response shapes. Why am I typing all of this out again inside Unity?*
+*This file already knows everything. The endpoint paths. The HTTP methods. The request and response shapes. Why am I typing all of this out again inside Unity 3D?*
 
 What if I could take that Swagger JSON, drop it into my Unity project, and have the API layer mostly configure itself?
 
@@ -45,7 +46,7 @@ That was the idea. And that's what WitClientApi became.
 
 ### Step 1 — Drop in the JSON
 
-Download your Swagger JSON from your backend. Drop it anywhere inside your Unity `Resources` folder. That's it. The package reads it at runtime.
+Download your Swagger JSON from your backend. Drop it anywhere inside your Unity 3D `Resources` folder. That's it. The package reads it at runtime.
 
 ### Step 2 — Create an ApiConfig
 
@@ -62,6 +63,8 @@ This is a ScriptableObject — Unity's native configuration asset. You create on
 - **Auth paths** — SignIn, SignOut, RefreshToken endpoints
 
 <!-- INSERT SCREENSHOT: ApiConfig ScriptableObject in Unity Inspector — three environment tabs, base URL fields, swagger path field -->
+
+![scene-gameobject](/images/api-integration-scene-gameobject.png)
 
 Switch between production and local with one dropdown. No code changes. No hardcoded URLs buried in MonoBehaviours.
 
@@ -192,11 +195,11 @@ Override the manager class. Assign your `AuthService`. Assign your `ITokenStorag
 
 To run WitClientApi you need two other packages from the same repository. Both are free and public.
 
-**[Design Patterns Package](https://github.com/Sulaiman281/Reusable-Unity-Scripts-Packages)**
+**[Design Patterns Package](https://github.com/Sulaiman281/Reusable-Unity 3D-Scripts-Packages)**
 Provides the singleton pattern the manager uses, plus a collection of other reusable patterns I reach for constantly in Unity projects. The singleton implementation here is clean — no `DontDestroyOnLoad` abuse, no static field nightmares.
 
 **ThreadManager Package**
-Handles background thread work and returns results as Unity events. API calls run off the main thread — ThreadManager is what brings results back safely so you can update UI without threading exceptions. I'll write a full breakdown of ThreadManager in its own article — it's genuinely one of the most useful things in the repository.
+Handles background thread work and returns results as Unity 3D events. API calls run off the main thread — ThreadManager is what brings results back safely so you can update UI without threading exceptions. I'll write a full breakdown of ThreadManager in its own article — it's genuinely one of the most useful things in the repository.
 
 ---
 
@@ -216,9 +219,9 @@ It grew from real problems. Not from designing a framework in the abstract.
 
 The package is public on GitHub:
 
-**[WitClientApi — Reusable Unity API Integration](https://github.com/Sulaiman281/Reusable-Unity-Scripts-Packages.git?path=Assets/WitShells/WitClientApi)**
+**[WitClientApi — Reusable Unity 3D API Integration](https://github.com/Sulaiman281/Reusable-Unity-Scripts-Packages.git?path=Assets/WitShells/WitClientApi)**
 
-Add it via Unity Package Manager using the Git URL. Install the Design Patterns and ThreadManager packages from the same repository. Create your ApiConfig ScriptableObject. Drop your Swagger JSON into Resources. Add WitClientManager to your scene.
+Add it via Unity 3D Package Manager using the Git URL. Install the Design Patterns and ThreadManager packages from the same repository. Create your ApiConfig ScriptableObject. Drop your Swagger JSON into Resources. Add WitClientManager to your scene.
 
 You're making API calls in Unity in under 10 minutes.
 
@@ -230,7 +233,7 @@ You're making API calls in Unity in under 10 minutes.
 The moment you're copying the same code into a third project, that code wants to be a package. The sooner you extract it, the sooner every future project benefits.
 
 ### 2. Swagger JSON is already your documentation — use it
-Every modern backend generates it. It contains everything you need to know about an API surface. Building a Unity integration layer that reads it directly removes an entire category of human error.
+Every modern backend generates it. It contains everything you need to know about an API surface. Building a Unity 3D integration layer that reads it directly removes an entire category of human error.
 
 ### 3. Build for override, not for configuration
 The `ITokenStorage` and `IAuthService` interfaces exist because security decisions belong to the project, not the package. Design your shared tools with clear extension points. Make the default useful. Make the override obvious.
