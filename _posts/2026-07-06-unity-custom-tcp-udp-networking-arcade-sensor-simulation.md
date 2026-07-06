@@ -6,6 +6,7 @@ date: 2026-07-06
 ---
 
 <!-- INSERT HERO SCREENSHOT: Shuffleboard simulation on big screen — puck positions tracked, scores displayed, two teams active -->
+![Shuffleboard-simulation-thumbnail](https://img.youtube.com/vi/IoKQMNxJpdE/0.jpg)
 
 *Sensor-based physical arcade. Real pucks. Virtual scores. Three applications talking to each other in real time.*
 *Watch the full project walkthrough: [Shuffleboard-simulation-video](https://youtu.be/IoKQMNxJpdE?si=RjxbrdjjLrPRIeGA)*
