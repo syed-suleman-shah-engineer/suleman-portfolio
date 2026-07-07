@@ -1,0 +1,81 @@
+---
+layout: default
+---
+{% assign collection_key = page.collection_key %}
+{% assign lessons = site[collection_key] | sort: "order" %}
+{% assign track_title = page.track_title | default: page.title %}
+{% assign track_label = page.track_label | default: "Learning Track" %}
+{% assign track_description = page.track_description | default: "Structured lessons in order." %}
+{% assign track_pill = page.track_pill | default: track_title %}
+
+<section style="max-width: 1100px; margin: 0 auto; padding: 60px 24px 120px">
+  <div style="margin-bottom: 40px">
+    <p class="section-label">{{ track_label }}</p>
+    <h1 class="section-title" style="font-size: clamp(30px, 5vw, 44px)">
+      {{ track_title }}
+    </h1>
+    <p
+      style="
+        margin-top: 10px;
+        max-width: 640px;
+        font-size: 14px;
+        color: var(--t2);
+        line-height: 1.8;
+      "
+    >
+      {{ track_description }}
+    </p>
+  </div>
+
+  {% if lessons and lessons.size > 0 %}
+  <div
+    style="
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    "
+  >
+    {% for lesson in lessons %}
+    <a href="{{ lesson.url }}" style="text-decoration: none">
+      <article class="card" style="padding: 22px; min-height: 190px">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px">
+          <span class="tag tag-featured"
+            >Lesson {{ lesson.order | default: forloop.index }}</span
+          >
+          <span class="pill">{{ track_pill }}</span>
+        </div>
+
+        <h2
+          style="
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+            color: var(--t1);
+            margin-bottom: 10px;
+          "
+        >
+          {{ lesson.title }}
+        </h2>
+
+        {% if lesson.description %}
+        <p style="font-size: 14px; color: var(--t2); line-height: 1.75; flex: 1">
+          {{ lesson.description }}
+        </p>
+        {% endif %}
+
+        <p style="margin-top: 18px; font-size: 13px; color: var(--gold); font-weight: 600">
+          Open Lesson →
+        </p>
+      </article>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <article class="card" style="padding: 24px">
+    <p style="font-size: 14px; color: var(--t2); line-height: 1.8">
+      No lessons yet in this collection.
+    </p>
+  </article>
+  {% endif %}
+</section>

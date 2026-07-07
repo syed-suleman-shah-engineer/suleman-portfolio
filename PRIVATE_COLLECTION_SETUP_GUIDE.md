@@ -1,0 +1,148 @@
+# Private Setup Guide: Managing Multiple Course Collections
+
+This guide is for your internal workflow. It is excluded from site output in `_config.yml`, so it will not appear on your public website.
+
+## Current Setup In This Project
+
+You now have these collection keys configured:
+
+- `unity_course` -> folder `_unity_course` -> index page `unity_course.md` -> URL `/unity-course/`
+- `unity_beginner` -> folder `_unity_beginner` -> index page `unity_beginner.md` -> URL `/unity-beginner/`
+- `unity_master` -> folder `_unity_master` -> index page `unity_master.md` -> URL `/unity-master/`
+- `unity_game` -> folder `_unity_game` -> index page `unity_game.md` -> URL `/unity-game/`
+- `jetfight` -> folder `_jetfight` -> index page `jetfight.md` -> URL `/jetfight/`
+
+All lesson documents from all collections use one shared layout:
+
+- Lesson layout: `_layouts/lesson.html`
+- Course index layout: `_layouts/course_index.html`
+
+## How To Add A New Collection (Your Exact Workflow)
+
+Use this checklist every time:
+
+1. Add collection key in `_config.yml` under `collections`.
+2. Add matching default layout rule in `_config.yml` under `defaults`.
+3. Create the matching folder with leading underscore.
+4. Create one index page at repo root using `layout: course_index`.
+5. Add lessons inside the collection folder with front matter.
+
+### Example: add a collection named `unity_multiplayer`
+
+1) In `_config.yml` add:
+
+```yml
+collections:
+  unity_multiplayer:
+    output: true
+    permalink: /unity-multiplayer/:path/
+```
+
+2) In `_config.yml` defaults add:
+
+```yml
+- scope:
+    path: ""
+    type: "unity_multiplayer"
+  values:
+    layout: lesson
+```
+
+3) Create folder:
+
+- `_unity_multiplayer/`
+
+4) Create index page `unity_multiplayer.md`:
+
+```md
+---
+layout: course_index
+title: "Unity Multiplayer"
+permalink: /unity-multiplayer/
+collection_key: unity_multiplayer
+track_label: Specialized Track
+track_title: Unity Multiplayer Course
+track_pill: Unity Multiplayer
+track_description: Networking-focused lessons from architecture to shipping.
+---
+```
+
+5) Add first lesson at `_unity_multiplayer/01-intro.md`:
+
+```md
+---
+title: "Lesson 1: Multiplayer Foundations"
+order: 1
+description: "Terminology, transport choices, and architecture goals."
+---
+
+Your content here.
+```
+
+## Lesson File Rules
+
+For predictable ordering and sidebar behavior, every lesson should have:
+
+- `title`
+- `order` (numeric)
+- `description` (recommended)
+
+Template:
+
+~~~~md
+---
+title: "Lesson N: Topic"
+order: N
+description: "One-line summary"
+---
+
+## Goal
+
+## Steps
+
+## Code
+
+```csharp
+// code
+```
+~~~~
+
+## How Rename A Collection Safely
+
+If you rename collection key `old_name` to `new_name`, update all these places together:
+
+1. `_config.yml`:
+- Rename key in `collections`
+- Rename matching `defaults` `type`
+- Update permalink path if needed
+
+2. Folder name:
+- Rename `_old_name` -> `_new_name`
+
+3. Index page:
+- Rename file if you want
+- Update front matter `collection_key`
+- Update `permalink`
+
+4. Optional nav links:
+- If linked in `_includes/nav.html`, update URL
+
+5. Existing lesson URLs:
+- URL paths may change after rename
+- If SEO matters, add redirects for old paths
+
+## Common Mistakes To Avoid
+
+- Collection key and folder name mismatch (`unity_game` must be `_unity_game`)
+- Missing front matter in lesson files
+- Missing default layout rule for new collection type
+- Using wrong collection loop in index page (`site.some_other_collection`)
+
+## Quick Verification After Any Change
+
+1. Build site locally.
+2. Open collection index URL and confirm lessons list.
+3. Open any lesson and verify:
+- Sidebar shows only same collection lessons
+- Current lesson highlights correctly
+- Previous/Next move within same collection

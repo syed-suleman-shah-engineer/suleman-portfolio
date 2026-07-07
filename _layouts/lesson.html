@@ -1,7 +1,14 @@
 ---
 layout: default
 ---
-{% assign lessons = site.unity_course | sort: "order" %}
+{% assign collection_key = page.collection | default: "unity_course" %}
+{% assign lessons = site[collection_key] | sort: "order" %}
+{% assign collection_slug = collection_key | replace: "_", "-" %}
+{% assign default_collection_home_url = "/" | append: collection_slug | append: "/" %}
+{% assign collection_home_url = page.collection_home | default: default_collection_home_url %}
+{% assign raw_course_label = page.course_label | default: collection_key | replace: "_", " " %}
+{% assign label_words = raw_course_label | split: " " %}
+{% capture course_label %}{% for w in label_words %}{{ w | capitalize }}{% unless forloop.last %} {% endunless %}{% endfor %}{% endcapture %}
 
 <section style="max-width: 1100px; margin: 0 auto; padding: 60px 24px 120px">
     <div
@@ -15,7 +22,7 @@ layout: default
     >
         <article class="card" style="padding: 28px 26px">
             <a
-                href="/unity-course/"
+                href="{{ collection_home_url }}"
                 style="
                     display: inline-flex;
                     align-items: center;
@@ -30,7 +37,7 @@ layout: default
             </a>
 
             <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px">
-                <span class="tag tag-featured">Unity Course</span>
+                <span class="tag tag-featured">{{ course_label }}</span>
                 {% if page.order %}
                 <span class="pill">Lesson {{ page.order }}</span>
                 {% endif %}
@@ -119,7 +126,7 @@ layout: default
                 Full lesson sequence
             </p>
 
-            <nav aria-label="Unity course table of contents">
+            <nav aria-label="Course table of contents">
                 <ol style="list-style: none; display: grid; gap: 8px">
                     {% for lesson in lessons %}
                     <li>
