@@ -175,4 +175,4 @@ If you browse your project folder outside Unity, you'll also notice other auto-g
 
 ---
 
-With that, your development environment is fully set up. In the next lesson, we'll start writing our first lines of C# and get a GameObject moving on screen.
+With that, your development environment is fully set up. In the next lesson, we'll learn about creating your first scene!
