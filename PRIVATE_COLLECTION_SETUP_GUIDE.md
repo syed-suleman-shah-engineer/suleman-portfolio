@@ -6,11 +6,9 @@ This guide is for your internal workflow. It is excluded from site output in `_c
 
 You now have these collection keys configured:
 
-- `unity_course` -> folder `_unity_course` -> index page `unity_course.md` -> URL `/unity-course/`
-- `unity_beginner` -> folder `_unity_beginner` -> index page `unity_beginner.md` -> URL `/unity-beginner/`
-- `unity_master` -> folder `_unity_master` -> index page `unity_master.md` -> URL `/unity-master/`
-- `unity_game` -> folder `_unity_game` -> index page `unity_game.md` -> URL `/unity-game/`
-- `jetfight` -> folder `_jetfight` -> index page `jetfight.md` -> URL `/jetfight/`
+- `learn-unity3d-beginner` -> folder `_learn-unity3d-beginner` -> index page `learn-unity3d-beginner.md` -> URL `/learn-unity3d-beginner/`
+
+This is the only active course collection right now. If you add more later, follow the same pattern below.
 
 All lesson documents from all collections use one shared layout:
 
@@ -130,6 +128,14 @@ If you rename collection key `old_name` to `new_name`, update all these places t
 5. Existing lesson URLs:
 - URL paths may change after rename
 - If SEO matters, add redirects for old paths
+
+For example, if you rename the current collection from `learn-unity3d-beginner` to `unity-beginner`, then update:
+
+- `_config.yml` collection key and permalink
+- `_config.yml` default `type`
+- `learn-unity3d-beginner.md` front matter `collection_key` and `permalink`
+- The folder name from `_learn-unity3d-beginner` to `_unity-beginner`
+- Any links pointing to `/learn-unity3d-beginner/`
 
 ## Common Mistakes To Avoid
 

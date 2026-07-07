@@ -2,8 +2,7 @@
 layout: default
 ---
 {% assign collection_key = page.collection_key %}
-{% assign raw_lessons = site[collection_key] | default: "" | split: "," %}
-{% assign lessons = raw_lessons | sort: "order" %}
+{% assign lessons = site[collection_key] | sort: "order" %}
 {% assign track_title = page.track_title | default: page.title %}
 {% assign track_label = page.track_label | default: "Learning Track" %}
 {% assign track_description = page.track_description | default: "Structured lessons in order." %}

@@ -29,7 +29,7 @@ defaults:
       layout: post
   - scope:
       path: ""
-      type: "unity_course"
+      type: "learn-unity3d-beginner"
     values:
       layout: lesson
   - scope:
