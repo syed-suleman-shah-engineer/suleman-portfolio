@@ -7,7 +7,6 @@ baseurl: ""
 markdown: kramdown
 highlighter: rouge
 permalink: /:slug/
-# permalink: pretty
 
 # theme: minima
 
@@ -16,12 +15,23 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# Collections
+collections:
+  unity_course:
+    output: true
+    permalink: /unity-course/:path/
+
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
       layout: post
+  - scope:
+      path: ""
+      type: "unity_course"
+    values:
+      layout: lesson
   - scope:
       path: ""
     values:
@@ -39,11 +49,11 @@ author:
   name: "Syed Suleman Shah"
   email: "Sayedsulaiman607@gmail.com"
 
-logo: /images/witchess.png
+logo: /images/suleman.png
 
 lang: en
 twitter:
-  username: ""
+  username: "WitShells0"
 social:
   name: "Syed Suleman Shah"
   links:

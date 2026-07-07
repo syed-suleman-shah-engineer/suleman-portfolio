@@ -716,7 +716,7 @@ layout: default
   .post-body a:hover {
     text-decoration: underline;
   }
-  .post-body code {
+  .post-body :not(pre) > code {
     font-family: "JetBrains Mono", monospace;
     font-size: 12px;
     background: var(--card2);
@@ -729,22 +729,135 @@ layout: default
       border-color 0.3s ease,
       color 0.3s ease;
   }
-  .post-body pre {
+  .post-body pre,
+  .post-body .highlight pre {
     background: var(--card2);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 20px;
     overflow-x: auto;
     margin-bottom: 22px;
+    white-space: pre;
+    line-height: 1.6;
+    tab-size: 2;
+    user-select: text;
     transition:
       background 0.3s ease,
       border-color 0.3s ease;
   }
-  .post-body pre code {
+  .post-body .highlight {
+    margin-bottom: 22px;
+  }
+  .post-body .highlight pre {
+    margin-bottom: 0;
+  }
+  .post-body pre code,
+  .post-body .highlight pre code {
     background: none;
     border: none;
     padding: 0;
     font-size: 13px;
+    white-space: pre;
+    min-width: max-content;
+    display: block;
+    color: #e7edf3;
+  }
+
+  /* Copy button and wrapper for code blocks */
+  .code-block-wrap {
+    position: relative;
+    margin-bottom: 22px;
+  }
+  .post-body .code-block-wrap pre,
+  .post-body .code-block-wrap .highlight {
+    margin-bottom: 0;
+  }
+  .code-copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(14, 12, 10, 0.9);
+    color: #d9e2ec;
+    font-size: 11px;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 5px 9px;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .code-copy-btn:hover {
+    border-color: var(--gold-border);
+    color: #f5d98d;
+  }
+
+  /* Standard colorful syntax theme (Rouge) */
+  .post-body .highlight .c,
+  .post-body .highlight .cm,
+  .post-body .highlight .c1,
+  .post-body .highlight .cs {
+    color: #8b949e;
+    font-style: italic;
+  }
+  .post-body .highlight .k,
+  .post-body .highlight .kd,
+  .post-body .highlight .kn,
+  .post-body .highlight .kp,
+  .post-body .highlight .kr,
+  .post-body .highlight .kt,
+  .post-body .highlight .ow {
+    color: #ff7b72;
+  }
+  .post-body .highlight .s,
+  .post-body .highlight .sa,
+  .post-body .highlight .sb,
+  .post-body .highlight .sc,
+  .post-body .highlight .sd,
+  .post-body .highlight .s1,
+  .post-body .highlight .s2,
+  .post-body .highlight .sr,
+  .post-body .highlight .se,
+  .post-body .highlight .sh,
+  .post-body .highlight .si,
+  .post-body .highlight .sx {
+    color: #a5d6ff;
+  }
+  .post-body .highlight .m,
+  .post-body .highlight .mf,
+  .post-body .highlight .mh,
+  .post-body .highlight .mi,
+  .post-body .highlight .il,
+  .post-body .highlight .mo {
+    color: #79c0ff;
+  }
+  .post-body .highlight .na,
+  .post-body .highlight .nb,
+  .post-body .highlight .nc,
+  .post-body .highlight .nd,
+  .post-body .highlight .ne,
+  .post-body .highlight .nf,
+  .post-body .highlight .nl,
+  .post-body .highlight .nn,
+  .post-body .highlight .nx,
+  .post-body .highlight .py {
+    color: #d2a8ff;
+  }
+  .post-body .highlight .nt,
+  .post-body .highlight .nv,
+  .post-body .highlight .vc,
+  .post-body .highlight .vg,
+  .post-body .highlight .vi {
+    color: #7ee787;
+  }
+  .post-body .highlight .o,
+  .post-body .highlight .p,
+  .post-body .highlight .w {
+    color: #c9d1d9;
+  }
+  .post-body .highlight .err {
+    color: #ffa198;
   }
   .post-body blockquote {
     border-left: 3px solid var(--gold);
@@ -810,6 +923,49 @@ layout: default
     border-color: var(--gold-border);
   }
 </style>
+
+<script>
+  (function () {
+    "use strict";
+
+    const blocks = document.querySelectorAll(".post-body pre");
+    blocks.forEach(function (pre) {
+      if (pre.closest(".code-block-wrap")) {
+        return;
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "code-block-wrap";
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "code-copy-btn";
+      button.textContent = "Copy";
+      button.setAttribute("aria-label", "Copy code");
+      wrapper.appendChild(button);
+
+      button.addEventListener("click", async function () {
+        const codeEl = pre.querySelector("code");
+        const text = codeEl ? codeEl.innerText : pre.innerText;
+
+        try {
+          await navigator.clipboard.writeText(text.replace(/\n$/, ""));
+          button.textContent = "Copied";
+          setTimeout(function () {
+            button.textContent = "Copy";
+          }, 1200);
+        } catch (err) {
+          button.textContent = "Failed";
+          setTimeout(function () {
+            button.textContent = "Copy";
+          }, 1200);
+        }
+      });
+    });
+  })();
+</script>
 
 <script>
   (function () {

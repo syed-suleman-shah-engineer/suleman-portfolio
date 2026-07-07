@@ -1,0 +1,440 @@
+---
+layout: default
+---
+{% assign lessons = site.unity_course | sort: "order" %}
+
+<section style="max-width: 1100px; margin: 0 auto; padding: 60px 24px 120px">
+    <div
+        style="
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 320px;
+            gap: 24px;
+            align-items: start;
+        "
+        class="lesson-layout"
+    >
+        <article class="card" style="padding: 28px 26px">
+            <a
+                href="/unity-course/"
+                style="
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    color: var(--gold);
+                    font-size: 13px;
+                    text-decoration: none;
+                    margin-bottom: 14px;
+                "
+            >
+                ← All Lessons
+            </a>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px">
+                <span class="tag tag-featured">Unity Course</span>
+                {% if page.order %}
+                <span class="pill">Lesson {{ page.order }}</span>
+                {% endif %}
+            </div>
+
+            <h1
+                style="
+                    font-size: clamp(28px, 4vw, 42px);
+                    font-weight: 700;
+                    letter-spacing: -0.03em;
+                    line-height: 1.12;
+                    color: var(--t1);
+                    margin-bottom: 14px;
+                "
+            >
+                {{ page.title }}
+            </h1>
+
+            {% if page.description %}
+            <p
+                style="
+                    color: var(--t2);
+                    line-height: 1.8;
+                    font-size: 15px;
+                    margin-bottom: 28px;
+                    padding-bottom: 18px;
+                    border-bottom: 1px solid var(--border);
+                "
+            >
+                {{ page.description }}
+            </p>
+            {% endif %}
+
+            <div class="post-body">{{ content }}</div>
+
+            <div
+                style="
+                    margin-top: 34px;
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                    border-top: 1px solid var(--border);
+                    padding-top: 18px;
+                "
+            >
+                {% for lesson in lessons %}
+                {% if lesson.url == page.url %}
+                {% if forloop.index0 > 0 %}
+                <a
+                    href="{{ lessons[forloop.index0 | minus: 1].url }}"
+                    class="btn-ghost"
+                    style="padding: 10px 16px; font-size: 13px"
+                    >← Previous</a
+                >
+                {% else %}
+                <span></span>
+                {% endif %}
+                {% if forloop.last == false %}
+                <a
+                    href="{{ lessons[forloop.index0 | plus: 1].url }}"
+                    class="btn-primary"
+                    style="padding: 10px 16px; font-size: 13px"
+                    >Next →</a
+                >
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </article>
+
+        <aside class="card" style="padding: 18px; position: sticky; top: 88px">
+            <p
+                style="
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 0.12em;
+                    text-transform: uppercase;
+                    color: var(--gold);
+                    margin-bottom: 10px;
+                "
+            >
+                Course Outline
+            </p>
+            <p style="font-size: 12px; color: var(--t3); margin-bottom: 14px">
+                Full lesson sequence
+            </p>
+
+            <nav aria-label="Unity course table of contents">
+                <ol style="list-style: none; display: grid; gap: 8px">
+                    {% for lesson in lessons %}
+                    <li>
+                        {% if lesson.url == page.url %}
+                        <a
+                            href="{{ lesson.url }}"
+                            style="
+                                display: block;
+                                border: 1px solid var(--gold-border);
+                                border-radius: 10px;
+                                background: var(--gold-faint);
+                                padding: 10px 12px;
+                                text-decoration: none;
+                            "
+                        >
+                            <div
+                                style="
+                                    font-size: 11px;
+                                    font-family: 'JetBrains Mono', monospace;
+                                    color: var(--t3);
+                                    margin-bottom: 5px;
+                                "
+                            >
+                                Lesson {{ lesson.order | default: forloop.index }}
+                            </div>
+                            <div
+                                style="
+                                    color: var(--t1);
+                                    font-size: 13px;
+                                    line-height: 1.45;
+                                    font-weight: 600;
+                                "
+                            >
+                                {{ lesson.title }}
+                            </div>
+                        </a>
+                        {% else %}
+                        <a
+                            href="{{ lesson.url }}"
+                            style="
+                                display: block;
+                                border: 1px solid var(--border);
+                                border-radius: 10px;
+                                background: var(--card2);
+                                padding: 10px 12px;
+                                text-decoration: none;
+                            "
+                        >
+                            <div
+                                style="
+                                    font-size: 11px;
+                                    font-family: 'JetBrains Mono', monospace;
+                                    color: var(--t3);
+                                    margin-bottom: 5px;
+                                "
+                            >
+                                Lesson {{ lesson.order | default: forloop.index }}
+                            </div>
+                            <div
+                                style="
+                                    color: var(--t2);
+                                    font-size: 13px;
+                                    line-height: 1.45;
+                                    font-weight: 500;
+                                "
+                            >
+                                {{ lesson.title }}
+                            </div>
+                        </a>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ol>
+            </nav>
+        </aside>
+    </div>
+</section>
+
+<style>
+    .post-body h2 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--t1);
+        letter-spacing: -0.02em;
+        margin: 34px 0 12px;
+    }
+    .post-body h3 {
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--t1);
+        margin: 24px 0 9px;
+    }
+    .post-body p {
+        font-size: 15px;
+        color: var(--t2);
+        line-height: 1.85;
+        margin-bottom: 16px;
+    }
+    .post-body ul,
+    .post-body ol {
+        padding-left: 20px;
+        margin-bottom: 18px;
+    }
+    .post-body li {
+        font-size: 15px;
+        color: var(--t2);
+        line-height: 1.75;
+        margin-bottom: 6px;
+    }
+    .post-body a {
+        color: var(--gold);
+        text-decoration: none;
+    }
+    .post-body a:hover {
+        text-decoration: underline;
+    }
+    .post-body :not(pre) > code {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        background: var(--card2);
+        padding: 2px 7px;
+        border-radius: 5px;
+        border: 1px solid var(--border);
+        color: var(--t1);
+    }
+    .post-body pre,
+    .post-body .highlight pre {
+        background: var(--card2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 18px;
+        overflow-x: auto;
+        margin-bottom: 20px;
+        white-space: pre;
+        line-height: 1.6;
+        tab-size: 2;
+        user-select: text;
+    }
+    .post-body .highlight {
+        margin-bottom: 20px;
+    }
+    .post-body .highlight pre {
+        margin-bottom: 0;
+    }
+    .post-body pre code,
+    .post-body .highlight pre code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: 13px;
+        white-space: pre;
+        min-width: max-content;
+        display: block;
+        color: #e7edf3;
+    }
+
+    .code-block-wrap {
+        position: relative;
+        margin-bottom: 20px;
+    }
+    .post-body .code-block-wrap pre,
+    .post-body .code-block-wrap .highlight {
+        margin-bottom: 0;
+    }
+    .code-copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: rgba(14, 12, 10, 0.9);
+        color: #d9e2ec;
+        font-size: 11px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        padding: 5px 9px;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .code-copy-btn:hover {
+        border-color: var(--gold-border);
+        color: #f5d98d;
+    }
+
+    .post-body .highlight .c,
+    .post-body .highlight .cm,
+    .post-body .highlight .c1,
+    .post-body .highlight .cs {
+        color: #8b949e;
+        font-style: italic;
+    }
+    .post-body .highlight .k,
+    .post-body .highlight .kd,
+    .post-body .highlight .kn,
+    .post-body .highlight .kp,
+    .post-body .highlight .kr,
+    .post-body .highlight .kt,
+    .post-body .highlight .ow {
+        color: #ff7b72;
+    }
+    .post-body .highlight .s,
+    .post-body .highlight .sa,
+    .post-body .highlight .sb,
+    .post-body .highlight .sc,
+    .post-body .highlight .sd,
+    .post-body .highlight .s1,
+    .post-body .highlight .s2,
+    .post-body .highlight .sr,
+    .post-body .highlight .se,
+    .post-body .highlight .sh,
+    .post-body .highlight .si,
+    .post-body .highlight .sx {
+        color: #a5d6ff;
+    }
+    .post-body .highlight .m,
+    .post-body .highlight .mf,
+    .post-body .highlight .mh,
+    .post-body .highlight .mi,
+    .post-body .highlight .il,
+    .post-body .highlight .mo {
+        color: #79c0ff;
+    }
+    .post-body .highlight .na,
+    .post-body .highlight .nb,
+    .post-body .highlight .nc,
+    .post-body .highlight .nd,
+    .post-body .highlight .ne,
+    .post-body .highlight .nf,
+    .post-body .highlight .nl,
+    .post-body .highlight .nn,
+    .post-body .highlight .nx,
+    .post-body .highlight .py {
+        color: #d2a8ff;
+    }
+    .post-body .highlight .nt,
+    .post-body .highlight .nv,
+    .post-body .highlight .vc,
+    .post-body .highlight .vg,
+    .post-body .highlight .vi {
+        color: #7ee787;
+    }
+    .post-body .highlight .o,
+    .post-body .highlight .p,
+    .post-body .highlight .w {
+        color: #c9d1d9;
+    }
+    .post-body .highlight .err {
+        color: #ffa198;
+    }
+    .post-body blockquote {
+        border-left: 3px solid var(--gold);
+        padding: 4px 0 4px 18px;
+        margin: 20px 0;
+        color: var(--t2);
+        font-style: italic;
+    }
+    .post-body img {
+        width: 100%;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        margin: 20px 0;
+    }
+    .post-body hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 30px 0;
+    }
+
+    @media (max-width: 980px) {
+        .lesson-layout {
+            grid-template-columns: 1fr !important;
+        }
+    }
+</style>
+
+<script>
+    (function () {
+        "use strict";
+
+        const blocks = document.querySelectorAll(".post-body pre");
+        blocks.forEach(function (pre) {
+            if (pre.closest(".code-block-wrap")) {
+                return;
+            }
+
+            const wrapper = document.createElement("div");
+            wrapper.className = "code-block-wrap";
+            pre.parentNode.insertBefore(wrapper, pre);
+            wrapper.appendChild(pre);
+
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "code-copy-btn";
+            button.textContent = "Copy";
+            button.setAttribute("aria-label", "Copy code");
+            wrapper.appendChild(button);
+
+            button.addEventListener("click", async function () {
+                const codeEl = pre.querySelector("code");
+                const text = codeEl ? codeEl.innerText : pre.innerText;
+
+                try {
+                    await navigator.clipboard.writeText(text.replace(/\n$/, ""));
+                    button.textContent = "Copied";
+                    setTimeout(function () {
+                        button.textContent = "Copy";
+                    }, 1200);
+                } catch (err) {
+                    button.textContent = "Failed";
+                    setTimeout(function () {
+                        button.textContent = "Copy";
+                    }, 1200);
+                }
+            });
+        });
+    })();
+</script>
