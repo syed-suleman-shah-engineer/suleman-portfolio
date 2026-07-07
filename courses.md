@@ -31,43 +31,11 @@ description: "Browse all available course tracks."
       gap: 16px;
     "
   >
-    <a href="/unity-course/" style="text-decoration: none">
+    <a href="/learn-unity3d-beginner/" style="text-decoration: none">
       <article class="card" style="padding: 22px; min-height: 170px">
         <span class="pill" style="width: fit-content; margin-bottom: 10px">Core</span>
         <h2 style="font-size: 18px; color: var(--t1); margin-bottom: 8px">Unity Course</h2>
         <p style="font-size: 14px; color: var(--t2); line-height: 1.75">Main Unity development path.</p>
-      </article>
-    </a>
-
-    <a href="/unity-beginner/" style="text-decoration: none">
-      <article class="card" style="padding: 22px; min-height: 170px">
-        <span class="pill" style="width: fit-content; margin-bottom: 10px">Beginner</span>
-        <h2 style="font-size: 18px; color: var(--t1); margin-bottom: 8px">Unity Beginner</h2>
-        <p style="font-size: 14px; color: var(--t2); line-height: 1.75">Foundational lessons for new Unity developers.</p>
-      </article>
-    </a>
-
-    <a href="/unity-master/" style="text-decoration: none">
-      <article class="card" style="padding: 22px; min-height: 170px">
-        <span class="pill" style="width: fit-content; margin-bottom: 10px">Advanced</span>
-        <h2 style="font-size: 18px; color: var(--t1); margin-bottom: 8px">Unity Master</h2>
-        <p style="font-size: 14px; color: var(--t2); line-height: 1.75">Advanced systems, architecture, and optimization.</p>
-      </article>
-    </a>
-
-    <a href="/unity-game/" style="text-decoration: none">
-      <article class="card" style="padding: 22px; min-height: 170px">
-        <span class="pill" style="width: fit-content; margin-bottom: 10px">Game Specific</span>
-        <h2 style="font-size: 18px; color: var(--t1); margin-bottom: 8px">Unity Game</h2>
-        <p style="font-size: 14px; color: var(--t2); line-height: 1.75">Genre and game-specific implementation tracks.</p>
-      </article>
-    </a>
-
-    <a href="/jetfight/" style="text-decoration: none">
-      <article class="card" style="padding: 22px; min-height: 170px">
-        <span class="pill" style="width: fit-content; margin-bottom: 10px">Project</span>
-        <h2 style="font-size: 18px; color: var(--t1); margin-bottom: 8px">Jetfight</h2>
-        <p style="font-size: 14px; color: var(--t2); line-height: 1.75">Focused track for the Jetfight game project.</p>
       </article>
     </a>
   </div>
