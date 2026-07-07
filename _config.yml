@@ -17,21 +17,9 @@ plugins:
 
 # Collections
 collections:
-  unity_course:
+  learn-unity3d-beginner:
     output: true
-    permalink: /unity-course/:path/
-  unity_beginner:
-    output: true
-    permalink: /unity-beginner/:path/
-  unity_master:
-    output: true
-    permalink: /unity-master/:path/
-  unity_game:
-    output: true
-    permalink: /unity-game/:path/
-  jetfight:
-    output: true
-    permalink: /jetfight/:path/
+    permalink: /learn-unity3d-beginner/:path/
 
 defaults:
   - scope:
@@ -42,26 +30,6 @@ defaults:
   - scope:
       path: ""
       type: "unity_course"
-    values:
-      layout: lesson
-  - scope:
-      path: ""
-      type: "unity_beginner"
-    values:
-      layout: lesson
-  - scope:
-      path: ""
-      type: "unity_master"
-    values:
-      layout: lesson
-  - scope:
-      path: ""
-      type: "unity_game"
-    values:
-      layout: lesson
-  - scope:
-      path: ""
-      type: "jetfight"
     values:
       layout: lesson
   - scope:
