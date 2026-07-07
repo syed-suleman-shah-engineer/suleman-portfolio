@@ -20,6 +20,9 @@ collections:
   unity_course:
     output: true
     permalink: /unity-course/:path/
+  jetfight:
+    output: true
+    permalink: /jetfight/:path/
 
 defaults:
   - scope:
@@ -30,6 +33,11 @@ defaults:
   - scope:
       path: ""
       type: "unity_course"
+    values:
+      layout: lesson
+  - scope:
+      path: ""
+      type: "jetfight"
     values:
       layout: lesson
   - scope:
