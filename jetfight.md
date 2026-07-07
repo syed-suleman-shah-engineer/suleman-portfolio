@@ -24,7 +24,7 @@ permalink: /jetfight/
     </p>
   </div>
 
-  {% assign lessons = site.unity_course | sort: "order" %}
+  {% assign lessons = site.jetfight | sort: "order" %}
 
   <div
     style="
