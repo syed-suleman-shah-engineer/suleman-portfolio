@@ -1,3 +1,10 @@
+---
+title: "Lesson 2: Understanding X, Y, Z Axis and Unity 3D Primitives"
+order: 2
+description: "A step-by-step beginner's guide to understanding the X, Y, Z axis, using Unity's Transform and Cube primitive, and building your first 3D object — a student desk — from scratch."
+tags: [Unity, Unity3D, Game Development, Beginner Guide, 3D Axis, Unity Primitives, GameObject, Unity Tutorial]
+---
+
 # Learn to See in 3D: Understanding X, Y, Z With Unity Primitives
 
 In the last article, you learned how to set up your Unity environment. Now you are ready for the next step.
