@@ -1,6 +1,6 @@
 ---
-title: "Lesson 5: Unity Physics Basics — Colliders, Rigidbody, and Your First Physics-Powered Scenes"
-order: 5
+title: "Lesson 4: Unity Physics Basics — Colliders, Rigidbody, and Your First Physics-Powered Scenes"
+order: 4
 description: "A beginner-friendly, hands-on guide to Unity's physics system — colliders, triggers, and Rigidbody — followed by three fun projects: a swinging door, a hanging punching bag, and a simple two-wheeler bike, all built without writing a single line of code."
 tags: [Unity, Unity3D, Game Development, Beginner Guide, Unity Physics, Rigidbody, Colliders, Hinge Joint, Spring Joint, Wheel Collider, Physics Material, Unity Tutorial]
 ---
