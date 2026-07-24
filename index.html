@@ -143,486 +143,10 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-91VBMGL541"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-91VBMGL541');
   </script>
-
-  <!-- <style>
-      :root {
-        --gold: #c9a84c;
-        --gold-dim: #a8873a;
-        --gold-faint: rgba(201, 168, 76, 0.08);
-        --gold-border: rgba(201, 168, 76, 0.25);
-        --bg: #0e0c0a;
-        --card: #141210;
-        --card2: #1a1714;
-        --border: rgba(255, 255, 255, 0.07);
-        --border2: rgba(255, 255, 255, 0.04);
-        --t1: #f0ebe3;
-        --t2: #9a9088;
-        --t3: #5c554e;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        background: var(--bg);
-        color: var(--t1);
-        font-family: "Inter", system-ui, sans-serif;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      /* ─── CURSOR CANVAS ─── */
-      #star-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 99999;
-      }
-
-      /* ─── NAV ─── */
-      .nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 50;
-        border-bottom: 1px solid var(--border2);
-        background: rgba(14, 12, 10, 0.92);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-      }
-      .nav-inner {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 15px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .nav-logo {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 13px;
-        font-weight: 500;
-        color: var(--t1);
-        text-decoration: none;
-      }
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 28px;
-      }
-      .nav-link {
-        color: var(--t2);
-        font-size: 13px;
-        text-decoration: none;
-        transition: color 0.15s;
-      }
-      .nav-link:hover {
-        color: var(--t1);
-      }
-
-      .btn-hire {
-        background: var(--gold);
-        color: #0e0c0a;
-        padding: 8px 18px;
-        border-radius: 8px;
-        font-size: 13px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background 0.15s;
-      }
-      .btn-hire:hover {
-        background: #d4b05a;
-      }
-
-      .btn-primary {
-        background: var(--gold);
-        color: #0e0c0a;
-        padding: 13px 26px;
-        border-radius: 10px;
-        font-weight: 600;
-        font-size: 14px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        transition: background 0.15s;
-      }
-      .btn-primary:hover {
-        background: #d4b05a;
-      }
-
-      .btn-ghost {
-        color: var(--t2);
-        padding: 12px 20px;
-        border-radius: 10px;
-        font-weight: 500;
-        font-size: 14px;
-        text-decoration: none;
-        border: 1px solid var(--border);
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        transition:
-          border-color 0.15s,
-          color 0.15s;
-      }
-      .btn-ghost:hover {
-        border-color: var(--gold-border);
-        color: var(--t1);
-      }
-
-      .btn-wa {
-        background: rgba(37, 211, 102, 0.1);
-        color: #4ade80;
-        padding: 12px 20px;
-        border-radius: 10px;
-        font-weight: 500;
-        font-size: 14px;
-        text-decoration: none;
-        border: 1px solid rgba(37, 211, 102, 0.2);
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        transition: background 0.15s;
-      }
-      .btn-wa:hover {
-        background: rgba(37, 211, 102, 0.18);
-      }
-
-      /* ─── CARD WITH ANIMATED BORDER SWEEP ─── */
-      .card {
-        background: var(--card);
-        border-radius: 16px;
-        position: relative;
-        overflow: hidden;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        transition:
-          transform 0.25s ease,
-          box-shadow 0.25s ease;
-        /* Static border via outline so pseudo can override */
-        outline: 1px solid var(--border);
-        outline-offset: -1px;
-      }
-
-      /* The conic-gradient sweep border */
-      .card::before {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        border-radius: 18px;
-        background: conic-gradient(
-          from 0deg,
-          transparent 0deg,
-          transparent 240deg,
-          rgba(201, 168, 76, 0.9) 270deg,
-          rgba(255, 220, 120, 1) 290deg,
-          rgba(201, 168, 76, 0.9) 310deg,
-          transparent 340deg,
-          transparent 360deg
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: 0;
-        animation: none;
-      }
-
-      /* Inner mask to cut card shape out of glow border */
-      .card::after {
-        content: "";
-        position: absolute;
-        inset: 1px;
-        border-radius: 15px;
-        background: var(--card);
-        z-index: 1;
-      }
-
-      /* Hover: reveal the conic border and spin it */
-      .card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 40px rgba(201, 168, 76, 0.12);
-        outline-color: transparent;
-      }
-      .card:hover::before {
-        opacity: 1;
-        animation: sweep-border 2s linear infinite;
-      }
-
-      @keyframes sweep-border {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* Content must be above the pseudo layers */
-      .card > * {
-        position: relative;
-        z-index: 2;
-      }
-
-      /* Featured card baseline glow */
-      .card.featured {
-        outline-color: rgba(201, 168, 76, 0.2);
-      }
-      .card.featured::before {
-        opacity: 0.3;
-        animation: sweep-border 4s linear infinite;
-      }
-      .card.featured:hover::before {
-        opacity: 1;
-        animation: sweep-border 1.6s linear infinite;
-      }
-
-      /* ─── TAGS & PILLS ─── */
-      .tag {
-        display: inline-flex;
-        align-items: center;
-        font-size: 10px;
-        font-weight: 600;
-        padding: 3px 10px;
-        border-radius: 999px;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-      }
-      .tag-military {
-        background: rgba(239, 68, 68, 0.08);
-        color: #fca5a5;
-        border: 1px solid rgba(239, 68, 68, 0.18);
-      }
-      .tag-edtech {
-        background: rgba(52, 211, 153, 0.08);
-        color: #6ee7b7;
-        border: 1px solid rgba(52, 211, 153, 0.18);
-      }
-      .tag-ai {
-        background: rgba(168, 85, 247, 0.08);
-        color: #d8b4fe;
-        border: 1px solid rgba(168, 85, 247, 0.18);
-      }
-      .tag-sport {
-        background: rgba(251, 191, 36, 0.08);
-        color: #fde68a;
-        border: 1px solid rgba(251, 191, 36, 0.18);
-      }
-      .tag-game {
-        background: rgba(59, 130, 246, 0.08);
-        color: #93c5fd;
-        border: 1px solid rgba(59, 130, 246, 0.18);
-      }
-      .tag-meta {
-        background: rgba(20, 184, 166, 0.08);
-        color: #5eead4;
-        border: 1px solid rgba(20, 184, 166, 0.18);
-      }
-      .tag-detective {
-        background: rgba(201, 168, 76, 0.08);
-        color: #fcd34d;
-        border: 1px solid rgba(201, 168, 76, 0.18);
-      }
-      .tag-sim {
-        background: rgba(249, 115, 22, 0.08);
-        color: #fdba74;
-        border: 1px solid rgba(249, 115, 22, 0.18);
-      }
-
-      .pill {
-        font-size: 11px;
-        font-family: "JetBrains Mono", monospace;
-        padding: 2px 9px;
-        border-radius: 6px;
-        background: #1e1b17;
-        color: var(--t2);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-      }
-
-      /* ─── STAT CARDS ─── */
-      .stat-card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px 24px;
-        text-align: center;
-        transition:
-          border-color 0.25s,
-          transform 0.25s;
-      }
-      .stat-card:hover {
-        border-color: var(--gold-border);
-        transform: translateY(-2px);
-      }
-
-      /* ─── SECTION LABELS ─── */
-      .section-label {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--gold);
-        margin-bottom: 10px;
-      }
-      .section-title {
-        font-size: 30px;
-        font-weight: 700;
-        color: var(--t1);
-        letter-spacing: -0.02em;
-        line-height: 1.15;
-      }
-
-      /* ─── PACKAGE ITEMS ─── */
-      .pkg {
-        background: var(--card2);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 14px 16px;
-        transition:
-          border-color 0.2s,
-          transform 0.2s;
-      }
-      .pkg:hover {
-        border-color: var(--gold-border);
-        transform: translateY(-1px);
-      }
-
-      .dot {
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: var(--gold);
-        flex-shrink: 0;
-        margin-top: 7px;
-      }
-
-      /* ─── FIVERR BAR ─── */
-      .fiverr-bar {
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        background: var(--card2);
-        padding: 12px 18px;
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        transition: border-color 0.2s;
-        max-width: 360px;
-      }
-      .fiverr-bar:hover {
-        border-color: var(--gold-border);
-      }
-
-      /* ─── AVATAR ─── */
-      .avatar-wrap {
-        border-radius: 50%;
-        border: 2px solid var(--gold-border);
-        padding: 4px;
-      }
-      .avatar-wrap img {
-        border-radius: 50%;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      /* ─── VIDEO PLACEHOLDERS ─── */
-      .video-placeholder {
-        background: var(--card2);
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        transition: border-color 0.2s;
-        position: relative;
-        z-index: 2;
-        width: 120px;
-        min-height: 110px;
-      }
-      .video-placeholder:hover {
-        border-color: var(--gold-border);
-      }
-
-      .project-card-inner {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: 16px;
-        height: 100%;
-      }
-
-      /* ─── GOLD FEATURED TAG ─── */
-      .tag-featured {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        padding: 3px 10px;
-        border-radius: 999px;
-        background: var(--gold-faint);
-        color: var(--gold);
-        border: 1px solid var(--gold-border);
-        text-transform: uppercase;
-      }
-
-      /* ─── RESPONSIVE ─── */
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
-        .hero-flex {
-          flex-direction: column-reverse !important;
-          align-items: center !important;
-        }
-        .hero-photo {
-          width: 160px !important;
-          height: 160px !important;
-        }
-        .video-placeholder {
-          width: 100%;
-          min-height: 80px;
-          margin-top: 12px;
-        }
-        .project-card-inner {
-          flex-direction: column !important;
-        }
-        .contact-cta {
-          padding: 36px 24px !important;
-        }
-        .contact-cta h2 {
-          font-size: 24px !important;
-        }
-      }
-
-      /* Respect reduced motion */
-      @media (prefers-reduced-motion: reduce) {
-        .card::before {
-          animation: none !important;
-        }
-        .card:hover::before {
-          animation: none !important;
-          opacity: 0.6;
-        }
-        * {
-          transition-duration: 0.01ms !important;
-        }
-      }
-    </style> -->
 </head>
 
 <body>
@@ -649,7 +173,7 @@
       <div class="hero-flex" style="display: flex; align-items: center; gap: 60px">
         <div style="flex: 1">
           <p class="section-label">
-            Game Development Specialist & Instructor
+            Unity Engineer • XR Developer • Educator
           </p>
           <h1 style="
                 font-size: clamp(34px, 5vw, 56px);
@@ -659,37 +183,19 @@
                 color: var(--t1);
                 margin-bottom: 20px;
               ">
-            I build simulations,<br /><span style="color: var(--gold)">games &amp; interactive</span><br />experiences.
+            I build <span style="color: var(--gold)">interactive experiences</span><br>
+            that teach, train<br>
+            and bring ideas to life.
           </h1>
-          <!-- <p style="
-                font-size: 15px;
-                line-height: 1.8;
-                color: var(--t2);
-                max-width: 500px;
-                margin-bottom: 32px;
-              ">
-            Syed Suleman Shah — CTO of
-            <strong style="color: var(--t1); font-weight: 600">WitShells Studio</strong>. 7+ years shipping Unity
-            projects across military simulations,
-            VR education, sensor-based arcade systems, multiplayer games, and
-            mobile apps — for clients in Pakistan, Kuwait, Saudi Arabia, and
-            beyond.
-          </p> -->
           <div style="
                 display: flex;
                 flex-wrap: wrap;
                 gap: 12px;
                 margin-bottom: 32px;
               ">
-            <a href="https://wa.me/923093023289" target="_blank" rel="noopener noreferrer" class="btn-primary"
-              aria-label="WhatsApp Syed Suleman Shah">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path
-                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-                <path
-                  d="M11.99 0C5.364 0 0 5.363 0 11.988c0 2.114.554 4.1 1.52 5.83L.057 23.899l6.24-1.637A11.945 11.945 0 0011.99 24C18.617 24 24 18.637 24 12.012 24 5.364 18.617 0 11.99 0zm.01 21.916a9.915 9.915 0 01-5.056-1.38l-.362-.214-3.753.984 1.003-3.651-.236-.374A9.894 9.894 0 012.09 12c0-5.472 4.454-9.927 9.91-9.927 5.455 0 9.91 4.455 9.91 9.927 0 5.473-4.455 9.916-9.91 9.916z" />
-              </svg>
-              WhatsApp Me
+            <a href="https://syed-suleman-shah-engineer.github.io/Resume/" target="_blank" rel="noopener noreferrer"
+              class="btn-primary" aria-label="View Resume">
+              View Resume →
             </a>
             <a href="#projects" class="btn-ghost">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -700,32 +206,6 @@
               View Projects
             </a>
           </div>
-          <a href="https://www.fiverr.com/s/DB46vDV" target="_blank" rel="noopener noreferrer" class="fiverr-bar"
-            aria-label="Syed Suleman Shah on Fiverr">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#1dbf73" aria-hidden="true">
-              <path
-                d="M23.004 15.588a.995.995 0 100-1.99.995.995 0 000 1.99zm-.996-3.705h-1.009c-.232-3.4-2.876-6.154-6.243-6.576V4.3h-1.008v.994c-3.382.416-6.036 3.18-6.249 6.589H7.5v1.008h.999c.217 3.408 2.867 6.172 6.249 6.587v.993h1.008v-.999c3.37-.42 6.014-3.186 6.243-6.581h1.009v-1.008zM12 18.48c-3.578 0-6.48-2.902-6.48-6.48S8.422 5.52 12 5.52s6.48 2.902 6.48 6.48-2.902 6.48-6.48 6.48zm-.504-5.784v1.512h1.008v-1.512H12zm0-5.28v3.24h1.008V7.416H12z" />
-            </svg>
-            <div>
-              <p style="font-size: 12px; font-weight: 600; color: var(--t1)">
-                Also available on Fiverr
-              </p>
-              <p style="font-size: 11px; color: var(--t3)">
-                Place an order or review past work
-              </p>
-            </div>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              style="margin-left: auto; color: var(--t3)" aria-hidden="true">
-              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
-          <!-- <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px">
-            <span class="pill">Unity 3D</span><span class="pill">Meta Quest</span><span class="pill">Instructor</span>
-            <span class="pill">ASP.NET Core</span><span class="pill">Multiplayer</span><span
-              class="pill">WebRTC</span><span class="pill">Blender</span><span class="pill">VR Training</span>
-          </div> -->
         </div>
         <div style="
               display: flex;
@@ -748,7 +228,7 @@
               Syed Suleman Shah
             </p>
             <p style="font-size: 12px; color: var(--t3)">
-              Co Founder @ WitShells Studio
+              CTO @ WitShells Studio
             </p>
           </div>
         </div>
@@ -820,70 +300,67 @@
     </div>
   </section>
 
+  <a href="#" id="back-to-top" style="
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--gold);
+  color: #0e0c0a;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+  z-index: 100;
+" aria-label="Back to top">
+    ↑
+  </a>
+
   <!-- ═══════════ PROJECTS ═══════════ -->
   <section id="projects" aria-label="Selected projects" style="padding: 0 24px 100px">
     <div style="max-width: 1100px; margin: 0 auto">
       <div style="margin-bottom: 40px">
         <p class="section-label">Selected Work</p>
         <h2 class="section-title">Projects that shipped.</h2>
-        <p style="
-              font-size: 14px;
-              color: var(--t2);
-              margin-top: 8px;
-              max-width: 480px;
-            ">
-          Real clients, real briefs, real deployments — across simulations,
-          VR, games and mobile.
+        <p style="font-size: 14px; color: var(--t2); margin-top: 8px; max-width: 480px;">
+          Real clients, real briefs, real deployments — across simulations, VR, games and mobile.
         </p>
       </div>
 
-      <div style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
-            gap: 16px;
-            align-items: stretch;
-          ">
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr)); gap: 16px; align-items: stretch;">
+
         <!-- SANDBOX FEATURED -->
         <article class="card featured" style="padding: 24px">
           <div class="project-card-inner">
             <div style="flex: 1; min-width: 200px">
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 8px;
-                    margin-bottom: 14px;
-                  ">
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
                 <span class="tag tag-sim">Simulation</span>
                 <span class="tag tag-military">Defense</span>
                 <span class="pill">Desktop</span>
                 <span class="pill">Android Tablet</span>
                 <span class="pill">Xbox Controllers</span>
+                <span class="pill">Duration: 4 months</span>
                 <span class="tag-featured">★ Featured</span>
               </div>
-              <h3 style="
-                    font-size: 17px;
-                    font-weight: 600;
-                    color: var(--t1);
-                    margin-bottom: 8px;
-                  ">
+              <h3 style="font-size: 17px; font-weight: 600; color: var(--t1); margin-bottom: 8px;">
                 SANDBOX — Military Tactical Simulation System
               </h3>
-              <p style="
-                    font-size: 13px;
-                    color: var(--t2);
-                    line-height: 1.75;
-                    margin-bottom: 14px;
-                  ">
-                A multi-platform tactical simulation for a Pakistani defense
-                client. Real-time scenario control on desktop, field view on
-                Android tablets, physical input via Xbox sensor controllers.
+              <p style="font-size: 13px; color: var(--t2); line-height: 1.75; margin-bottom: 14px;">
+                <strong style="color: var(--t1);">Challenge:</strong> Multi‑platform tactical simulation for defense
+                training.<br>
+                <strong style="color: var(--t1);">Solution:</strong> Real‑time scenario control on desktop, field view
+                on Android tablets, and physical input via Xbox sensor controllers.
               </p>
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 8px;
-                    margin-bottom: 14px;
-                  ">
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;">
                 <span class="pill">Unity 3D</span><span class="pill">Real-time Networking</span><span
                   class="pill">Multi-platform</span><span class="pill">Sensor Integration</span>
               </div>
@@ -891,22 +368,13 @@
                 style="font-size: 13px; padding: 10px 20px">Read Case Study →</a>
             </div>
             <a href="https://www.youtube.com/watch?v=hIw7Rni3Jfc" target="_blank" rel="noopener noreferrer"
-              class="video-placeholder" style="
-                  width: 120px;
-                  min-height: 110px;
-                  padding: 0;
-                  overflow: hidden;
-                  cursor: pointer;
-                  text-decoration: none;
-                " aria-label="Watch SANDBOX Military Simulation on YouTube"><img
-                src="https://img.youtube.com/vi/hIw7Rni3Jfc/mqdefault.jpg"
-                alt="SANDBOX Military Simulation video thumbnail" width="120" height="110" loading="lazy" style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 12px;
-                    display: block;
-                  " /></a>
+              class="video-placeholder"
+              style="width: 120px; min-height: 110px; padding: 0; overflow: hidden; cursor: pointer; text-decoration: none;"
+              aria-label="Watch SANDBOX Military Simulation on YouTube">
+              <img src="https://img.youtube.com/vi/hIw7Rni3Jfc/mqdefault.jpg"
+                alt="SANDBOX Military Simulation video thumbnail" width="120" height="110" loading="lazy"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;" />
+            </a>
           </div>
         </article>
 
@@ -914,65 +382,35 @@
         <article class="card" style="padding: 24px">
           <div class="project-card-inner">
             <div style="flex: 1; min-width: 200px">
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 12px;
-                  ">
-                <span class="tag tag-edtech">EdTech VR</span><span class="pill">Meta Quest</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px;">
+                <span class="tag tag-edtech">EdTech VR</span>
+                <span class="pill">Meta Quest</span>
+                <span class="pill">Duration: 6 months</span>
               </div>
-              <h3 style="
-                    font-size: 17px;
-                    font-weight: 600;
-                    color: var(--t1);
-                    margin-bottom: 8px;
-                  ">
+              <h3 style="font-size: 17px; font-weight: 600; color: var(--t1); margin-bottom: 8px;">
                 Climate Change VR Experience
               </h3>
-              <p style="
-                    font-size: 13px;
-                    color: var(--t2);
-                    line-height: 1.75;
-                    margin-bottom: 14px;
-                  ">
-                Immersive VR module for Kuwait University — students explore
-                climate science through interactive environments. Second
-                project with Dr. Huda, the most polished academic VR I've
-                shipped.
+              <p style="font-size: 13px; color: var(--t2); line-height: 1.75; margin-bottom: 14px;">
+                <strong style="color: var(--t1);">Challenge:</strong> Immersive climate science education for Kuwait
+                University.<br>
+                <strong style="color: var(--t1);">Solution:</strong> Interactive VR environments with real‑time data
+                visualization, allowing students to explore climate change firsthand.
               </p>
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 14px;
-                  ">
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px;">
                 <span class="pill">Unity 3D</span><span class="pill">Kuwait University</span>
               </div>
-              <a href="climate-change-vr-kuwait-university" style="
-                    font-size: 13px;
-                    color: var(--gold);
-                    font-weight: 500;
-                    text-decoration: none;
-                  ">Read Case Study →</a>
+              <a href="climate-change-vr-kuwait-university"
+                style="font-size: 13px; color: var(--gold); font-weight: 500; text-decoration: none;">Read Case Study
+                →</a>
             </div>
             <a href="https://www.youtube.com/watch?v=trkXv2YhuqI" target="_blank" rel="noopener noreferrer"
-              class="video-placeholder" style="
-                  width: 120px;
-                  min-height: 110px;
-                  padding: 0;
-                  overflow: hidden;
-                  cursor: pointer;
-                  text-decoration: none;
-                " aria-label="Watch Climate Change VR on YouTube"><img
-                src="https://img.youtube.com/vi/trkXv2YhuqI/mqdefault.jpg" alt="Climate Change VR video thumbnail"
-                width="120" height="110" loading="lazy" style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 12px;
-                    display: block;
-                  " /></a>
+              class="video-placeholder"
+              style="width: 120px; min-height: 110px; padding: 0; overflow: hidden; cursor: pointer; text-decoration: none;"
+              aria-label="Watch Climate Change VR on YouTube">
+              <img src="https://img.youtube.com/vi/trkXv2YhuqI/mqdefault.jpg" alt="Climate Change VR video thumbnail"
+                width="120" height="110" loading="lazy"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;" />
+            </a>
           </div>
         </article>
 
@@ -980,65 +418,34 @@
         <article class="card" style="padding: 24px">
           <div class="project-card-inner">
             <div style="flex: 1; min-width: 200px">
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 12px;
-                  ">
-                <span class="tag tag-edtech">EdTech VR</span><span class="pill">Meta Quest</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px;">
+                <span class="tag tag-edtech">EdTech VR</span>
+                <span class="pill">Meta Quest</span>
+                <span class="pill">Duration: 3 months</span>
               </div>
-              <h3 style="
-                    font-size: 17px;
-                    font-weight: 600;
-                    color: var(--t1);
-                    margin-bottom: 8px;
-                  ">
+              <h3 style="font-size: 17px; font-weight: 600; color: var(--t1); margin-bottom: 8px;">
                 Egypt History — Educational VR Module
               </h3>
-              <p style="
-                    font-size: 13px;
-                    color: var(--t2);
-                    line-height: 1.75;
-                    margin-bottom: 14px;
-                  ">
-                VR history experience for Kuwait University — students explore
-                ancient Egypt through narrated, interactive environments.
-                First of two successful engagements with Dr. Huda.
+              <p style="font-size: 13px; color: var(--t2); line-height: 1.75; margin-bottom: 14px;">
+                <strong style="color: var(--t1);">Challenge:</strong> Bring ancient Egypt to life for university
+                students.<br>
+                <strong style="color: var(--t1);">Solution:</strong> Narrated, interactive VR environments that immerse
+                students in historical contexts.
               </p>
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 14px;
-                  ">
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px;">
                 <span class="pill">Unity 3D</span><span class="pill">Academic Client</span>
               </div>
-              <a href="immersive-vr-ancient-egypt-education-kuwait-university" style="
-                    font-size: 13px;
-                    color: var(--gold);
-                    font-weight: 500;
-                    text-decoration: none;
-                  ">Read Case Study →</a>
+              <a href="immersive-vr-ancient-egypt-education-kuwait-university"
+                style="font-size: 13px; color: var(--gold); font-weight: 500; text-decoration: none;">Read Case Study
+                →</a>
             </div>
-            <!-- VIDEO: Egypt History VR — paste YouTube video ID below (e.g. dQw4w9WgXcQ) -->
             <a href="https://www.youtube.com/watch?v=PASTE_VIDEO_ID_HERE" target="_blank" rel="noopener noreferrer"
-              class="video-placeholder" style="
-                  width: 120px;
-                  min-height: 110px;
-                  padding: 0;
-                  overflow: hidden;
-                  cursor: pointer;
-                  text-decoration: none;
-                " aria-label="Watch Egypt History VR on YouTube">
+              class="video-placeholder"
+              style="width: 120px; min-height: 110px; padding: 0; overflow: hidden; cursor: pointer; text-decoration: none;"
+              aria-label="Watch Egypt History VR on YouTube">
               <img src="https://img.youtube.com/vi/PASTE_VIDEO_ID_HERE/mqdefault.jpg"
-                alt="Egypt History VR video thumbnail" width="120" height="110" loading="lazy" style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 12px;
-                    display: block;
-                  " />
+                alt="Egypt History VR video thumbnail" width="120" height="110" loading="lazy"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;" />
             </a>
           </div>
         </article>
@@ -1047,65 +454,35 @@
         <article class="card" style="padding: 24px">
           <div class="project-card-inner">
             <div style="flex: 1; min-width: 200px">
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 12px;
-                  ">
-                <span class="tag tag-ai">AI + VR</span><span class="pill">Meta Quest</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px;">
+                <span class="tag tag-ai">AI + VR</span>
+                <span class="pill">Meta Quest</span>
+                <span class="pill">Duration: 6 months</span>
               </div>
-              <h3 style="
-                    font-size: 17px;
-                    font-weight: 600;
-                    color: var(--t1);
-                    margin-bottom: 8px;
-                  ">
+              <h3 style="font-size: 17px; font-weight: 600; color: var(--t1); margin-bottom: 8px;">
                 VR Rehearsal — AI Speech Training
               </h3>
-              <p style="
-                    font-size: 13px;
-                    color: var(--t2);
-                    line-height: 1.75;
-                    margin-bottom: 14px;
-                  ">
-                Practice public speaking in front of a virtual audience. AI
-                analysis tracks pace, filler words, and confidence markers,
-                then generates improvement reports — all inside VR in real
-                time.
+              <p style="font-size: 13px; color: var(--t2); line-height: 1.75; margin-bottom: 14px;">
+                <strong style="color: var(--t1);">Challenge:</strong> Improve public speaking skills with real‑time
+                feedback.<br>
+                <strong style="color: var(--t1);">Solution:</strong> AI‑powered analysis of pace, filler words, and
+                confidence in front of a virtual audience, delivering actionable reports.
               </p>
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 14px;
-                  ">
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px;">
                 <span class="pill">AI Analysis</span><span class="pill">Virtual Audience</span>
               </div>
-              <a href="ai-voice-analysis-vr-speech-trainer-unity-meta-quest" style="
-                    font-size: 13px;
-                    color: var(--gold);
-                    font-weight: 500;
-                    text-decoration: none;
-                  ">Read Case Study →</a>
+              <a href="ai-voice-analysis-vr-speech-trainer-unity-meta-quest"
+                style="font-size: 13px; color: var(--gold); font-weight: 500; text-decoration: none;">Read Case Study
+                →</a>
             </div>
             <a href="https://www.youtube.com/watch?v=b5EpoeN5gRg" target="_blank" rel="noopener noreferrer"
-              class="video-placeholder" style="
-                  width: 120px;
-                  min-height: 110px;
-                  padding: 0;
-                  overflow: hidden;
-                  cursor: pointer;
-                  text-decoration: none;
-                " aria-label="Watch VR Rehearsal AI Speech on YouTube"><img
-                src="https://img.youtube.com/vi/b5EpoeN5gRg/mqdefault.jpg" alt="VR Rehearsal AI Speech video thumbnail"
-                width="120" height="110" loading="lazy" style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 12px;
-                    display: block;
-                  " /></a>
+              class="video-placeholder"
+              style="width: 120px; min-height: 110px; padding: 0; overflow: hidden; cursor: pointer; text-decoration: none;"
+              aria-label="Watch VR Rehearsal AI Speech on YouTube">
+              <img src="https://img.youtube.com/vi/b5EpoeN5gRg/mqdefault.jpg"
+                alt="VR Rehearsal AI Speech video thumbnail" width="120" height="110" loading="lazy"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;" />
+            </a>
           </div>
         </article>
 
@@ -1113,65 +490,36 @@
         <article class="card" style="padding: 24px">
           <div class="project-card-inner">
             <div style="flex: 1; min-width: 200px">
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 12px;
-                  ">
-                <span class="tag tag-sport">Sports Tech</span><span class="pill">Desktop</span><span class="pill">Camera
-                  Sensors</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px;">
+                <span class="tag tag-sport">Sports Tech</span>
+                <span class="pill">Desktop</span>
+                <span class="pill">Camera Sensors</span>
+                <span class="pill">Duration: 2 months</span>
               </div>
-              <h3 style="
-                    font-size: 17px;
-                    font-weight: 600;
-                    color: var(--t1);
-                    margin-bottom: 8px;
-                  ">
+              <h3 style="font-size: 17px; font-weight: 600; color: var(--t1); margin-bottom: 8px;">
                 Shuffleboard Simulator — Sensor-Based Arcade
               </h3>
-              <p style="
-                    font-size: 13px;
-                    color: var(--t2);
-                    line-height: 1.75;
-                    margin-bottom: 14px;
-                  ">
-                Camera sensors track physical puck movement in real time.
-                Unity simulation mirrors gameplay — scores, turns, multiplayer
-                networking — with an arcade feel. Enterprise subcontract.
+              <p style="font-size: 13px; color: var(--t2); line-height: 1.75; margin-bottom: 14px;">
+                <strong style="color: var(--t1);">Challenge:</strong> Integrate camera sensor tracking with a Unity
+                simulation.<br>
+                <strong style="color: var(--t1);">Solution:</strong> Real‑time mirroring of physical puck movement,
+                complete with scoring, turns, and multiplayer networking for an arcade feel.
               </p>
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 14px;
-                  ">
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px;">
                 <span class="pill">SignalR</span><span class="pill">Real-Time</span>
               </div>
-              <a href="unity-custom-tcp-udp-networking-arcade-sensor-simulation" style="
-                    font-size: 13px;
-                    color: var(--gold);
-                    font-weight: 500;
-                    text-decoration: none;
-                  ">Read Case Study →</a>
+              <a href="unity-custom-tcp-udp-networking-arcade-sensor-simulation"
+                style="font-size: 13px; color: var(--gold); font-weight: 500; text-decoration: none;">Read Case Study
+                →</a>
             </div>
             <a href="https://www.youtube.com/watch?v=IoKQMNxJpdE" target="_blank" rel="noopener noreferrer"
-              class="video-placeholder" style="
-                  width: 120px;
-                  min-height: 110px;
-                  padding: 0;
-                  overflow: hidden;
-                  cursor: pointer;
-                  text-decoration: none;
-                " aria-label="Watch Shuffleboard Simulator on YouTube"><img
-                src="https://img.youtube.com/vi/IoKQMNxJpdE/mqdefault.jpg" alt="Shuffleboard Simulator video thumbnail"
-                width="120" height="110" loading="lazy" style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 12px;
-                    display: block;
-                  " /></a>
+              class="video-placeholder"
+              style="width: 120px; min-height: 110px; padding: 0; overflow: hidden; cursor: pointer; text-decoration: none;"
+              aria-label="Watch Shuffleboard Simulator on YouTube">
+              <img src="https://img.youtube.com/vi/IoKQMNxJpdE/mqdefault.jpg"
+                alt="Shuffleboard Simulator video thumbnail" width="120" height="110" loading="lazy"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;" />
+            </a>
           </div>
         </article>
 
@@ -1179,66 +527,34 @@
         <article class="card" style="padding: 24px">
           <div class="project-card-inner">
             <div style="flex: 1; min-width: 200px">
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 12px;
-                  ">
-                <span class="tag tag-meta">Metaverse</span><span class="pill">Saudi Arabia</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px;">
+                <span class="tag tag-meta">Metaverse</span>
+                <span class="pill">Saudi Arabia</span>
+                <span class="pill">Duration: 3 months</span>
               </div>
-              <h3 style="
-                    font-size: 17px;
-                    font-weight: 600;
-                    color: var(--t1);
-                    margin-bottom: 8px;
-                  ">
+              <h3 style="font-size: 17px; font-weight: 600; color: var(--t1); margin-bottom: 8px;">
                 Sportopia — Saudi Metaverse Module
               </h3>
-              <p style="
-                    font-size: 13px;
-                    color: var(--t2);
-                    line-height: 1.75;
-                    margin-bottom: 14px;
-                  ">
-                Subcontracted module from a large Saudi metaverse project. 4
-                interactive scenes, full UI/UX integration, dialog system, and
-                a playable mini soccer game — delivered within a structured
-                team pipeline.
+              <p style="font-size: 13px; color: var(--t2); line-height: 1.75; margin-bottom: 14px;">
+                <strong style="color: var(--t1);">Challenge:</strong> Deliver a module for a large Saudi metaverse
+                project.<br>
+                <strong style="color: var(--t1);">Solution:</strong> 4 interactive scenes with full UI/UX integration, a
+                dialog system, and a playable mini‑soccer game, all delivered within a structured team pipeline.
               </p>
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 14px;
-                  ">
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px;">
                 <span class="pill">Dialog System</span><span class="pill">Mini Game</span>
               </div>
-              <a href="coming-soon-template" style="
-                    font-size: 13px;
-                    color: var(--gold);
-                    font-weight: 500;
-                    text-decoration: none;
-                  ">Read Case Study →</a>
+              <a href="coming-soon-template"
+                style="font-size: 13px; color: var(--gold); font-weight: 500; text-decoration: none;">Read Case Study
+                →</a>
             </div>
-            <!-- VIDEO: Sportopia Saudi Metaverse — paste YouTube video ID below (e.g. dQw4w9WgXcQ) -->
             <a href="https://www.youtube.com/watch?v=PASTE_VIDEO_ID_HERE" target="_blank" rel="noopener noreferrer"
-              class="video-placeholder" style="
-                  width: 120px;
-                  min-height: 110px;
-                  padding: 0;
-                  overflow: hidden;
-                  cursor: pointer;
-                  text-decoration: none;
-                " aria-label="Watch Sportopia Saudi Metaverse on YouTube">
+              class="video-placeholder"
+              style="width: 120px; min-height: 110px; padding: 0; overflow: hidden; cursor: pointer; text-decoration: none;"
+              aria-label="Watch Sportopia Saudi Metaverse on YouTube">
               <img src="https://img.youtube.com/vi/PASTE_VIDEO_ID_HERE/mqdefault.jpg"
-                alt="Sportopia Saudi Metaverse video thumbnail" width="120" height="110" loading="lazy" style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 12px;
-                    display: block;
-                  " />
+                alt="Sportopia Saudi Metaverse video thumbnail" width="120" height="110" loading="lazy"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;" />
             </a>
           </div>
         </article>
@@ -1247,64 +563,35 @@
         <article class="card" style="padding: 24px">
           <div class="project-card-inner">
             <div style="flex: 1; min-width: 200px">
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 12px;
-                  ">
-                <span class="tag tag-detective">Detective VR</span><span class="pill">Meta Quest</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px;">
+                <span class="tag tag-detective">Detective VR</span>
+                <span class="pill">Meta Quest</span>
+                <span class="pill">Duration: 5 months</span>
               </div>
-              <h3 style="
-                    font-size: 17px;
-                    font-weight: 600;
-                    color: var(--t1);
-                    margin-bottom: 8px;
-                  ">
+              <h3 style="font-size: 17px; font-weight: 600; color: var(--t1); margin-bottom: 8px;">
                 I'm Sure Lock — Detective VR Game
               </h3>
-              <p style="
-                    font-size: 13px;
-                    color: var(--t2);
-                    line-height: 1.75;
-                    margin-bottom: 14px;
-                  ">
-                First-person detective VR game with investigation mechanics,
-                environmental storytelling, and puzzle solving. Shows consumer
-                VR product thinking alongside enterprise simulation work.
+              <p style="font-size: 13px; color: var(--t2); line-height: 1.75; margin-bottom: 14px;">
+                <strong style="color: var(--t1);">Challenge:</strong> Create a compelling detective VR game with
+                investigation mechanics.<br>
+                <strong style="color: var(--t1);">Solution:</strong> Environmental storytelling, puzzle solving, and
+                immersive interaction that showcases consumer VR product thinking.
               </p>
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 14px;
-                  ">
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px;">
                 <span class="pill">Unity 3D</span><span class="pill">Puzzle Design</span>
               </div>
-              <a href="meta-quest-vr-detective-game-90fps-optimization-unity" style="
-                    font-size: 13px;
-                    color: var(--gold);
-                    font-weight: 500;
-                    text-decoration: none;
-                  ">Read Case Study →</a>
+              <a href="meta-quest-vr-detective-game-90fps-optimization-unity"
+                style="font-size: 13px; color: var(--gold); font-weight: 500; text-decoration: none;">Read Case Study
+                →</a>
             </div>
             <a href="https://www.youtube.com/shorts/HHZiCeuiAbw" target="_blank" rel="noopener noreferrer"
-              class="video-placeholder" style="
-                  width: 120px;
-                  min-height: 110px;
-                  padding: 0;
-                  overflow: hidden;
-                  cursor: pointer;
-                  text-decoration: none;
-                " aria-label="Watch I'm Sure Lock Detective VR on YouTube"><img
-                src="https://img.youtube.com/vi/HHZiCeuiAbw/mqdefault.jpg"
-                alt="I'm Sure Lock Detective VR video thumbnail" width="120" height="110" loading="lazy" style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 12px;
-                    display: block;
-                  " /></a>
+              class="video-placeholder"
+              style="width: 120px; min-height: 110px; padding: 0; overflow: hidden; cursor: pointer; text-decoration: none;"
+              aria-label="Watch I'm Sure Lock Detective VR on YouTube">
+              <img src="https://img.youtube.com/vi/HHZiCeuiAbw/mqdefault.jpg"
+                alt="I'm Sure Lock Detective VR video thumbnail" width="120" height="110" loading="lazy"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;" />
+            </a>
           </div>
         </article>
 
@@ -1312,65 +599,36 @@
         <article class="card" style="padding: 24px">
           <div class="project-card-inner">
             <div style="flex: 1; min-width: 200px">
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 12px;
-                  ">
-                <span class="tag tag-game">Game Jam</span><span class="pill">WebGL</span><span
-                  class="pill">Android</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px;">
+                <span class="tag tag-game">Game Jam</span>
+                <span class="pill">WebGL</span>
+                <span class="pill">Android</span>
+                <span class="pill">Duration: 14-16 days</span>
               </div>
-              <h3 style="
-                    font-size: 17px;
-                    font-weight: 600;
-                    color: var(--t1);
-                    margin-bottom: 8px;
-                  ">
+              <h3 style="font-size: 17px; font-weight: 600; color: var(--t1); margin-bottom: 8px;">
                 Marduga — Multiplayer Vehicle Combat
               </h3>
-              <p style="
-                    font-size: 13px;
-                    color: var(--t2);
-                    line-height: 1.75;
-                    margin-bottom: 14px;
-                  ">
-                Built in 20 days for the Wavedash game jam (YC-backed gaming
-                platform). Multiplayer vehicle combat — shipped live on Play
-                Store and Wavedash. Solo dev, full delivery, under pressure.
+              <p style="font-size: 13px; color: var(--t2); line-height: 1.75; margin-bottom: 14px;">
+                <strong style="color: var(--t1);">Challenge:</strong> Build a multiplayer vehicle combat game in 20 days
+                for the Wavedash game jam.<br>
+                <strong style="color: var(--t1);">Solution:</strong> Solo development, full delivery — shipped live on
+                Play Store and Wavedash, proving delivery under extreme pressure.
               </p>
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 14px;
-                  ">
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px;">
                 <span class="pill">20-Day Build</span><span class="pill">Wavedash</span>
               </div>
-              <a href="unity-game-jam-1v1-car-battle-webgl-marduga" style="
-                    font-size: 13px;
-                    color: var(--gold);
-                    font-weight: 500;
-                    text-decoration: none;
-                  ">Read Case Study →</a>
+              <a href="unity-game-jam-1v1-car-battle-webgl-marduga"
+                style="font-size: 13px; color: var(--gold); font-weight: 500; text-decoration: none;">Read Case Study
+                →</a>
             </div>
             <a href="https://www.youtube.com/watch?v=NUnJIZUxywM" target="_blank" rel="noopener noreferrer"
-              class="video-placeholder" style="
-                  width: 120px;
-                  min-height: 110px;
-                  padding: 0;
-                  overflow: hidden;
-                  cursor: pointer;
-                  text-decoration: none;
-                " aria-label="Watch Marduga Multiplayer on YouTube"><img
-                src="https://img.youtube.com/vi/NUnJIZUxywM/mqdefault.jpg" alt="Marduga Multiplayer video thumbnail"
-                width="120" height="110" loading="lazy" style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 12px;
-                    display: block;
-                  " /></a>
+              class="video-placeholder"
+              style="width: 120px; min-height: 110px; padding: 0; overflow: hidden; cursor: pointer; text-decoration: none;"
+              aria-label="Watch Marduga Multiplayer on YouTube">
+              <img src="https://img.youtube.com/vi/NUnJIZUxywM/mqdefault.jpg" alt="Marduga Multiplayer video thumbnail"
+                width="120" height="110" loading="lazy"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;" />
+            </a>
           </div>
         </article>
 
@@ -1378,66 +636,138 @@
         <article class="card" style="padding: 24px">
           <div class="project-card-inner">
             <div style="flex: 1; min-width: 200px">
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 12px;
-                  ">
-                <span class="tag tag-detective">Early Work</span><span class="pill">Meta Quest</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px;">
+                <span class="tag tag-detective">Early Work</span>
+                <span class="pill">Meta Quest</span>
+                <span class="pill">Duration: 1 months</span>
               </div>
-              <h3 style="
-                    font-size: 17px;
-                    font-weight: 600;
-                    color: var(--t1);
-                    margin-bottom: 8px;
-                  ">
+              <h3 style="font-size: 17px; font-weight: 600; color: var(--t1); margin-bottom: 8px;">
                 Escape Room — Collaborative VR
               </h3>
-              <p style="
-                    font-size: 13px;
-                    color: var(--t2);
-                    line-height: 1.75;
-                    margin-bottom: 14px;
-                  ">
-                One of my earliest VR client projects. Partnered with 3D
-                artist Fahad — designed and built a full escape room VR
-                experience. Where the journey into XR seriously began.
+              <p style="font-size: 13px; color: var(--t2); line-height: 1.75; margin-bottom: 14px;">
+                <strong style="color: var(--t1);">Challenge:</strong> First VR client project – design and build a
+                collaborative escape room.<br>
+                <strong style="color: var(--t1);">Solution:</strong> Partnered with a 3D artist to deliver a full VR
+                escape room experience, marking the start of my XR journey.
               </p>
-              <div style="
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 7px;
-                    margin-bottom: 14px;
-                  ">
+              <div style="display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px;">
                 <span class="pill">Unity 3D</span><span class="pill">Team Project</span>
               </div>
-              <a href="coming-soon-template" style="
-                    font-size: 13px;
-                    color: var(--gold);
-                    font-weight: 500;
-                    text-decoration: none;
-                  ">Read more →</a>
+              <a href="coming-soon-template"
+                style="font-size: 13px; color: var(--gold); font-weight: 500; text-decoration: none;">Read more →</a>
             </div>
             <a href="https://www.youtube.com/watch?v=XLzH1PnYRUc" target="_blank" rel="noopener noreferrer"
-              class="video-placeholder" style="
-                  width: 120px;
-                  min-height: 110px;
-                  padding: 0;
-                  overflow: hidden;
-                  cursor: pointer;
-                  text-decoration: none;
-                " aria-label="Watch Escape Room VR on YouTube"><img
-                src="https://img.youtube.com/vi/XLzH1PnYRUc/mqdefault.jpg" alt="Escape Room VR thumbnail" width="120"
-                height="110" loading="lazy" style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 12px;
-                    display: block;
-                  " /></a>
+              class="video-placeholder"
+              style="width: 120px; min-height: 110px; padding: 0; overflow: hidden; cursor: pointer; text-decoration: none;"
+              aria-label="Watch Escape Room VR on YouTube">
+              <img src="https://img.youtube.com/vi/XLzH1PnYRUc/mqdefault.jpg" alt="Escape Room VR thumbnail" width="120"
+                height="110" loading="lazy"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;" />
+            </a>
           </div>
         </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me -->
+  <section id="about" aria-label="About me" style="padding: 0 24px 80px;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div style="max-width: 780px;">
+        <p class="section-label">About Me</p>
+
+        <!-- Belief Statement -->
+        <div style="margin-bottom: 24px; padding-left: 24px; border-left: 4px solid var(--gold);">
+          <h2 style="font-size: 30px; font-weight: 700; color: var(--t1); letter-spacing: -0.02em; line-height: 1.2;">
+            “I believe the best way to learn is by <span style="color: var(--gold);">interacting</span>.”
+          </h2>
+        </div>
+
+        <!-- Body -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <p style="font-size: 15px; line-height: 1.8; color: var(--t2);">
+            Based in Hyderabad, Pakistan, I am a Unity Engineer and XR Developer.
+            My work bridges competitive gaming, immersive simulations, and educational technology —
+            creating experiences that people don't just watch, they participate in.
+          </p>
+          <p style="font-size: 15px; line-height: 1.8; color: var(--t2);">
+            Whether it's a multiplayer game that sharpens reflexes, a VR simulation that prepares
+            soldiers for the field, or a history module that transports students to ancient Egypt —
+            interaction is the core of everything I build.
+          </p>
+          <p style="font-size: 15px; line-height: 1.8; color: var(--t2);">
+            Alongside development, I teach Unity and game development at Isra University.
+            Teaching forces me to deconstruct complex problems into fundamentals, which directly
+            influences my engineering process. Every student question is a new perspective.
+          </p>
+          <p style="font-size: 15px; line-height: 1.8; color: var(--t2);">
+            Currently, I am focused on scaling <strong style="color: var(--t1);">WitShells Studio</strong> —
+            bringing real-time multiplayer and XR solutions to clients across the globe.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ═══ EXPERTISE ═══ -->
+  <section id="expertise" aria-label="Technical expertise" style="padding:0 24px 100px;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="margin-bottom:40px;">
+        <p class="section-label">Technical Expertise</p>
+        <h2 class="section-title">The tools behind the work.</h2>
+        <p style="font-size:14px;color:var(--t2);margin-top:8px;max-width:560px;">I use the right tools for each
+          project. Here's what I'm most experienced with.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;">
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+          <h4 style="font-weight:600;font-size:14px;color:var(--t1);margin-bottom:12px;">🎮 Game Development</h4>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <span style="font-size:13px;color:var(--t2);">Unity</span>
+            <span style="font-size:13px;color:var(--t2);">C#</span>
+            <span style="font-size:13px;color:var(--t2);">Addressables</span>
+            <span style="font-size:13px;color:var(--t2);">URP</span>
+          </div>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+          <h4 style="font-weight:600;font-size:14px;color:var(--t1);margin-bottom:12px;">🥽 XR Development</h4>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <span style="font-size:13px;color:var(--t2);">Meta Quest</span>
+            <span style="font-size:13px;color:var(--t2);">OpenXR</span>
+            <span style="font-size:13px;color:var(--t2);">XR Interaction Toolkit</span>
+          </div>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+          <h4 style="font-weight:600;font-size:14px;color:var(--t1);margin-bottom:12px;">🌐 Networking</h4>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <span style="font-size:13px;color:var(--t2);">NetCode</span>
+            <span style="font-size:13px;color:var(--t2);">WebRTC</span>
+            <span style="font-size:13px;color:var(--t2);">Firebase</span>
+            <span style="font-size:13px;color:var(--t2);">TCP/UDP</span>
+          </div>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+          <h4 style="font-weight:600;font-size:14px;color:var(--t1);margin-bottom:12px;">⚙ Backend</h4>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <span style="font-size:13px;color:var(--t2);">ASP.NET Core</span>
+            <span style="font-size:13px;color:var(--t2);">REST APIs</span>
+            <span style="font-size:13px;color:var(--t2);">Docker</span>
+          </div>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+          <h4 style="font-weight:600;font-size:14px;color:var(--t1);margin-bottom:12px;">🔧 Workflow</h4>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <span style="font-size:13px;color:var(--t2);">Git</span>
+            <span style="font-size:13px;color:var(--t2);">Blender</span>
+            <span style="font-size:13px;color:var(--t2);">AI Coding Assistants</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1470,36 +800,10 @@
                 color: var(--t1);
                 margin-bottom: 4px;
               ">
-            WitMultiplayer
+            API Integration Templates
           </p>
           <p style="font-size: 12px; color: var(--t3)">
-            Plug-and-play multiplayer foundation — lobby, matchmaking, sync
-          </p>
-        </div>
-        <div class="pkg">
-          <p style="
-                font-weight: 600;
-                font-size: 14px;
-                color: var(--t1);
-                margin-bottom: 4px;
-              ">
-            WebRTC P2P
-          </p>
-          <p style="font-size: 12px; color: var(--t3)">
-            Peer-to-peer communication for Unity, no relay required
-          </p>
-        </div>
-        <div class="pkg">
-          <p style="
-                font-weight: 600;
-                font-size: 14px;
-                color: var(--t1);
-                margin-bottom: 4px;
-              ">
-            VR IK Motion Rig
-          </p>
-          <p style="font-size: 12px; color: var(--t3)">
-            One-click avatar IK integration for any humanoid in VR
+            REST + auth boilerplate for quick backend wiring in Unity
           </p>
         </div>
         <div class="pkg">
@@ -1549,6 +853,45 @@
                 color: var(--t1);
                 margin-bottom: 4px;
               ">
+            WitMultiplayer
+          </p>
+          <p style="font-size: 12px; color: var(--t3)">
+            Plug-and-play multiplayer foundation — lobby, matchmaking, sync
+          </p>
+        </div>
+        <div class="pkg">
+          <p style="
+                font-weight: 600;
+                font-size: 14px;
+                color: var(--t1);
+                margin-bottom: 4px;
+              ">
+            WebRTC P2P
+          </p>
+          <p style="font-size: 12px; color: var(--t3)">
+            Peer-to-peer communication for Unity, no relay required
+          </p>
+        </div>
+        <div class="pkg">
+          <p style="
+                font-weight: 600;
+                font-size: 14px;
+                color: var(--t1);
+                margin-bottom: 4px;
+              ">
+            VR IK Motion Rig
+          </p>
+          <p style="font-size: 12px; color: var(--t3)">
+            One-click avatar IK integration for any humanoid in VR
+          </p>
+        </div>
+        <div class="pkg">
+          <p style="
+                font-weight: 600;
+                font-size: 14px;
+                color: var(--t1);
+                margin-bottom: 4px;
+              ">
             UDP Broadcast
           </p>
           <p style="font-size: 12px; color: var(--t3)">
@@ -1566,19 +909,6 @@
           </p>
           <p style="font-size: 12px; color: var(--t3)">
             Predictive arc visualization for projectile-based gameplay
-          </p>
-        </div>
-        <div class="pkg">
-          <p style="
-                font-weight: 600;
-                font-size: 14px;
-                color: var(--t1);
-                margin-bottom: 4px;
-              ">
-            API Integration Templates
-          </p>
-          <p style="font-size: 12px; color: var(--t3)">
-            REST + auth boilerplate for quick backend wiring in Unity
           </p>
         </div>
       </div>
@@ -1782,33 +1112,41 @@
             </p>
           </div>
         </a>
-        <a href="coming-soon-template" style="text-decoration: none">
-          <div class="card" style="padding: 20px; height: 100%">
-            <span class="tag tag-game" style="margin-bottom: 12px; display: inline-flex">Devlog</span>
-            <h3 style="
-                  font-size: 14px;
-                  font-weight: 600;
-                  color: var(--t1);
-                  margin-bottom: 8px;
-                  line-height: 1.5;
-                ">
-              I Built a Cricket VR Experience in 2 Days — Here's What I
-              Learned
-            </h3>
-            <p style="font-size: 12px; color: var(--t3); line-height: 1.6">
-              No client, no deadline. Rapid experimentation and honest
-              technical notes.
-            </p>
-            <p style="
-                  font-size: 12px;
-                  color: var(--gold);
-                  margin-top: 12px;
-                  font-weight: 600;
-                ">
-              Read →
-            </p>
-          </div>
-        </a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Current focus" style="padding:0 24px 60px;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label">Current Focus</p>
+      <h2 style="
+          font-size: 24px;
+          font-weight: 700;
+          color: var(--t1);
+          margin-bottom: 24px;
+        ">
+        What I'm working on right now.
+      </h2>
+      <div
+        style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:16px 20px;text-align:center;">
+        <div
+          style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:16px 20px;text-align:center;">
+          <div style="font-size:24px;">🚗</div>
+          <h4 style="font-weight:600;font-size:14px;color:var(--t1);">Car Combat 1v1</h4>
+          <p style="font-size:12px;color:var(--t3);">Skill base competitive Car Game for Mobile & Arcade</p>
+        </div>
+        <div
+          style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:16px 20px;text-align:center;">
+          <div style="font-size:24px;">🎓</div>
+          <h4 style="font-weight:600;font-size:14px;color:var(--t1);">Teaching</h4>
+          <p style="font-size:12px;color:var(--t3);">Unity 3D at Isra University</p>
+        </div>
+        <div
+          style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:16px 20px;text-align:center;">
+          <div style="font-size:24px;">🏢</div>
+          <h4 style="font-weight:600;font-size:14px;color:var(--t1);">Open for Work</h4>
+          <p style="font-size:12px;color:var(--t3);">XR / Simulation / Multiplayer</p>
+        </div>
       </div>
     </div>
   </section>
@@ -2063,6 +1401,18 @@
         }
 
         requestAnimationFrame(tick);
+
+        // floating arrow
+        const btn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 600) {
+            btn.style.opacity = '1';
+            btn.style.visibility = 'visible';
+          } else {
+            btn.style.opacity = '0';
+            btn.style.visibility = 'hidden';
+          }
+        });
       }
 
       // ── Init ─────────────────────────────────────────────

@@ -429,6 +429,102 @@ body {
   text-transform: uppercase;
 }
 
+.tech-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.tech-list span{
+    color:var(--t2);
+    font-size:14px;
+    position:relative;
+    padding-left:18px;
+    line-height:1.5;
+}
+
+.tech-list span::before{
+    content:"•";
+    position:absolute;
+    left:0;
+    color:var(--gold);
+    font-weight:bold;
+}
+
+/* Process / How I Work arrows */
+    .process-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      transition: border-color 0.2s, transform 0.2s;
+      flex: 1;
+      min-width: 140px;
+      justify-content: center;
+    }
+    .process-step:hover {
+      border-color: var(--gold-border);
+      transform: translateY(-2px);
+    }
+    .process-step .num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-right: 4px;
+    }
+    .process-step .content {
+      text-align: left;
+    }
+    .process-step .content h4 {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--t1);
+      margin-bottom: 2px;
+    }
+    .process-step .content p {
+      font-size: 11px;
+      color: var(--t3);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .process-arrow {
+      font-size: 20px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .process-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px 4px;
+    }
+    @media (max-width: 640px) {
+      .process-arrow {
+        transform: rotate(90deg);
+        margin: 0 6px;
+      }
+      .process-step {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    /* About section */
+    .about-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--t2);
+    }
+    .about-text strong {
+      color: var(--t1);
+      font-weight: 600;
+    }
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .nav-links {
