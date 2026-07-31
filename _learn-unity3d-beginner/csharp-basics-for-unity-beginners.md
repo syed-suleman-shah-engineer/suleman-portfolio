@@ -337,7 +337,7 @@ for (int i = 0; i < 5; i++)
 
 ### Spawning coins with a loop
 
-Instead of placing 5 individual coin GameObjects by hand, we can write a `CoinSpawner` that creates them at random positions when the scene starts. As long as our coin prefab already has its collider set to **Is Trigger = true** and its tag set to `"Coin"`, every coin the loop spawns is ready to be collected automatically:
+Instead of placing 5 individual coin GameObjects by hand, we write a `CoinSpawner` that creates them at random positions when the scene starts. As long as our coin prefab already has its collider set to **Is Trigger = true** and its tag set to `"Coin"`, every coin the loop spawns is ready to be collected automatically:
 
 ```csharp
 using UnityEngine;
@@ -365,6 +365,8 @@ public class CoinSpawner : MonoBehaviour
 
 Change `coinCount` to `10` and the loop spawns 10 coins with no other changes. The loop scales automatically — the code stays the same regardless of how many coins you want.
 
+There's a catch, though. `AIController` needs an array of coin `Transform`s to search through (next section). Normally you'd fill an array like that by dragging GameObjects from the Hierarchy into the Inspector. But these coins don't exist in the Hierarchy until the game is already running — `Instantiate()` only creates them once you press Play. There is nothing sitting in the Editor to drag. We'll fix that properly in the next section.
+
 ---
 
 ## 8. Arrays
@@ -381,7 +383,59 @@ Arrays are useful whenever you have a collection of similar things — a list of
 
 ### The AI uses an array to find the nearest coin
 
-The `AIController` needs to know where all coins are so it can navigate toward the closest one. We store all coin positions in an array and loop through them to find the nearest:
+The `AIController` needs an array of all coin positions to search through:
+
+```csharp
+public Transform[] coins; // meant to hold every coin in the scene
+```
+
+This is where the problem from the last section comes back. `coins` is a public array, which normally means "drag the references in from the Hierarchy, in the Inspector." But we spawn these coins in code, at runtime — they never sat in the Editor waiting to be dragged. Leave this empty and press Play, and `AIController` has nothing to search through.
+
+**The fix: instead of the Editor assigning the reference, the spawner assigns it — in code, right after it creates the coins.**
+
+Update `CoinSpawner` to build an array as it spawns each coin, then hand that finished array directly to `AIController`:
+
+```csharp
+using UnityEngine;
+
+public class CoinSpawner : MonoBehaviour
+{
+    public GameObject coinPrefab;
+    public int coinCount = 5;
+    public AIController aiController; // who needs to know where the coins are
+
+    void Start()
+    {
+        Transform[] spawnedCoins = new Transform[coinCount];
+
+        for (int i = 0; i < coinCount; i++)
+        {
+            Vector3 randomPosition = new Vector3(
+                Random.Range(-8f, 8f),
+                0.5f,
+                Random.Range(-8f, 8f)
+            );
+
+            GameObject coin = Instantiate(coinPrefab, randomPosition, Quaternion.identity);
+            spawnedCoins[i] = coin.transform;
+        }
+
+        aiController.coins = spawnedCoins;
+    }
+}
+```
+
+Two references are doing different jobs here, and it's worth telling them apart:
+
+- `coinPrefab` is safe to drag into the Inspector before pressing Play, because it points at an **asset** — a prefab file sitting in your Project window. Assets exist whether or not the game is running.
+- `aiController` is also safe to drag in — `AIManager` is a real object already sitting in the Hierarchy before Play starts.
+- `aiController.coins`, on the other hand, cannot be assigned in the Editor, because the coins it should point to don't exist yet at edit time. So it gets assigned the same way you'd assign any variable — with a line of code — the instant the coins that fill it come into existence.
+
+This is still an object reference, the same idea from Section 4. It's just being wired up by a script instead of by you, because the objects on the other end are born at runtime.
+
+**One more question worth asking: does it matter whether `CoinSpawner.Start()` or `AIController.Start()` runs first?** No — and this is worth understanding, not just trusting. Unity always finishes calling `Start()` on *every* script in the scene before it calls `Update()` on *any* script. `AIController` only reads from `coins` inside `Update()` — never inside its own `Start()`. So by the time `AIController.Update()` runs for the first time, `CoinSpawner.Start()` has already finished completely, including its last line, `aiController.coins = spawnedCoins;`. The array is guaranteed to be filled before anything tries to read it.
+
+With that fixed, `AIController` itself doesn't need to change at all — it just needs to expect `coins` to arrive empty in the Inspector and get filled the moment the game starts:
 
 ```csharp
 using UnityEngine;
@@ -389,7 +443,7 @@ using UnityEngine;
 public class AIController : MonoBehaviour
 {
     public BallController ball;  // reference to the AI ball
-    public Transform[] coins;    // all coins in the scene
+    public Transform[] coins;    // filled in by CoinSpawner at runtime — left empty in the Inspector
 
     void Update()
     {
@@ -481,16 +535,23 @@ PlayerManager  (Empty GameObject)
 
 AIManager  (Empty GameObject)
     └─ AIController  →  ball: [AIBall's BallController]
-                        coins: [Coin_1, Coin_2, Coin_3, Coin_4, Coin_5]
+                        coins: (empty in the Inspector — filled by CoinSpawner at runtime)
 
 CoinSpawner  (Empty GameObject)
-    └─ CoinSpawner  →  coinPrefab: [Coin prefab]   coinCount: 5
+    └─ CoinSpawner  →  coinPrefab: [Coin prefab asset]
+                        coinCount: 5
+                        aiController: [AIManager's AIController]
+```
 
-Coin_1 through Coin_5  (Sphere, yellow material)
+```
+[Project window — not the Hierarchy]
+Coin  (Prefab: Sphere, yellow material)
     ├─ Tag: "Coin"
     ├─ Sphere Collider  →  Is Trigger: true
     └─ Coin script      →  spinSpeed: 90
 ```
+
+Notice you won't see 5 coin objects sitting in the Hierarchy before you press Play. They don't exist yet — `CoinSpawner.Start()` creates them once the game is running. That's exactly why `AIController` can't get a direct Inspector reference to them, and exactly why `CoinSpawner` has to hand the array off in code instead.
 
 The most important thing to see here: `BallController` is attached to **both** `PlayerBall` and `AIBall`. Same script, two separate instances with their own data. `PlayerInput` holds a reference only to `PlayerBall`'s copy. `AIController` holds a reference only to `AIBall`'s copy. Neither script can accidentally control the wrong ball. And now, both balls detect coins the same way — through physics, using their own `Sphere Collider` and `Rigidbody`, not through code living on the coin.
 
@@ -500,18 +561,18 @@ The most important thing to see here: `BallController` is attached to **both** `
 
 Every concept in this lesson appeared directly in the scene:
 
-| Concept                    | Where it appeared                                        |
-| -------------------------- | -------------------------------------------------------- |
-| **Data Types**             | `float speed`, `int score`, `bool isCoin`                |
-| **Variables**              | Storing speed, score, ball name, direction               |
-| **Unity Classes**          | `BallController`, `PlayerInput`, `AIController`, `Coin`  |
-| **Object References**      | `PlayerInput → PlayerBall`, `AIController → AIBall`      |
-| **Rigidbody & Physics**    | `rb.MovePosition()` inside `FixedUpdate()`               |
-| **Colliders & Triggers**   | `Sphere Collider` on balls; `Is Trigger = true` on coins |
-| **Tags & OnTriggerEnter**  | `other.CompareTag("Coin")` inside `OnTriggerEnter()`     |
-| **Conditional Statements** | Key input checks, `if (isCoin)`, distance comparisons    |
-| **Loops**                  | Spawning coins, finding the nearest coin                 |
-| **Arrays**                 | Storing all coin positions for the AI                    |
+| Concept                    | Where it appeared                                                                                                                                               |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Data Types**             | `float speed`, `int score`, `bool isCoin`                                                                                                                       |
+| **Variables**              | Storing speed, score, ball name, direction                                                                                                                      |
+| **Unity Classes**          | `BallController`, `PlayerInput`, `AIController`, `Coin`                                                                                                         |
+| **Object References**      | `PlayerInput → PlayerBall`, `AIController → AIBall`, and `CoinSpawner → AIController` assigned in code at runtime, since spawned coins don't exist at edit time |
+| **Rigidbody & Physics**    | `rb.MovePosition()` inside `FixedUpdate()`                                                                                                                      |
+| **Colliders & Triggers**   | `Sphere Collider` on balls; `Is Trigger = true` on coins                                                                                                        |
+| **Tags & OnTriggerEnter**  | `other.CompareTag("Coin")` inside `OnTriggerEnter()`                                                                                                            |
+| **Conditional Statements** | Key input checks, `if (isCoin)`, distance comparisons                                                                                                           |
+| **Loops**                  | Spawning coins, finding the nearest coin                                                                                                                        |
+| **Arrays**                 | Storing all coin positions for the AI                                                                                                                           |
 
 These are the foundations. Every Unity project — regardless of size or genre — is built on exactly these ideas at a larger scale. Once they feel natural in a small scene like this one, you will recognize them immediately in more complex projects.
 
