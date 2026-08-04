@@ -99,9 +99,11 @@ layout: default
             >
                 {% for lesson in lessons %}
                 {% if lesson.url == page.url %}
+                {% assign prev_index = forloop.index0 | minus: 1 %}
+                {% assign next_index = forloop.index0 | plus: 1 %}
                 {% if forloop.index0 > 0 %}
                 <a
-                    href="{{ lessons[forloop.index0 | minus: 1].url }}"
+                    href="{{ lessons[prev_index].url }}"
                     class="btn-ghost"
                     style="padding: 10px 16px; font-size: 13px"
                     >← Previous</a
@@ -111,7 +113,7 @@ layout: default
                 {% endif %}
                 {% if forloop.last == false %}
                 <a
-                    href="{{ lessons[forloop.index0 | plus: 1].url }}"
+                    href="{{ lessons[next_index].url }}"
                     class="btn-primary"
                     style="padding: 10px 16px; font-size: 13px"
                     >Next →</a
