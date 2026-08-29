@@ -178,8 +178,9 @@ Your development environment is now fully set up.
 
 ---
 
-**Contracted by NextSkill Isra Me**
+**Contracted by NextSkill**
+*a Gamestorms company, delivering this course for Isra University*
 
-![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png)
 
 ---

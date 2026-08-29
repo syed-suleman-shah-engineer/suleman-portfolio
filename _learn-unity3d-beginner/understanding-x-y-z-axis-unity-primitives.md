@@ -303,8 +303,9 @@ In the next article, you will learn how to bring these shapes to life with mater
 
 ---
 
-**Contracted by NextSkill Isra Me**
+**Contracted by NextSkill**
+*a Gamestorms company, delivering this course for Isra University*
 
-![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png)
 
 ---

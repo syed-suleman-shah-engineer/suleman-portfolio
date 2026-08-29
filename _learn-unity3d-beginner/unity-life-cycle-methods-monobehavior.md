@@ -625,8 +625,11 @@ After that, we will slow down and cover the fundamentals of C# itself: **data an
 
 ---
 
-**Contracted by NextSkill Isra Me**
+---
 
-![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+**Contracted by NextSkill**
+*a Gamestorms company, delivering this course for Isra University*
+
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png)
 
 ---

@@ -190,8 +190,9 @@ Your scene now has color and detail. In Lesson 4, it's time to make it feel real
 
 ---
 
-**Contracted by NextSkill Isra Me**
+**Contracted by NextSkill**
+*a Gamestorms company, delivering this course for Isra University*
 
-![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png)
 
 ---
