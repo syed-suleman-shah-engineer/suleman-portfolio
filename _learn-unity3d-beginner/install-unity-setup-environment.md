@@ -175,3 +175,11 @@ If you look at your project folder outside Unity, you will also see a few other 
 ---
 
 Your development environment is now fully set up.
+
+---
+
+**Contracted by NextSkill Isra Me**
+
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+
+---

@@ -267,3 +267,11 @@ One quick word on performance: physics components aren't free — every Rigidbod
 For now, the best thing you can do is keep experimenting. Change the numbers. Break things. Rebuild them. That's genuinely the fastest way to understand what each setting is really doing.
 
 Next lesson, you'll take your first step into scripting — writing your very first C# script, and learning how Unity's MonoBehaviour lifecycle actually works behind the scenes.
+
+---
+
+**Contracted by NextSkill Isra Me**
+
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+
+---

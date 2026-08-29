@@ -411,3 +411,11 @@ Without this, a player could still move and jump *while* a pause menu is open â€
 ## What's Next
 
 You now know how to install the New Input System, build an Input Actions asset, and read input four different ways â€” from a manual polling script, from event callbacks, from a script-local action, and directly from a device. In the next lesson, we will take the `Move` and `Jump` actions built here and use them to actually move and jump a character, tying input into physics and animation.
+
+---
+
+**Contracted by NextSkill Isra Me**
+
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+
+---

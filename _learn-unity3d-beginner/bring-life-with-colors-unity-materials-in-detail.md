@@ -187,3 +187,11 @@ Reuse the same material across similar objects. Turn on GPU Instancing or Static
 ## What's Next
 
 Your scene now has color and detail. In Lesson 4, it's time to make it feel real. We'll cover physics in Unity, including Rigidbody and Colliders. These let your objects fall, bounce, and collide like real-world objects.
+
+---
+
+**Contracted by NextSkill Isra Me**
+
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+
+---

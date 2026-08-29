@@ -581,3 +581,11 @@ These are the foundations. Every Unity project — regardless of size or genre �
 And when you ask an AI tool to write a script for you, you will be able to read it, judge it, and adjust it — because now you speak the language.
 
 Happy coding!
+
+---
+
+**Contracted by NextSkill Isra Me**
+
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+
+---

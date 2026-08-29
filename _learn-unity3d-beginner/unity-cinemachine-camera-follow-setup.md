@@ -235,3 +235,11 @@ You don't need to understand every script to use the package, but here is a shor
 And that's the full picture — from installing Cinemachine, to understanding how it really works, to a complete, working third-person character. Take your time experimenting with the Position Control and Rotation Control settings; that's the best way to build a feel for how each one behaves.
 
 If you have any questions, feel free to reach out on my WhatsApp.
+
+---
+
+**Contracted by NextSkill Isra Me**
+
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+
+---

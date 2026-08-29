@@ -300,3 +300,11 @@ Try this on your own. Look around you, and pick something new:
 Use the same habits here too. Break the object into parts, group them inside empty GameObjects, and duplicate whenever a piece repeats. If you can see it, you can build it.
 
 In the next article, you will learn how to bring these shapes to life with materials, textures, and colors.
+
+---
+
+**Contracted by NextSkill Isra Me**
+
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+
+---

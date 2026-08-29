@@ -622,3 +622,11 @@ Then, try building a third example of your own. A few ideas:
 In the next lesson, we will look at **reference types**. You will learn how one GameObject can access and control another GameObject's behavior, even though every GameObject is separate.
 
 After that, we will slow down and cover the fundamentals of C# itself: **data and data types**, **variables**, **conditional statements**, **loops**, and **arrays** (a collection of variables). These basics are simple, but they are the foundation for everything else. If you practice them well, then even when your code is generated for you, you will still understand exactly what it's doing.
+
+---
+
+**Contracted by NextSkill Isra Me**
+
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+
+---

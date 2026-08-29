@@ -8,3 +8,11 @@ track_title: Unity 3D Course for Beginners
 track_pill: Beginner Course
 track_description: Learn Unity 3D from scratch using simple, real-life analogies — no prior coding experience needed. This course covers the core building blocks of game development, including Transform and object movement, physics and collisions, the Animator and animation system, Unity's Event system, MonoBehaviour lifecycle methods (Awake, Start, Update, and more) and how to use them effectively, and building functional UI systems. By the end, you'll have built several complete casual mini-games — each with a working game loop and a simple in-game economy — ready to add to your portfolio.
 ---
+
+---
+
+**Contracted by NextSkill Isra Me**
+
+![NextSkill Isra Me sponsor banner](/images/nexskill-isra-me.png){width=50%}
+
+---
