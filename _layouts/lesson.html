@@ -8,40 +8,36 @@ layout: default
 {% assign collection_home_url = page.collection_home | default: default_collection_home_url %}
 {% assign raw_course_label = page.course_label | default: collection_key | replace: "_", " " %}
 {% assign label_words = raw_course_label | split: " " %}
-{% capture course_label %}{% for w in label_words %}{{ w | capitalize }}{% unless forloop.last %} {% endunless %}{% endfor %}{% endcapture %}
+{% capture course_label %}{% for w in label_words %}{{ w | capitalize }}{% unless forloop.last %} {% endunless %}{%
+endfor %}{% endcapture %}
 
 <section style="max-width: 1100px; margin: 0 auto; padding: 60px 24px 120px">
-    <div
-        style="
+    <div style="
             display: grid;
             grid-template-columns: minmax(0, 1fr) 320px;
             gap: 24px;
             align-items: start;
-        "
-        class="lesson-layout"
-    >
+        " class="lesson-layout">
         <article class="card" style="padding: 28px 26px">
-            <div
-                style="
+            <div style="
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     gap: 12px;
                     margin-bottom: 14px;
+                ">
+
+                href="{{ collection_home_url }}"
+                style="
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                color: var(--gold);
+                font-size: 13px;
+                text-decoration: none;
                 "
-            >
-                <a
-                    href="{{ collection_home_url }}"
-                    style="
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 6px;
-                        color: var(--gold);
-                        font-size: 13px;
-                        text-decoration: none;
-                    "
                 >
-                    ← All Lessons
+                ← All Lessons
                 </a>
 
                 <button id="themeToggle" aria-label="Toggle theme" title="Toggle dark / light mode">
@@ -56,38 +52,61 @@ layout: default
                 {% endif %}
             </div>
 
-            <h1
-                style="
+            <h1 style="
                     font-size: clamp(28px, 4vw, 42px);
                     font-weight: 700;
                     letter-spacing: -0.03em;
                     line-height: 1.12;
                     color: var(--t1);
                     margin-bottom: 14px;
-                "
-            >
+                ">
                 {{ page.title }}
             </h1>
 
             {% if page.description %}
-            <p
-                style="
+            <p style="
                     color: var(--t2);
                     line-height: 1.8;
                     font-size: 15px;
-                    margin-bottom: 28px;
+                    margin-bottom: 20px;
                     padding-bottom: 18px;
                     border-bottom: 1px solid var(--border);
-                "
-            >
+                ">
                 {{ page.description }}
             </p>
             {% endif %}
 
-            <div class="post-body">{{ content }}</div>
+            <!-- View mode toggle: Slides vs full article -->
+            <div class="lesson-view-toggle" role="group" aria-label="Lesson view mode">
+                <button type="button" id="viewSlideBtn" class="view-toggle-btn">🎞 Slides</button>
+                <button type="button" id="viewArticleBtn" class="view-toggle-btn">📄 Full article</button>
+            </div>
 
-            <div
-                style="
+            <!-- Original rendered markdown, used both as the "full article" view
+                 and as the source content that gets cloned into slides -->
+            <div class="post-body" id="postBodySource">{{ content }}</div>
+
+            <!-- Slide viewer, built from postBodySource by JS -->
+            <div class="slide-viewer" id="slideViewer" hidden>
+                <div class="slide-progress-track">
+                    <div class="slide-progress-fill" id="slideProgressFill"></div>
+                </div>
+
+                <div class="slide-stage post-body" id="slideStage"></div>
+
+                <div class="slide-nav">
+                    <button type="button" id="slidePrev" class="btn-ghost" style="padding: 10px 16px; font-size: 13px">←
+                        Prev</button>
+                    <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                        <div class="slide-counter" id="slideCounter">1 / 1</div>
+                        <div class="slide-dots" id="slideDots"></div>
+                    </div>
+                    <button type="button" id="slideNext" class="btn-primary"
+                        style="padding: 10px 16px; font-size: 13px">Next →</button>
+                </div>
+            </div>
+
+            <div style="
                     margin-top: 34px;
                     display: flex;
                     justify-content: space-between;
@@ -95,29 +114,26 @@ layout: default
                     flex-wrap: wrap;
                     border-top: 1px solid var(--border);
                     padding-top: 18px;
-                "
-            >
+                ">
                 {% for lesson in lessons %}
                 {% if lesson.url == page.url %}
                 {% assign prev_index = forloop.index0 | minus: 1 %}
                 {% assign next_index = forloop.index0 | plus: 1 %}
                 {% if forloop.index0 > 0 %}
-                <a
-                    href="{{ lessons[prev_index].url }}"
-                    class="btn-ghost"
-                    style="padding: 10px 16px; font-size: 13px"
-                    >← Previous</a
-                >
+
+                href="{{ lessons[prev_index].url }}"
+                class="btn-ghost"
+                style="padding: 10px 16px; font-size: 13px"
+                >← Previous Lesson</a>
                 {% else %}
                 <span></span>
                 {% endif %}
                 {% if forloop.last == false %}
-                <a
-                    href="{{ lessons[next_index].url }}"
-                    class="btn-primary"
-                    style="padding: 10px 16px; font-size: 13px"
-                    >Next →</a
-                >
+
+                href="{{ lessons[next_index].url }}"
+                class="btn-primary"
+                style="padding: 10px 16px; font-size: 13px"
+                >Next Lesson →</a>
                 {% endif %}
                 {% endif %}
                 {% endfor %}
@@ -125,16 +141,14 @@ layout: default
         </article>
 
         <aside class="card" style="padding: 18px; position: sticky; top: 88px">
-            <p
-                style="
+            <p style="
                     font-size: 10px;
                     font-weight: 700;
                     letter-spacing: 0.12em;
                     text-transform: uppercase;
                     color: var(--gold);
                     margin-bottom: 10px;
-                "
-            >
+                ">
                 Course Outline
             </p>
             <p style="font-size: 12px; color: var(--t3); margin-bottom: 14px">
@@ -146,70 +160,62 @@ layout: default
                     {% for lesson in lessons %}
                     <li>
                         {% if lesson.url == page.url %}
-                        <a
-                            href="{{ lesson.url }}"
-                            style="
-                                display: block;
-                                border: 1px solid var(--gold-border);
-                                border-radius: 10px;
-                                background: var(--gold-faint);
-                                padding: 10px 12px;
-                                text-decoration: none;
-                            "
+
+                        href="{{ lesson.url }}"
+                        style="
+                        display: block;
+                        border: 1px solid var(--gold-border);
+                        border-radius: 10px;
+                        background: var(--gold-faint);
+                        padding: 10px 12px;
+                        text-decoration: none;
+                        "
                         >
-                            <div
-                                style="
+                        <div style="
                                     font-size: 11px;
                                     font-family: 'JetBrains Mono', monospace;
                                     color: var(--t3);
                                     margin-bottom: 5px;
-                                "
-                            >
-                                Lesson {{ lesson.order | default: forloop.index }}
-                            </div>
-                            <div
-                                style="
+                                ">
+                            Lesson {{ lesson.order | default: forloop.index }}
+                        </div>
+                        <div style="
                                     color: var(--t1);
                                     font-size: 13px;
                                     line-height: 1.45;
                                     font-weight: 600;
-                                "
-                            >
-                                {{ lesson.title }}
-                            </div>
+                                ">
+                            {{ lesson.title }}
+                        </div>
                         </a>
                         {% else %}
-                        <a
-                            href="{{ lesson.url }}"
-                            style="
-                                display: block;
-                                border: 1px solid var(--border);
-                                border-radius: 10px;
-                                background: var(--card2);
-                                padding: 10px 12px;
-                                text-decoration: none;
-                            "
+
+                        href="{{ lesson.url }}"
+                        style="
+                        display: block;
+                        border: 1px solid var(--border);
+                        border-radius: 10px;
+                        background: var(--card2);
+                        padding: 10px 12px;
+                        text-decoration: none;
+                        "
                         >
-                            <div
-                                style="
+                        <div style="
                                     font-size: 11px;
                                     font-family: 'JetBrains Mono', monospace;
                                     color: var(--t3);
                                     margin-bottom: 5px;
-                                "
-                            >
-                                Lesson {{ lesson.order | default: forloop.index }}
-                            </div>
-                            <div
-                                style="
+                                ">
+                            Lesson {{ lesson.order | default: forloop.index }}
+                        </div>
+                        <div style="
                                     color: var(--t2);
                                     font-size: 13px;
                                     line-height: 1.45;
                                     font-weight: 500;
-                                "
-                            >
-                                {{ lesson.title }}
-                            </div>
+                                ">
+                            {{ lesson.title }}
+                        </div>
                         </a>
                         {% endif %}
                     </li>
@@ -235,15 +241,18 @@ layout: default
         --gold-faint: rgba(184, 149, 58, 0.1);
         --gold-border: rgba(184, 149, 58, 0.3);
     }
+
     body.light-mode .post-body pre code,
     body.light-mode .post-body .highlight pre code {
         color: #1f2328;
     }
+
     body.light-mode .code-copy-btn {
         background: rgba(246, 244, 240, 0.95);
         color: #2d2a26;
         border-color: rgba(0, 0, 0, 0.12);
     }
+
     body.light-mode .code-copy-btn:hover {
         color: #7a5a12;
         border-color: var(--gold-border);
@@ -256,6 +265,7 @@ layout: default
     body.light-mode .post-body .highlight .cs {
         color: #6a737d;
     }
+
     body.light-mode .post-body .highlight .k,
     body.light-mode .post-body .highlight .kd,
     body.light-mode .post-body .highlight .kn,
@@ -265,6 +275,7 @@ layout: default
     body.light-mode .post-body .highlight .ow {
         color: #cf222e;
     }
+
     body.light-mode .post-body .highlight .s,
     body.light-mode .post-body .highlight .sa,
     body.light-mode .post-body .highlight .sb,
@@ -279,6 +290,7 @@ layout: default
     body.light-mode .post-body .highlight .sx {
         color: #0a3069;
     }
+
     body.light-mode .post-body .highlight .m,
     body.light-mode .post-body .highlight .mf,
     body.light-mode .post-body .highlight .mh,
@@ -287,6 +299,7 @@ layout: default
     body.light-mode .post-body .highlight .mo {
         color: #0550ae;
     }
+
     body.light-mode .post-body .highlight .na,
     body.light-mode .post-body .highlight .nb,
     body.light-mode .post-body .highlight .nc,
@@ -299,6 +312,7 @@ layout: default
     body.light-mode .post-body .highlight .py {
         color: #8250df;
     }
+
     body.light-mode .post-body .highlight .nt,
     body.light-mode .post-body .highlight .nv,
     body.light-mode .post-body .highlight .vc,
@@ -306,11 +320,13 @@ layout: default
     body.light-mode .post-body .highlight .vi {
         color: #116329;
     }
+
     body.light-mode .post-body .highlight .o,
     body.light-mode .post-body .highlight .p,
     body.light-mode .post-body .highlight .w {
         color: #24292f;
     }
+
     body.light-mode .post-body .highlight .err {
         color: #d1242f;
     }
@@ -355,19 +371,141 @@ layout: default
         color: var(--t2);
         flex-shrink: 0;
     }
+
     #themeToggle:hover {
         border-color: var(--gold-border);
         transform: rotate(12deg) scale(1.05);
     }
+
     #themeToggle:active {
         transform: scale(0.92);
     }
+
     #themeIcon {
         transition:
             transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
             opacity 0.3s ease;
         display: inline-block;
         line-height: 1;
+    }
+
+    /* ---- View mode toggle ---- */
+    .lesson-view-toggle {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 22px;
+    }
+
+    .view-toggle-btn {
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        background: var(--card2);
+        color: var(--t2);
+        cursor: pointer;
+    }
+
+    .view-toggle-btn.active {
+        background: var(--gold-faint);
+        border-color: var(--gold-border);
+        color: var(--gold);
+    }
+
+    /* ---- Slide viewer ---- */
+    .slide-progress-track {
+        height: 4px;
+        background: var(--card2);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-bottom: 26px;
+    }
+
+    .slide-progress-fill {
+        height: 100%;
+        width: 0%;
+        background: var(--gold);
+        transition: width 0.3s ease;
+    }
+
+    .slide-stage {
+        position: relative;
+        min-height: 260px;
+    }
+
+    .slide {
+        display: none;
+    }
+
+    .slide.active {
+        display: block;
+        animation: slideFadeIn 0.35s ease;
+    }
+
+    @keyframes slideFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .slide>h2:first-child {
+        margin-top: 0;
+        font-size: clamp(20px, 3vw, 28px);
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .slide-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        margin-top: 28px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+    }
+
+    .slide-nav button:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+    }
+
+    .slide-counter {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--t3);
+    }
+
+    .slide-dots {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 220px;
+    }
+
+    .slide-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--card2);
+        border: 1px solid var(--border);
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .slide-dot.active {
+        background: var(--gold);
+        border-color: var(--gold);
     }
 
     .post-body h2 {
@@ -377,37 +515,44 @@ layout: default
         letter-spacing: -0.02em;
         margin: 34px 0 12px;
     }
+
     .post-body h3 {
         font-size: 17px;
         font-weight: 600;
         color: var(--t1);
         margin: 24px 0 9px;
     }
+
     .post-body p {
         font-size: 15px;
         color: var(--t2);
         line-height: 1.85;
         margin-bottom: 16px;
     }
+
     .post-body ul,
     .post-body ol {
         padding-left: 20px;
         margin-bottom: 18px;
     }
+
     .post-body li {
         font-size: 15px;
         color: var(--t2);
         line-height: 1.75;
         margin-bottom: 6px;
     }
+
     .post-body a {
         color: var(--gold);
         text-decoration: none;
     }
+
     .post-body a:hover {
         text-decoration: underline;
     }
-    .post-body :not(pre) > code {
+
+    .post-body :not(pre)>code {
         font-family: "JetBrains Mono", monospace;
         font-size: 12px;
         background: var(--card2);
@@ -416,6 +561,7 @@ layout: default
         border: 1px solid var(--border);
         color: var(--t1);
     }
+
     .post-body pre,
     .post-body .highlight pre {
         background: var(--card2);
@@ -429,12 +575,15 @@ layout: default
         tab-size: 2;
         user-select: text;
     }
+
     .post-body .highlight {
         margin-bottom: 20px;
     }
+
     .post-body .highlight pre {
         margin-bottom: 0;
     }
+
     .post-body pre code,
     .post-body .highlight pre code {
         background: none;
@@ -451,10 +600,12 @@ layout: default
         position: relative;
         margin-bottom: 20px;
     }
+
     .post-body .code-block-wrap pre,
     .post-body .code-block-wrap .highlight {
         margin-bottom: 0;
     }
+
     .code-copy-btn {
         position: absolute;
         top: 10px;
@@ -471,6 +622,7 @@ layout: default
         cursor: pointer;
         z-index: 2;
     }
+
     .code-copy-btn:hover {
         border-color: var(--gold-border);
         color: #f5d98d;
@@ -483,6 +635,7 @@ layout: default
         color: #8b949e;
         font-style: italic;
     }
+
     .post-body .highlight .k,
     .post-body .highlight .kd,
     .post-body .highlight .kn,
@@ -492,6 +645,7 @@ layout: default
     .post-body .highlight .ow {
         color: #ff7b72;
     }
+
     .post-body .highlight .s,
     .post-body .highlight .sa,
     .post-body .highlight .sb,
@@ -506,6 +660,7 @@ layout: default
     .post-body .highlight .sx {
         color: #a5d6ff;
     }
+
     .post-body .highlight .m,
     .post-body .highlight .mf,
     .post-body .highlight .mh,
@@ -514,6 +669,7 @@ layout: default
     .post-body .highlight .mo {
         color: #79c0ff;
     }
+
     .post-body .highlight .na,
     .post-body .highlight .nb,
     .post-body .highlight .nc,
@@ -526,6 +682,7 @@ layout: default
     .post-body .highlight .py {
         color: #d2a8ff;
     }
+
     .post-body .highlight .nt,
     .post-body .highlight .nv,
     .post-body .highlight .vc,
@@ -533,14 +690,17 @@ layout: default
     .post-body .highlight .vi {
         color: #7ee787;
     }
+
     .post-body .highlight .o,
     .post-body .highlight .p,
     .post-body .highlight .w {
         color: #c9d1d9;
     }
+
     .post-body .highlight .err {
         color: #ffa198;
     }
+
     .post-body blockquote {
         border-left: 3px solid var(--gold);
         padding: 4px 0 4px 18px;
@@ -548,12 +708,14 @@ layout: default
         color: var(--t2);
         font-style: italic;
     }
+
     .post-body img {
         width: 100%;
         border-radius: 12px;
         border: 1px solid var(--border);
         margin: 20px 0;
     }
+
     .post-body hr {
         border: none;
         border-top: 1px solid var(--border);
@@ -571,42 +733,182 @@ layout: default
     (function () {
         "use strict";
 
-        const blocks = document.querySelectorAll(".post-body pre");
-        blocks.forEach(function (pre) {
-            if (pre.closest(".code-block-wrap")) {
-                return;
-            }
-
-            const wrapper = document.createElement("div");
-            wrapper.className = "code-block-wrap";
-            pre.parentNode.insertBefore(wrapper, pre);
-            wrapper.appendChild(pre);
-
-            const button = document.createElement("button");
-            button.type = "button";
-            button.className = "code-copy-btn";
-            button.textContent = "Copy";
-            button.setAttribute("aria-label", "Copy code");
-            wrapper.appendChild(button);
-
-            button.addEventListener("click", async function () {
-                const codeEl = pre.querySelector("code");
-                const text = codeEl ? codeEl.innerText : pre.innerText;
-
-                try {
-                    await navigator.clipboard.writeText(text.replace(/\n$/, ""));
-                    button.textContent = "Copied";
-                    setTimeout(function () {
-                        button.textContent = "Copy";
-                    }, 1200);
-                } catch (err) {
-                    button.textContent = "Failed";
-                    setTimeout(function () {
-                        button.textContent = "Copy";
-                    }, 1200);
+        // Adds a "Copy" button to every <pre> code block inside a given container
+        function addCopyButtons(root) {
+            const blocks = root.querySelectorAll("pre");
+            blocks.forEach(function (pre) {
+                if (pre.closest(".code-block-wrap")) {
+                    return;
                 }
+
+                const wrapper = document.createElement("div");
+                wrapper.className = "code-block-wrap";
+                pre.parentNode.insertBefore(wrapper, pre);
+                wrapper.appendChild(pre);
+
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "code-copy-btn";
+                button.textContent = "Copy";
+                button.setAttribute("aria-label", "Copy code");
+                wrapper.appendChild(button);
+
+                button.addEventListener("click", async function () {
+                    const codeEl = pre.querySelector("code");
+                    const text = codeEl ? codeEl.innerText : pre.innerText;
+
+                    try {
+                        await navigator.clipboard.writeText(text.replace(/\n$/, ""));
+                        button.textContent = "Copied";
+                        setTimeout(function () {
+                            button.textContent = "Copy";
+                        }, 1200);
+                    } catch (err) {
+                        button.textContent = "Failed";
+                        setTimeout(function () {
+                            button.textContent = "Copy";
+                        }, 1200);
+                    }
+                });
             });
+        }
+
+        addCopyButtons(document);
+
+        // ---- Slide builder ----
+        const source = document.getElementById("postBodySource");
+        const stage = document.getElementById("slideStage");
+        const viewer = document.getElementById("slideViewer");
+
+        if (!source || !stage || !viewer) {
+            return;
+        }
+
+        // Group the rendered markdown's top-level children into slides.
+        // A new slide starts at every <h2>. Anything before the first <h2>
+        // becomes an intro slide (if there's content there).
+        const nodes = Array.from(source.children);
+        const groups = [];
+        let current = [];
+
+        nodes.forEach(function (node) {
+            if (node.tagName === "H2" && current.length) {
+                groups.push(current);
+                current = [];
+            }
+            current.push(node);
         });
+        if (current.length) {
+            groups.push(current);
+        }
+
+        // Nothing to paginate (no H2s, or empty) — just show the full article.
+        if (groups.length <= 1) {
+            document.getElementById("viewSlideBtn").style.display = "none";
+            document.getElementById("viewArticleBtn").style.display = "none";
+            return;
+        }
+
+        groups.forEach(function (group, i) {
+            const slideEl = document.createElement("div");
+            slideEl.className = "slide";
+            slideEl.dataset.index = i;
+            group.forEach(function (node) {
+                slideEl.appendChild(node.cloneNode(true));
+            });
+            stage.appendChild(slideEl);
+        });
+
+        addCopyButtons(stage);
+
+        const slideEls = Array.from(stage.querySelectorAll(".slide"));
+        const total = slideEls.length;
+        let currentIndex = 0;
+
+        const prevBtn = document.getElementById("slidePrev");
+        const nextBtn = document.getElementById("slideNext");
+        const counter = document.getElementById("slideCounter");
+        const progressFill = document.getElementById("slideProgressFill");
+        const dotsWrap = document.getElementById("slideDots");
+
+        slideEls.forEach(function (_, i) {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "slide-dot";
+            dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+            dot.addEventListener("click", function () {
+                goTo(i);
+            });
+            dotsWrap.appendChild(dot);
+        });
+        const dotEls = Array.from(dotsWrap.querySelectorAll(".slide-dot"));
+
+        function render() {
+            slideEls.forEach(function (el, i) {
+                el.classList.toggle("active", i === currentIndex);
+            });
+            dotEls.forEach(function (el, i) {
+                el.classList.toggle("active", i === currentIndex);
+            });
+            counter.textContent = (currentIndex + 1) + " / " + total;
+            progressFill.style.width = (((currentIndex + 1) / total) * 100) + "%";
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === total - 1;
+        }
+
+        function goTo(i) {
+            currentIndex = Math.max(0, Math.min(total - 1, i));
+            render();
+        }
+
+        prevBtn.addEventListener("click", function () { goTo(currentIndex - 1); });
+        nextBtn.addEventListener("click", function () { goTo(currentIndex + 1); });
+
+        document.addEventListener("keydown", function (e) {
+            if (viewer.hidden) return;
+            if (e.key === "ArrowRight") goTo(currentIndex + 1);
+            if (e.key === "ArrowLeft") goTo(currentIndex - 1);
+        });
+
+        // Basic swipe support
+        let touchStartX = null;
+        stage.addEventListener("touchstart", function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        stage.addEventListener("touchend", function (e) {
+            if (touchStartX === null) return;
+            const dx = e.changedTouches[0].screenX - touchStartX;
+            if (Math.abs(dx) > 50) {
+                dx < 0 ? goTo(currentIndex + 1) : goTo(currentIndex - 1);
+            }
+            touchStartX = null;
+        });
+
+        render();
+
+        // ---- View mode toggle (slides vs full article) ----
+        const slideBtn = document.getElementById("viewSlideBtn");
+        const articleBtn = document.getElementById("viewArticleBtn");
+
+        function setMode(mode) {
+            if (mode === "article") {
+                source.hidden = false;
+                viewer.hidden = true;
+                articleBtn.classList.add("active");
+                slideBtn.classList.remove("active");
+            } else {
+                source.hidden = true;
+                viewer.hidden = false;
+                slideBtn.classList.add("active");
+                articleBtn.classList.remove("active");
+            }
+            localStorage.setItem("lesson-view-mode", mode);
+        }
+
+        slideBtn.addEventListener("click", function () { setMode("slides"); });
+        articleBtn.addEventListener("click", function () { setMode("article"); });
+
+        setMode(localStorage.getItem("lesson-view-mode") || "slides");
     })();
 </script>
 
