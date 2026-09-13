@@ -26,18 +26,15 @@ endfor %}{% endcapture %}
                     gap: 12px;
                     margin-bottom: 14px;
                 ">
-
-                href="{{ collection_home_url }}"
-                style="
-                display: inline-flex;
-                align-items: center;
-                gap: 6px;
-                color: var(--gold);
-                font-size: 13px;
-                text-decoration: none;
-                "
-                >
-                ← All Lessons
+                <a href="{{ collection_home_url }}" style="
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                        color: var(--gold);
+                        font-size: 13px;
+                        text-decoration: none;
+                    ">
+                    ← All Lessons
                 </a>
 
                 <button id="themeToggle" aria-label="Toggle theme" title="Toggle dark / light mode">
@@ -78,8 +75,8 @@ endfor %}{% endcapture %}
 
             <!-- View mode toggle: Slides vs full article -->
             <div class="lesson-view-toggle" role="group" aria-label="Lesson view mode">
-                <button type="button" id="viewSlideBtn" class="view-toggle-btn">🎞 Slides</button>
-                <button type="button" id="viewArticleBtn" class="view-toggle-btn">📄 Full article</button>
+                <button type="button" id="viewSlideBtn" class="view-toggle-btn">Slides</button>
+                <button type="button" id="viewArticleBtn" class="view-toggle-btn">Full article</button>
             </div>
 
             <!-- Original rendered markdown, used both as the "full article" view
@@ -120,20 +117,14 @@ endfor %}{% endcapture %}
                 {% assign prev_index = forloop.index0 | minus: 1 %}
                 {% assign next_index = forloop.index0 | plus: 1 %}
                 {% if forloop.index0 > 0 %}
-
-                href="{{ lessons[prev_index].url }}"
-                class="btn-ghost"
-                style="padding: 10px 16px; font-size: 13px"
-                >← Previous Lesson</a>
+                <a href="{{ lessons[prev_index].url }}" class="btn-ghost" style="padding: 10px 16px; font-size: 13px">←
+                    Previous Lesson</a>
                 {% else %}
                 <span></span>
                 {% endif %}
                 {% if forloop.last == false %}
-
-                href="{{ lessons[next_index].url }}"
-                class="btn-primary"
-                style="padding: 10px 16px; font-size: 13px"
-                >Next Lesson →</a>
+                <a href="{{ lessons[next_index].url }}" class="btn-primary"
+                    style="padding: 10px 16px; font-size: 13px">Next Lesson →</a>
                 {% endif %}
                 {% endif %}
                 {% endfor %}
@@ -160,62 +151,56 @@ endfor %}{% endcapture %}
                     {% for lesson in lessons %}
                     <li>
                         {% if lesson.url == page.url %}
-
-                        href="{{ lesson.url }}"
-                        style="
-                        display: block;
-                        border: 1px solid var(--gold-border);
-                        border-radius: 10px;
-                        background: var(--gold-faint);
-                        padding: 10px 12px;
-                        text-decoration: none;
-                        "
-                        >
-                        <div style="
+                        <a href="{{ lesson.url }}" style="
+                                display: block;
+                                border: 1px solid var(--gold-border);
+                                border-radius: 10px;
+                                background: var(--gold-faint);
+                                padding: 10px 12px;
+                                text-decoration: none;
+                            ">
+                            <div style="
                                     font-size: 11px;
                                     font-family: 'JetBrains Mono', monospace;
                                     color: var(--t3);
                                     margin-bottom: 5px;
                                 ">
-                            Lesson {{ lesson.order | default: forloop.index }}
-                        </div>
-                        <div style="
+                                Lesson {{ lesson.order | default: forloop.index }}
+                            </div>
+                            <div style="
                                     color: var(--t1);
                                     font-size: 13px;
                                     line-height: 1.45;
                                     font-weight: 600;
                                 ">
-                            {{ lesson.title }}
-                        </div>
+                                {{ lesson.title }}
+                            </div>
                         </a>
                         {% else %}
-
-                        href="{{ lesson.url }}"
-                        style="
-                        display: block;
-                        border: 1px solid var(--border);
-                        border-radius: 10px;
-                        background: var(--card2);
-                        padding: 10px 12px;
-                        text-decoration: none;
-                        "
-                        >
-                        <div style="
+                        <a href="{{ lesson.url }}" style="
+                                display: block;
+                                border: 1px solid var(--border);
+                                border-radius: 10px;
+                                background: var(--card2);
+                                padding: 10px 12px;
+                                text-decoration: none;
+                            ">
+                            <div style="
                                     font-size: 11px;
                                     font-family: 'JetBrains Mono', monospace;
                                     color: var(--t3);
                                     margin-bottom: 5px;
                                 ">
-                            Lesson {{ lesson.order | default: forloop.index }}
-                        </div>
-                        <div style="
+                                Lesson {{ lesson.order | default: forloop.index }}
+                            </div>
+                            <div style="
                                     color: var(--t2);
                                     font-size: 13px;
                                     line-height: 1.45;
                                     font-weight: 500;
                                 ">
-                            {{ lesson.title }}
-                        </div>
+                                {{ lesson.title }}
+                            </div>
                         </a>
                         {% endif %}
                     </li>
