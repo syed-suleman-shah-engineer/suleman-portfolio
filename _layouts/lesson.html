@@ -613,6 +613,73 @@ endfor %}{% endcapture %}
         color: #f5d98d;
     }
 
+    /* ============================================
+       TABLE STYLES — NEW, fixes the distorted look
+       ============================================ */
+    .post-body table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 22px 0;
+        font-size: 14px;
+        background: var(--card2);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        table-layout: auto;
+    }
+
+    .post-body thead {
+        background: var(--gold-faint);
+    }
+
+    .post-body th {
+        padding: 12px 14px;
+        text-align: left;
+        font-weight: 600;
+        color: var(--t1);
+        font-size: 13px;
+        letter-spacing: 0.02em;
+        border-bottom: 1px solid var(--gold-border);
+        vertical-align: bottom;
+    }
+
+    .post-body td {
+        padding: 11px 14px;
+        color: var(--t2);
+        font-size: 14px;
+        line-height: 1.6;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+    }
+
+    .post-body tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .post-body tbody tr:hover td {
+        background: var(--gold-faint);
+    }
+
+    /* Inline code inside table cells should not overflow */
+    .post-body td code,
+    .post-body th code {
+        font-size: 12px;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    /* Force bold markdown in cells to inherit theme colours */
+    .post-body td strong,
+    .post-body th strong {
+        color: var(--t1);
+        font-weight: 600;
+    }
+
+    /* ============================================
+       END TABLE STYLES
+       ============================================ */
+
     .post-body .highlight .c,
     .post-body .highlight .cm,
     .post-body .highlight .c1,
@@ -710,6 +777,23 @@ endfor %}{% endcapture %}
     @media (max-width: 980px) {
         .lesson-layout {
             grid-template-columns: 1fr !important;
+        }
+    }
+
+    /* Responsive tables on small screens */
+    @media (max-width: 640px) {
+
+        .post-body table {
+            font-size: 12.5px;
+        }
+
+        .post-body th,
+        .post-body td {
+            padding: 8px 10px;
+        }
+
+        .post-body th {
+            font-size: 12px;
         }
     }
 </style>
