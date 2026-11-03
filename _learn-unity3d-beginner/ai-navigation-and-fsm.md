@@ -1,6 +1,6 @@
 ---
 title: "AI Navigation and Finite State Machines: Smart Enemies"
-order: 13
+order: 14
 tags: ["unity", "ai", "navmesh", "navigation", "fsm", "state-machine", "enemies", "agents"]
 description: "Make characters walk around a level by themselves with NavMesh, then give them a brain with a Finite State Machine."
 ---
