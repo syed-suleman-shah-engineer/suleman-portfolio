@@ -1,19 +1,13 @@
 ---
-title: "Lesson 15: Save the Humans"
-lesson: 15
-tags:
-  - unity
-  - beginner
-  - input-system
-  - raycast
-  - interfaces
-  - vertical-slice
-  - android
-  - mobile-game
+title: "Save the Humans: Tap to Shoot, Interfaces and the Vertical Slice"
+order: 15
+tags: ["unity", "beginner", "vertical-slice", "input-system", "raycast", "interfaces", "mobile-game", "android", "game-design", "zombie"]
 description: "Build a complete tap-to-shoot zombie game from a fresh project. Learn tap input that works on touch and mouse, raycasts, interfaces and a simple chase. Then build it for Android."
 ---
 
-## What we are building
+# Save the Humans: Tap to Shoot, Interfaces and the Vertical Slice
+
+## What you will build
 
 The zombies are coming. A group of humans is running toward the safe line, right next to you. Behind each human, a hungry zombie is running **faster**. You have one job: **tap the zombies and shoot them before they catch the humans.**
 
@@ -28,13 +22,14 @@ The zombies are coming. A group of humans is running toward the safe line, right
 
 The camera does not move. The game is simple on purpose. A simple game is a game you can finish today, and a finished game is a game you can put on a phone.
 
-By the end of this lesson you will have:
+By the end of this lesson you can:
 
-- A new URP project with a working game loop.
-- Tap input that works with a mouse **and** a touch screen.
-- Two kinds of characters that share one **interface**.
-- A simple **chase** made with one line of code.
-- A build for Android (or for PC, if Android is not installed on your lab computer).
+- Explain what a vertical slice is and write a slice plan for a game.
+- Build a new URP project with a working game loop.
+- Write tap input that works with a mouse **and** a touch screen.
+- Use one **interface** for two kinds of characters.
+- Make a simple **chase** with one line of code.
+- Build the game for Android (or for PC, if Android is not installed on your lab computer).
 
 > **Fresh PC today?** Good. This lesson starts from an empty project. You do not need anything from earlier lessons.
 
@@ -122,7 +117,7 @@ Keep this table open while you work. After each stage, ask yourself: *"Which ste
 
 A mouse click and a finger tap are almost the same thing. Both say: "the user pressed **here** on the screen."
 
-Unity's Input System has a thing called a **Pointer**. A Pointer can be a mouse, a finger, or a pen. If we ask for `Pointer.current`, Unity gives us whichever one the user used last. So one script works on the PC and on the phone.
+Unity's Input System has a thing called a **Pointer**. A Pointer can be a mouse, a finger, or a pen. If we ask for `Pointer.current`, Unity gives us whichever one the user used last. So one script works on the PC and on the phone. You already used `Pointer.current` in the tap-to-move script in Lesson 14.
 
 ### Idea 2: Raycast
 
@@ -153,6 +148,8 @@ transform.position = Vector3.MoveTowards(transform.position, target.position, st
 ```
 
 `MoveTowards` says: "Start here, aim at that point, move this far." Do it every frame and the zombie follows its target wherever it goes. It is a chase in one line.
+
+In Lesson 14 the zombie used a NavMeshAgent. Here the road is flat and open, so `MoveTowards` is enough.
 
 | Word            | Meaning                                                                                 |
 | --------------- | --------------------------------------------------------------------------------------- |
@@ -265,7 +262,7 @@ using UnityEngine;
 
 public class Human : MonoBehaviour, IDamageable
 {
-    [SerializeField] float speed = 2.5f;
+    [SerializeField] private float speed = 2.5f;
 
     public void SetSpeed(float newSpeed)
     {
@@ -292,7 +289,7 @@ Look at the first line of the class: `MonoBehaviour, IDamageable`. This is how a
 Now add the **safe line**. When the human reaches it, the human is saved. Add one field and change `Update`:
 
 ```csharp
-[SerializeField] float safeLineZ = 0f;
+[SerializeField] private float safeLineZ = 0f;
 
 void Update()
 {
@@ -319,9 +316,9 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour, IDamageable
 {
-    [SerializeField] float speed = 4f;
+    [SerializeField] private float speed = 4f;
 
-    Human target;
+    private Human target;
 
     public void SetTarget(Human human)
     {
@@ -355,7 +352,7 @@ public class Zombie : MonoBehaviour, IDamageable
 Now add the **eating**. Add a field, and add the last lines to `Update`:
 
 ```csharp
-[SerializeField] float eatDistance = 1.2f;
+[SerializeField] private float eatDistance = 1.2f;
 
 void Update()
 {
@@ -402,22 +399,22 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] Human humanPrefab;
-    [SerializeField] Zombie zombiePrefab;
-    [SerializeField] int humanCount = 8;
-    [SerializeField] float timeBetweenGroups = 2.5f;
-    [SerializeField] float humanStartZ = 25f;
-    [SerializeField] float zombieGap = 8f;
-    [SerializeField] float roadHalfWidth = 6f;
-    [SerializeField] Vector2 humanSpeedRange = new Vector2(2f, 3f);
-    [SerializeField] Vector2 zombieSpeedRange = new Vector2(4f, 5f);
+    [SerializeField] private Human humanPrefab;
+    [SerializeField] private Zombie zombiePrefab;
+    [SerializeField] private int humanCount = 8;
+    [SerializeField] private float timeBetweenGroups = 2.5f;
+    [SerializeField] private float humanStartZ = 25f;
+    [SerializeField] private float zombieGap = 8f;
+    [SerializeField] private float roadHalfWidth = 6f;
+    [SerializeField] private Vector2 humanSpeedRange = new Vector2(2f, 3f);
+    [SerializeField] private Vector2 zombieSpeedRange = new Vector2(4f, 5f);
 
     void Start()
     {
         StartCoroutine(SpawnRoutine());
     }
 
-    IEnumerator SpawnRoutine()
+    private IEnumerator SpawnRoutine()
     {
         for (int i = 0; i < humanCount; i++)
         {
@@ -426,7 +423,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    void SpawnGroup()
+    private void SpawnGroup()
     {
         float x = Random.Range(-roadHalfWidth, roadHalfWidth);
 
@@ -511,9 +508,9 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    [SerializeField] InputReader input;
-    [SerializeField] Camera cam;
-    [SerializeField] float maxDistance = 100f;
+    [SerializeField] private InputReader input;
+    [SerializeField] private Camera cam;
+    [SerializeField] private float maxDistance = 100f;
 
     void OnEnable()
     {
@@ -525,7 +522,7 @@ public class Shooter : MonoBehaviour
         input.Tapped -= OnTapped;
     }
 
-    void OnTapped(Vector2 screenPosition)
+    private void OnTapped(Vector2 screenPosition)
     {
         Ray ray = cam.ScreenPointToRay(screenPosition);
 
@@ -591,10 +588,10 @@ using UnityEngine;
 
 public class GameHud : MonoBehaviour
 {
-    [SerializeField] TMP_Text livesText;
-    [SerializeField] TMP_Text savedText;
-    [SerializeField] GameObject resultPanel;
-    [SerializeField] TMP_Text resultText;
+    [SerializeField] private TMP_Text livesText;
+    [SerializeField] private TMP_Text savedText;
+    [SerializeField] private GameObject resultPanel;
+    [SerializeField] private TMP_Text resultText;
 
     void Awake()
     {
@@ -645,13 +642,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [SerializeField] int startingLives = 3;
-    [SerializeField] GameHud hud;
+    [SerializeField] private int startingLives = 3;
+    [SerializeField] private GameHud hud;
 
-    int lives;
-    int totalHumans;
-    int saved;
-    int lost;
+    private int lives;
+    private int totalHumans;
+    private int saved;
+    private int lost;
 
     public GameState State { get; private set; } = GameState.Playing;
     public bool IsPlaying => State == GameState.Playing;
@@ -687,7 +684,7 @@ public class GameManager : MonoBehaviour
         CheckEnd();
     }
 
-    void CheckEnd()
+    private void CheckEnd()
     {
         if (lives <= 0)
         {
@@ -699,7 +696,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void EndGame(bool won)
+    private void EndGame(bool won)
     {
         State = GameState.GameOver;
         hud.ShowResult(won, saved, totalHumans);
@@ -780,7 +777,7 @@ void Start()
 **In `Shooter`:** add one line at the top of `OnTapped`, so tapping does nothing after the game ends:
 
 ```csharp
-void OnTapped(Vector2 screenPosition)
+private void OnTapped(Vector2 screenPosition)
 {
     if (!GameManager.Instance.IsPlaying) return;
 
@@ -875,6 +872,39 @@ If Android was missing today, install the **Android Build Support** module at ho
 
 ---
 
+## Common mistakes
+
+| What you see                                      | Why it happens                                                                                                   | The fix                                                |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| Tapping does nothing                              | **Active Input Handling** is set to the old Input Manager, or the `Input` object is not dragged into the Shooter | Check Player Settings and the Shooter in the Inspector |
+| Error: NullReference on `GameManager.Instance`    | There is no `GameManager` object in the scene                                                                    | Create it and add the script                           |
+| Error: `Human` or `Zombie` not found in `Spawner` | A script name does not match its class name                                                                      | The file name and the class name must be the same      |
+| Humans walk past the line and nothing happens     | `SafeLine` is not at Z = 0, or `safeLineZ` is a different number                                                 | Make both Z = 0                                        |
+| Zombies stand still                               | The `SetTarget` line is missing, or the human is already gone                                                    | Check `SpawnGroup` in the Spawner                      |
+| A tap hits the human, not the zombie              | The zombie is hidden behind the human                                                                            | Tap earlier, or tap the part of the zombie you can see |
+| HUD text does not show                            | TMP Essentials not imported, or a field in `GameHud` is empty                                                    | Import TMP Essentials and drag every field             |
+| Restart gives a scene error                       | The scene is not in the build list                                                                               | **File > Build Profiles > Add Open Scenes**            |
+| Android is missing in Build Profiles              | The Android module is not installed                                                                              | Stay on PC and do Android at home                      |
+
+---
+
+## Recap
+
+| Idea               | In one sentence                                                  |
+| ------------------ | ---------------------------------------------------------------- |
+| **Vertical slice** | A small piece of the game that works from start to finish        |
+| **Slice flow**     | The exact path a player takes through the slice                  |
+| **Pointer**        | A mouse, a finger or a pen, read by one script                   |
+| **Raycast**        | A line from the camera through the tap, to find what was touched |
+| **Interface**      | A promise: "I have these methods"                                |
+| **IDamageable**    | Our badge. Anything with `Hit()` can be shot or eaten            |
+| **MoveTowards**    | One small step toward a target, every frame                      |
+| **Coroutine**      | A method that can wait in the middle                             |
+| **GameManager**    | The script that knows the rules                                  |
+| **GameHud**        | The script that only shows text                                  |
+
+---
+
 ## Self-check questions
 
 1. Why do we use `Pointer.current` and not a mouse-only check?
@@ -905,9 +935,22 @@ If Android was missing today, install the **Android Build Support** module at ho
 ### Hard
 
 - Make a zombie that has no target **keep running** to the safe line. If it reaches the line, the player loses a life.
-- Add a **Ready** state with a Start button (the same idea as Lesson 14). Nothing moves until the player presses Start.
+- Add a **Ready** state with a Start button. `GameState` is a small state machine, like the zombie in Lesson 14. Nothing moves until the player presses Start.
 - Add **ammo**: the player has 10 bullets and must press a Reload button.
 
 ---
 
-*Contracted by NextSkill (a Gamestorms company) for Isra University.*
+## What comes next
+
+You now have a vertical slice. To turn it into a full game, you would add:
+
+- A **main menu** and a **settings** screen.
+- More **levels** and more kinds of characters.
+- **Sounds** and **effects** that make each shot feel good.
+- The **ads** from your slice plan, placed exactly where you wrote them.
+
+Try writing a slice plan for a game of your own. Use the same table: steps, what it proves, and where an ad would go.
+
+---
+
+*Contracted by NextSkill. A Gamestorms company. Created for Isra University.*
