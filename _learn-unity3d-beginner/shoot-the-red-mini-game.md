@@ -1,6 +1,15 @@
 ---
 title: "Lesson 15: Save the Humans"
 lesson: 15
+tags:
+  - unity
+  - beginner
+  - input-system
+  - raycast
+  - interfaces
+  - vertical-slice
+  - android
+  - mobile-game
 description: "Build a complete tap-to-shoot zombie game from a fresh project. Learn tap input that works on touch and mouse, raycasts, interfaces and a simple chase. Then build it for Android."
 ---
 
